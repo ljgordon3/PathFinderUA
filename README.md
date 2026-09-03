@@ -5,4 +5,4 @@
 
 #See BACKLOG.md for user stories, priorities, and project status.
 
-#Project is a work in progress so documentation will be updated upon refinement of architecture and framework
+#Project is a work in progress so README documentation will be updated upon refinement of architecture and framework

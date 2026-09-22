@@ -1,0 +1,24 @@
+[
+  {"course_id": "CS100", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-PROG-FUND"], "explanation": "Establishes the programming fundamentals every later software engineering course builds on.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS201", "career_id": "CAR-SWE", "relevance": 5, "skill_ids": ["SK-DATA-STRUCT", "SK-OOP"], "explanation": "Data structures and object-oriented design are core daily tools for software engineers.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS301", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-ALGO"], "explanation": "Algorithm analysis skills are commonly assessed and used in software engineering roles.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS310", "career_id": "CAR-SWE", "relevance": 5, "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK"], "explanation": "Directly builds the team-based design and development practice central to software engineering.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS320", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-DB"], "explanation": "Most production software engineering work involves designing and querying relational data.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS330", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-WEB"], "explanation": "Full-stack web development is one of the most common software engineering specializations.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS340", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-OS"], "explanation": "Understanding operating system concepts helps engineers reason about performance and concurrency.", "sources": ["O*NET 15-1252.00"]},
+  {"course_id": "CS410", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-SECURITY"], "explanation": "Secure coding practices are an increasingly expected skill for software engineers.", "sources": ["O*NET 15-1252.00"]},
+
+  {"course_id": "CS150", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-ALGO"], "explanation": "Discrete math and logic underlie model reasoning and algorithm correctness in data science.", "sources": ["O*NET 15-2051.00"]},
+  {"course_id": "CS201", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-DATA-STRUCT"], "explanation": "Efficient data structures matter when processing large datasets.", "sources": ["O*NET 15-2051.00"]},
+  {"course_id": "CS301", "career_id": "CAR-DS-AI", "relevance": 4, "skill_ids": ["SK-ALGO"], "explanation": "Algorithmic thinking supports understanding of model training and complexity tradeoffs.", "sources": ["O*NET 15-2051.00"]},
+  {"course_id": "CS320", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-DB"], "explanation": "Data scientists regularly retrieve and shape data stored in relational databases.", "sources": ["O*NET 15-2051.00"]},
+  {"course_id": "CS360", "career_id": "CAR-DS-AI", "relevance": 5, "skill_ids": ["SK-AI-ML"], "explanation": "Directly introduces the AI concepts that anchor the data science / AI career path.", "sources": ["O*NET 15-2051.00"]},
+  {"course_id": "CS365", "career_id": "CAR-DS-AI", "relevance": 5, "skill_ids": ["SK-AI-ML", "SK-STATS"], "explanation": "Core machine learning methods and evaluation are central to this career.", "sources": ["O*NET 15-2051.00"]},
+
+  {"course_id": "CS201", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-DATA-STRUCT"], "explanation": "Robotics software relies on efficient data structures for real-time processing.", "sources": ["O*NET 17-2141.00"]},
+  {"course_id": "CS301", "career_id": "CAR-ROBOTICS", "relevance": 4, "skill_ids": ["SK-ALGO"], "explanation": "Motion planning and search algorithms build directly on algorithm design foundations.", "sources": ["O*NET 17-2141.00"]},
+  {"course_id": "CS340", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-OS"], "explanation": "Real-time and embedded robotics systems require operating system concepts.", "sources": ["O*NET 17-2141.00"]},
+  {"course_id": "CS360", "career_id": "CAR-ROBOTICS", "relevance": 4, "skill_ids": ["SK-AI-ML"], "explanation": "AI search and reasoning techniques underlie robot decision-making.", "sources": ["O*NET 17-2141.00"]},
+  {"course_id": "CS370", "career_id": "CAR-ROBOTICS", "relevance": 5, "skill_ids": ["SK-ROBOTICS"], "explanation": "Directly introduces kinematics, control, and planning central to robotics work.", "sources": ["O*NET 17-2141.00"]},
+  {"course_id": "CS375", "career_id": "CAR-ROBOTICS", "relevance": 5, "skill_ids": ["SK-PERCEPTION"], "explanation": "Perception is a core capability autonomous robotic systems depend on.", "sources": ["O*NET 17-2141.00"]}
+]

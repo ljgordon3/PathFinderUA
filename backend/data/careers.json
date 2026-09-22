@@ -1,0 +1,56 @@
+[
+  {
+    "id": "CAR-SWE",
+    "name": "Software Engineering",
+    "description": "Designs, builds, tests, and maintains software applications and systems.",
+    "responsibilities": [
+      "Design and implement software components",
+      "Write automated tests and review code",
+      "Collaborate with a team using version control"
+    ],
+    "relevant_skill_ids": ["SK-PROG-FUND", "SK-OOP", "SK-DATA-STRUCT", "SK-ALGO", "SK-SYS-DESIGN", "SK-WEB", "SK-TESTING"],
+    "typical_education": "Bachelor's degree in Computer Science or related field",
+    "median_salary_usd": 130160,
+    "employment_outlook": "Faster than average growth projected over the next decade",
+    "occupational_code": "15-1252.00",
+    "source": "U.S. Bureau of Labor Statistics, Occupational Outlook Handbook",
+    "source_url": "https://www.bls.gov/ooh/",
+    "data_date": "2026-09-02"
+  },
+  {
+    "id": "CAR-DS-AI",
+    "name": "Data Science / Artificial Intelligence",
+    "description": "Builds models and systems that learn from data to support prediction, classification, and automated decision-making.",
+    "responsibilities": [
+      "Clean and analyze structured and unstructured data",
+      "Design, train, and evaluate machine learning models",
+      "Communicate findings to technical and non-technical audiences"
+    ],
+    "relevant_skill_ids": ["SK-PROG-FUND", "SK-DATA-STRUCT", "SK-ALGO", "SK-AI-ML", "SK-STATS", "SK-DB"],
+    "typical_education": "Bachelor's degree in Computer Science, Data Science, Statistics, or related field",
+    "median_salary_usd": 112590,
+    "employment_outlook": "Much faster than average growth projected over the next decade",
+    "occupational_code": "15-2051.00",
+    "source": "U.S. Bureau of Labor Statistics, Occupational Outlook Handbook",
+    "source_url": "https://www.bls.gov/ooh/",
+    "data_date": "2026-09-02"
+  },
+  {
+    "id": "CAR-ROBOTICS",
+    "name": "Robotics",
+    "description": "Develops software and systems that let machines sense, plan, and act in the physical world.",
+    "responsibilities": [
+      "Implement perception, planning, and control software",
+      "Integrate sensors and actuators with software systems",
+      "Test autonomous behavior in simulation and hardware"
+    ],
+    "relevant_skill_ids": ["SK-PROG-FUND", "SK-DATA-STRUCT", "SK-ALGO", "SK-AI-ML", "SK-ROBOTICS", "SK-PERCEPTION", "SK-OS"],
+    "typical_education": "Bachelor's degree in Computer Science, Robotics, or Electrical/Computer Engineering",
+    "median_salary_usd": 106260,
+    "employment_outlook": "Faster than average growth projected over the next decade",
+    "occupational_code": "17-2141.00",
+    "source": "U.S. Bureau of Labor Statistics, Occupational Outlook Handbook",
+    "source_url": "https://www.bls.gov/ooh/",
+    "data_date": "2026-09-02"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "SRC-UA-CATALOG",
+    "name": "UA Computer Science undergraduate catalog",
+    "url": "https://catalog.ua.edu/undergraduate/engineering/computer-science/",
+    "publication_date": "2026-2027",
+    "last_reviewed": "2026-09-02",
+    "data_quality": "curated-demo-placeholder"
+  },
+  {
+    "id": "SRC-ONET",
+    "name": "O*NET Database",
+    "url": "https://www.onetcenter.org/database.html",
+    "publication_date": "31.0",
+    "last_reviewed": "2026-09-02",
+    "data_quality": "authoritative-external"
+  },
+  {
+    "id": "SRC-BLS",
+    "name": "U.S. Bureau of Labor Statistics, Occupational Outlook Handbook",
+    "url": "https://www.bls.gov/ooh/",
+    "publication_date": "2026",
+    "last_reviewed": "2026-09-02",
+    "data_quality": "authoritative-external"
+  }
+]

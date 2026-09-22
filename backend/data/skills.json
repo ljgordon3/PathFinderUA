@@ -1,0 +1,18 @@
+[
+  {"id": "SK-PROG-FUND", "name": "Programming Fundamentals", "category": "technical"},
+  {"id": "SK-OOP", "name": "Object-Oriented Design", "category": "technical"},
+  {"id": "SK-DATA-STRUCT", "name": "Data Structures", "category": "technical"},
+  {"id": "SK-ALGO", "name": "Algorithm Design & Analysis", "category": "technical"},
+  {"id": "SK-SYS-DESIGN", "name": "Software System Design", "category": "technical"},
+  {"id": "SK-DB", "name": "Database Design & SQL", "category": "technical"},
+  {"id": "SK-WEB", "name": "Web Application Development", "category": "technical"},
+  {"id": "SK-TESTING", "name": "Software Testing", "category": "technical"},
+  {"id": "SK-AI-ML", "name": "AI / Machine Learning Foundations", "category": "technical"},
+  {"id": "SK-STATS", "name": "Probability & Statistics", "category": "technical"},
+  {"id": "SK-ROBOTICS", "name": "Robotics & Autonomous Systems", "category": "technical"},
+  {"id": "SK-PERCEPTION", "name": "Computer Vision / Perception", "category": "technical"},
+  {"id": "SK-OS", "name": "Operating Systems Concepts", "category": "technical"},
+  {"id": "SK-NETWORKS", "name": "Computer Networks", "category": "technical"},
+  {"id": "SK-SECURITY", "name": "Security Fundamentals", "category": "technical"},
+  {"id": "SK-TEAMWORK", "name": "Team-Based Software Development", "category": "professional"}
+]

@@ -55,9 +55,9 @@ missing backend connection.
 
 Using either the running frontend or the API docs at `/docs` directly:
 
-1. Submit completed courses `CS100`, `CS150`, `CS201` and confirm
-   `POST /eligibility` marks `CS301` eligible only once `CS150` is also
-   included (`CS301` requires `CS201` **and** `CS150`).
+1. Submit completed courses `CS100`, `CS101`, and `CS201` and confirm
+   `POST /eligibility` marks `CS301` ineligible until `CS200` is also
+   included (`CS301` requires `CS201` **and** `CS200` in the curated model).
 2. Select the `CAR-SWE` (Software Engineering) career, a target of 15
    credit hours, and call `POST /recommendations`.
    **Check:** the response contains 3–5 recommendations, each with a
@@ -70,6 +70,12 @@ Using either the running frontend or the API docs at `/docs` directly:
 4. Repeat step 2 with `career_id` set to `CAR-DS-AI` or `CAR-ROBOTICS`
    and confirm the ranked list changes to reflect that career's course
    relevance.
+
+The browser displays IDs with spaces (for example, `CS 200`), while the
+API uses `CS200`. Both read the same course records. Prerequisite checks
+only cover modeled CS/ECE relationships; students must confirm all other
+requirements with UA. The browser still calculates recommendations locally
+from those shared records rather than calling the API.
 
 ## 6. What "passing" looks like for Milestone 1
 

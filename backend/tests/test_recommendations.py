@@ -27,7 +27,7 @@ def test_new_student_gets_three_to_five_recommendations(store):
 
 
 def test_recommendations_exclude_ineligible_courses(store):
-    # CS301 requires CS201 + CS150, which have not been completed.
+    # CS301 requires both CS201 and CS200, which have not been completed.
     request = RecommendationRequest(
         completed_course_ids=[], career_id="CAR-SWE", target_credit_hours=15
     )
@@ -48,7 +48,7 @@ def test_recommendations_exclude_already_completed_courses(store):
 
 def test_recommendation_scores_are_sorted_descending(store):
     request = RecommendationRequest(
-        completed_course_ids=["CS100", "CS201", "CS150"], career_id="CAR-DS-AI", target_credit_hours=15
+        completed_course_ids=["CS100", "CS101", "CS200", "CS201"], career_id="CAR-DS-AI", target_credit_hours=15
     )
     response = recommend(request, store, result_count=10, min_result_count=3)
     scores = [item.score for item in response.recommendations]
@@ -68,7 +68,7 @@ def test_same_inputs_produce_same_results(store):
 def test_every_recommendation_includes_required_explanation_fields(store):
     """SC-05: every recommendation must show relevance, unlocks, objectives, skills, sources."""
     request = RecommendationRequest(
-        completed_course_ids=["CS100", "CS201", "CS150"], career_id="CAR-DS-AI", target_credit_hours=15
+        completed_course_ids=["CS100", "CS101", "CS200", "CS201"], career_id="CAR-DS-AI", target_credit_hours=15
     )
     response = recommend(request, store, result_count=5, min_result_count=3)
     assert len(response.recommendations) > 0

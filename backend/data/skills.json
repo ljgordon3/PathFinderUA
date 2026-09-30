@@ -14,5 +14,11 @@
   {"id": "SK-OS", "name": "Operating Systems Concepts", "category": "technical"},
   {"id": "SK-NETWORKS", "name": "Computer Networks", "category": "technical"},
   {"id": "SK-SECURITY", "name": "Security Fundamentals", "category": "technical"},
-  {"id": "SK-TEAMWORK", "name": "Team-Based Software Development", "category": "professional"}
+  {"id": "SK-TEAMWORK", "name": "Team-Based Software Development", "category": "professional"},
+  {"id": "SK-DIGITAL-LOGIC", "name": "Digital Logic Design", "category": "technical"},
+  {"id": "SK-EMBEDDED", "name": "Embedded & Microcontroller Systems", "category": "technical"},
+  {"id": "SK-HCI", "name": "Human-Computer Interaction", "category": "technical"},
+  {"id": "SK-HPC", "name": "Parallel & High-Performance Computing", "category": "technical"},
+  {"id": "SK-THEORY", "name": "Theory of Computation", "category": "technical"},
+  {"id": "SK-PL-DESIGN", "name": "Programming Language Design", "category": "technical"}
 ]

@@ -22,7 +22,7 @@ export interface Course {
   skills: string[];
   prerequisites: string[][];
   careers: CareerId[];
-  effort: "Standard" | "Demanding";
+  effort: "Not assessed";
   source: string;
 }
 

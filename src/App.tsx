@@ -30,8 +30,10 @@ import {
 } from "lucide-react";
 import { careers, courses, emptyProfile } from "./data";
 import {
-  demoPlanningService,
+  localPlanningService,
+  formatPrerequisites,
   isEligible,
+  legacyStorageKey,
   parseProfile,
   storageKey,
 } from "./planning";
@@ -205,8 +207,8 @@ function Setup({
               continue without selecting any.
             </p>
             <div className="inline-note">
-              <BookOpen size={17} /> These are illustrative courses for the UI
-              demo.
+              <BookOpen size={17} /> Select the CS and ECE courses you have
+              completed. The prerequisite checks cover this curated set only.
             </div>
             <label className="search-box">
               <Search size={17} />
@@ -291,7 +293,7 @@ function Setup({
                     <small>
                       {value === "balanced"
                         ? "A mix of challenge and breathing room"
-                        : "Favor courses with lighter demo workload"}
+                        : "Favor fewer credits; workload data is unavailable"}
                     </small>
                   </label>
                 ))}
@@ -375,7 +377,7 @@ function CourseCard({
             </>
           ) : eligible ? (
             <>
-              <CheckCircle2 size={14} /> Eligible in demo
+              <CheckCircle2 size={14} /> CS/ECE prerequisites matched
             </>
           ) : (
             "Prerequisites needed"
@@ -405,9 +407,13 @@ function CourseCard({
 export default function App() {
   const [initial] = useState(() => {
     try {
+      const saved = localStorage.getItem(storageKey);
       return {
-        profile: parseProfile(localStorage.getItem(storageKey)),
-        error: "",
+        profile: parseProfile(saved),
+        error:
+          !saved && localStorage.getItem(legacyStorageKey)
+            ? "The course list has changed. Please reselect your completed courses and rebuild your plan."
+            : "",
       };
     } catch {
       return {
@@ -449,7 +455,7 @@ export default function App() {
     let active = true;
     setLoading(true);
     setRecommendationError(false);
-    demoPlanningService
+    localPlanningService
       .recommend(profile, courses)
       .then((result) => {
         if (active) setRecommendations(result);
@@ -518,7 +524,7 @@ export default function App() {
   function exportPlan() {
     const text = [
       "PathFinder UA — proposed semester",
-      "Illustrative demo data. Review with an academic advisor.",
+      "Curated UA CS/ECE courses. Confirm all prerequisites and degree requirements with an advisor.",
       "",
       `Career: ${currentCareer?.title ?? "Not selected"}`,
       `Credits: ${credits} / ${profile.creditTarget}`,
@@ -651,7 +657,7 @@ export default function App() {
           </div>
           <div className="topbar-right">
             <span className="demo-pill">
-              <span /> Interactive demo
+              <span /> CS course planner
             </span>
             <button
               className="top-avatar"
@@ -846,7 +852,7 @@ export default function App() {
                     </h2>
                     <p>
                       {profile.setupComplete
-                        ? "Eligible demo courses, shaped by your interests and progress."
+                        ? "B.S. required courses first, then career-related options. Confirm full prerequisites with UA."
                         : "A small preview of what you could explore. Set up your profile for recommendations."}
                     </p>
                   </div>
@@ -870,8 +876,9 @@ export default function App() {
                     <GraduationCap size={30} />
                     <h3>You’ve explored this corner of the catalog.</h3>
                     <p>
-                      No eligible unfinished courses remain in this small demo.
-                      Review your completed courses or explore the full list.
+                      No courses in this set match your current completed-course
+                      selections. Review your completed courses or explore the
+                      full list.
                     </p>
                     <button
                       className="button secondary"
@@ -884,7 +891,9 @@ export default function App() {
                   <div className="course-grid">
                     {(profile.setupComplete
                       ? recommendations.slice(0, 3).map((r) => r.course)
-                      : [courses[2], courses[6], courses[7]]
+                      : courses
+                          .filter((c) => c.category === "B.S. required")
+                          .slice(0, 3)
                     ).map(card)}
                   </div>
                 )}
@@ -942,8 +951,10 @@ export default function App() {
                 <span className="small muted">{filtered.length} courses</span>
               </div>
               <div className="inline-note">
-                <BookOpen size={17} /> Sample catalog · Course titles,
-                prerequisites, and workload labels are illustrative.
+                <BookOpen size={17} /> Curated UA CS/ECE course list.
+                Prerequisite checks cover listed CS/ECE courses; confirm math,
+                grades, enrollment, and degree applicability with UA. This set
+                does not include every course required for the B.S.
               </div>
               {filtered.length ? (
                 <div className="course-grid catalog">{filtered.map(card)}</div>
@@ -1060,7 +1071,7 @@ export default function App() {
                 <div className="comparison-wrap">
                   <table className="comparison-table">
                     <caption className="sr-only">
-                      Course comparison using illustrative demo data
+                      Course comparison using curated UA course data
                     </caption>
                     <thead>
                       <tr>
@@ -1098,10 +1109,7 @@ export default function App() {
                         },
                         {
                           label: "Prerequisites",
-                          value: (c: Course) =>
-                            c.prerequisites
-                              .map((g) => `(${g.join(" or ")})`)
-                              .join(" and ") || "None in demo",
+                          value: formatPrerequisites,
                         },
                         {
                           label: "Later connections",
@@ -1116,7 +1124,7 @@ export default function App() {
                               .join(", ") || "None in this dataset",
                         },
                         {
-                          label: "Demo workload",
+                          label: "Workload data",
                           value: (c: Course) => c.effort,
                         },
                       ].map((row) => (
@@ -1263,13 +1271,10 @@ export default function App() {
                       goal.
                     </div>
                   )}
-                  {planned.filter((c) => c.effort === "Demanding").length >=
-                    2 && (
-                    <div className="warning">
-                      A busy semester ahead: multiple courses have demanding
-                      demo workload labels.
-                    </div>
-                  )}
+                  <p className="small muted">
+                    Workload data is unavailable. Compare course demands with an
+                    advisor.
+                  </p>
                   <hr />
                   <h3>Skills you’re building</h3>
                   <div className="tags">
@@ -1369,15 +1374,11 @@ export default function App() {
                 : "Explore a new part of your computing foundation."}
             </p>
             <h3>Prerequisites</h3>
-            <p>
-              {details.prerequisites
-                .map((g) => `(${g.join(" or ")})`)
-                .join(" and ") || "No prerequisites in the demo dataset."}
-            </p>
+            <p>{formatPrerequisites(details)}</p>
             <span className="eligibility">
               {isEligible(details, profile.completed)
-                ? "Your selected courses satisfy the demo prerequisites."
-                : "Add the required completed courses to your profile to be eligible."}
+                ? "Your selections match modeled CS/ECE prerequisites. Confirm all catalog requirements with UA."
+                : "Add the required completed CS/ECE courses to your profile."}
             </span>
             <h3>Where it could lead</h3>
             <p>
@@ -1390,7 +1391,8 @@ export default function App() {
                 "No later connections in the current sample dataset."}
             </p>
             <div className="inline-note">
-              {details.source} Course connections may require additional
+              {details.source}. See the official UA catalog for current
+              requirements. Course connections may require additional
               prerequisites.
             </div>
           </div>
@@ -1446,6 +1448,7 @@ export default function App() {
               onClick={() => {
                 try {
                   localStorage.removeItem(storageKey);
+                  localStorage.removeItem(legacyStorageKey);
                   setProfile({ ...emptyProfile });
                   setStorageError("");
                   setCompared([]);

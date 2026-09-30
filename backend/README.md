@@ -64,8 +64,8 @@ IDs for manual testing (see `data/courses.json` and `data/careers.json`
 for the full list):
 
 - Career IDs: `CAR-SWE`, `CAR-DS-AI`, `CAR-ROBOTICS`
-- Zero-prerequisite courses (good "completed courses" starting point):
-  `CS100`, `CS150`, `CS110`
+- Zero-modeled-prerequisite courses (good starting points):
+  `CS100`, `CS121`, `CS202`, `CS223`
 
 Example request:
 
@@ -73,12 +73,16 @@ Example request:
 curl -X POST http://127.0.0.1:8000/recommendations \
   -H "Content-Type: application/json" \
   -d '{
-        "completed_course_ids": ["CS100", "CS150", "CS201"],
+        "completed_course_ids": ["CS100", "CS101", "CS200", "CS201"],
         "career_id": "CAR-SWE",
         "target_credit_hours": 15,
         "workload_preference": "balanced"
       }'
 ```
+
+The 19 curated course records in `data/courses.json` also drive the React interface.
+Modeled prerequisite checks cover listed CS/ECE courses only. Confirm math,
+grades, other enrollment rules, and degree applicability with UA.
 
 ## Project layout
 

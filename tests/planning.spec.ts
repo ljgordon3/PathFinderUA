@@ -31,14 +31,14 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
   await page.getByRole("button", { name: "Compare", exact: true }).click();
   await expect(page.getByRole("table")).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Software design" }),
+    page.getByRole("heading", { name: "Software Design and Engineering" }),
   ).toBeVisible();
   await page
     .getByRole("navigation")
     .getByRole("button", { name: /My semester/ })
     .click();
   await expect(
-    page.getByText("Your plan is 3 credits over your target.", {
+    page.getByText("Your plan is 5 credits over your target.", {
       exact: false,
     }),
   ).toBeVisible();
@@ -54,7 +54,10 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
     .getByRole("button", { name: /My semester/ })
     .click();
   await expect(
-    page.getByRole("button", { name: "Software design", exact: true }),
+    page.getByRole("button", {
+      name: "Software Design and Engineering",
+      exact: true,
+    }),
   ).toBeVisible();
   await page
     .getByRole("navigation")
@@ -68,7 +71,9 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
     page.getByRole("heading", { name: "Your next step starts here." }),
   ).toBeVisible();
   expect(
-    await page.evaluate(() => localStorage.getItem("pathfinder-ua:profile:v1")),
+    await page.evaluate(() =>
+      localStorage.getItem("pathfinder-ua:profile:curated:v2"),
+    ),
   ).toBeNull();
   expect(errors).toEqual([]);
 });
@@ -91,7 +96,7 @@ test("mobile navigation, search, and dialogs work without overflow", async ({
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear filters" }).click();
   await page
-    .getByRole("button", { name: "Foundations of programming", exact: true })
+    .getByRole("button", { name: "Computer Science I", exact: true })
     .click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
@@ -101,4 +106,26 @@ test("mobile navigation, search, and dialogs work without overflow", async ({
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+
+test("old fictional course selections are not reused", async ({ page }) => {
+  const previous = JSON.stringify({
+    name: "Taylor",
+    completed: ["CS 301"],
+    schedule: ["CS 340"],
+    career: "software",
+    setupComplete: true,
+  });
+  await page.addInitScript(
+    (value) => localStorage.setItem("pathfinder-ua:profile:v1", value),
+    previous,
+  );
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { name: "Your next step starts here." }),
+  ).toBeVisible();
+  await expect(page.getByText(/course list has changed/)).toBeVisible();
+  expect(
+    await page.evaluate(() => localStorage.getItem("pathfinder-ua:profile:v1")),
+  ).toBe(previous);
 });

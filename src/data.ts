@@ -44,192 +44,62 @@ export const careers: Career[] = [
   },
 ];
 
-// Illustrative fixtures, not verified UA catalog records. Replace with reviewed, sourced data.
-const source =
-  "Illustrative demo data — verify against the official UA catalog.";
-export const courses: Course[] = [
-  {
-    id: "CS 100",
-    title: "Foundations of programming",
-    credits: 3,
-    category: "Foundation",
-    description:
-      "Build your first programs and learn to break a problem into clear, manageable steps.",
-    objectives: [
-      "Write and debug small programs",
-      "Use variables, conditions, and loops",
+// The browser and API read the same curated course records.
+import courseRecords from "../backend/data/courses.json";
+import skillRecords from "../backend/data/skills.json";
+import mappingRecords from "../backend/data/course_career_mappings.json";
+
+const careerKeys = {
+  "CAR-SWE": "software",
+  "CAR-DS-AI": "data",
+  "CAR-ROBOTICS": "robotics",
+} as const;
+const skillNames = new Map(skillRecords.map((skill) => [skill.id, skill.name]));
+const displayId = (id: string) => id.replace(/^([A-Z]+)([0-9]+)$/, "$1 $2");
+// Major course slots listed in the UA B.S. CS requirements.
+const requiredForBs = new Set([
+  "CS100",
+  "CS101",
+  "CS200",
+  "CS201",
+  "CS301",
+  "CS403",
+  "CS470",
+  "CS495",
+  "ECE380",
+  "ECE383",
+]);
+
+export const courses: Course[] = courseRecords
+  .map((record): Course => ({
+    id: displayId(record.id),
+    title: record.title,
+    credits: record.credit_hours,
+    category: requiredForBs.has(record.id)
+      ? "B.S. required"
+      : Number(record.id.replace(/^[A-Z]+/, "")) >= 400
+        ? "Upper-level option"
+        : "Other course",
+    description: record.description,
+    objectives: record.learning_objectives,
+    skills: record.skill_ids.map((id) => skillNames.get(id) ?? id),
+    // Source data uses OR between groups and AND within a group.
+    prerequisites: record.prerequisites.map((group) => group.map(displayId)),
+    careers: [
+      ...new Set(
+        mappingRecords
+          .filter((mapping) => mapping.course_id === record.id)
+          .map(
+            (mapping) =>
+              careerKeys[mapping.career_id as keyof typeof careerKeys],
+          ),
+      ),
     ],
-    skills: ["Programming", "Problem solving"],
-    prerequisites: [],
-    careers: ["software", "data", "robotics"],
-    effort: "Standard",
-    source,
-  },
-  {
-    id: "CS 101",
-    title: "Programming with objects",
-    credits: 3,
-    category: "Foundation",
-    description:
-      "Organize programs using objects, reusable components, and practical programming techniques.",
-    objectives: [
-      "Model a problem with objects",
-      "Build reusable program components",
-    ],
-    skills: ["Programming", "Software design"],
-    prerequisites: [["CS 100"]],
-    careers: ["software", "robotics"],
-    effort: "Standard",
-    source,
-  },
-  {
-    id: "CS 200",
-    title: "Software design",
-    credits: 3,
-    category: "Core course",
-    description:
-      "Move from individual programs to maintainable software with clear interfaces and thoughtful design.",
-    objectives: [
-      "Design modular applications",
-      "Evaluate software design tradeoffs",
-    ],
-    skills: ["Software design", "Programming"],
-    prerequisites: [["CS 101"]],
-    careers: ["software"],
-    effort: "Standard",
-    source,
-  },
-  {
-    id: "CS 201",
-    title: "Data structures",
-    credits: 3,
-    category: "Core course",
-    description:
-      "Explore the structures that make software efficient, from linked lists and trees to graphs.",
-    objectives: [
-      "Choose appropriate data structures",
-      "Analyze time and space costs",
-    ],
-    skills: ["Algorithms", "Problem solving"],
-    prerequisites: [["CS 101"]],
-    careers: ["software", "data", "robotics"],
-    effort: "Demanding",
-    source,
-  },
-  {
-    id: "CS 202",
-    title: "Computer systems",
-    credits: 3,
-    category: "Core course",
-    description:
-      "Discover how programs interact with memory, processors, and the underlying machine.",
-    objectives: [
-      "Explain memory organization",
-      "Connect software behavior to hardware",
-    ],
-    skills: ["Systems", "Programming"],
-    prerequisites: [["CS 101"]],
-    careers: ["software", "robotics"],
-    effort: "Demanding",
-    source,
-  },
-  {
-    id: "CS 301",
-    title: "Algorithms",
-    credits: 3,
-    category: "Core course",
-    description:
-      "Develop systematic approaches to complex problems and evaluate the efficiency of your solutions.",
-    objectives: [
-      "Compare algorithmic strategies",
-      "Analyze algorithm complexity",
-    ],
-    skills: ["Algorithms", "Problem solving"],
-    prerequisites: [["CS 201"]],
-    careers: ["software", "data", "robotics"],
-    effort: "Demanding",
-    source,
-  },
-  {
-    id: "CS 340",
-    title: "Introduction to databases",
-    credits: 3,
-    category: "Elective",
-    description:
-      "Structure, query, and connect data to the applications that use it.",
-    objectives: ["Model relational data", "Write queries and design schemas"],
-    skills: ["Data analysis", "Software design"],
-    prerequisites: [["CS 200", "CS 201"]],
-    careers: ["software", "data"],
-    effort: "Standard",
-    source,
-  },
-  {
-    id: "CS 410",
-    title: "Introduction to AI",
-    credits: 3,
-    category: "Elective",
-    description:
-      "Explore search, reasoning, and intelligent decision-making through practical problems.",
-    objectives: [
-      "Implement search strategies",
-      "Explain approaches to intelligent systems",
-    ],
-    skills: ["Machine learning", "Algorithms"],
-    prerequisites: [["CS 201"]],
-    careers: ["data", "robotics"],
-    effort: "Demanding",
-    source,
-  },
-  {
-    id: "CS 415",
-    title: "Software development",
-    credits: 3,
-    category: "Elective",
-    description:
-      "Bring a software product to life through requirements, implementation, testing, and teamwork.",
-    objectives: [
-      "Deliver an end-to-end application",
-      "Apply testing and team development practices",
-    ],
-    skills: ["Software design", "Programming", "Problem solving"],
-    prerequisites: [["CS 200"]],
-    careers: ["software"],
-    effort: "Standard",
-    source,
-  },
-  {
-    id: "CS 430",
-    title: "Robotics foundations",
-    credits: 3,
-    category: "Elective",
-    description:
-      "Connect sensing, computation, and action to understand autonomous systems.",
-    objectives: [
-      "Describe perception and control systems",
-      "Connect algorithms to robotic behavior",
-    ],
-    skills: ["Systems", "Algorithms", "Machine learning"],
-    prerequisites: [["CS 201"], ["CS 202"]],
-    careers: ["robotics"],
-    effort: "Demanding",
-    source,
-  },
-  {
-    id: "CS 440",
-    title: "Introduction to data science",
-    credits: 3,
-    category: "Elective",
-    description:
-      "Transform raw data into useful insights through exploration, visualization, and modeling.",
-    objectives: [
-      "Explore and prepare datasets",
-      "Communicate findings from data",
-    ],
-    skills: ["Data analysis", "Machine learning"],
-    prerequisites: [["CS 201"]],
-    careers: ["data"],
-    effort: "Standard",
-    source,
-  },
-];
+    effort: "Not assessed",
+    source: record.source,
+  }))
+  .sort(
+    (a, b) =>
+      Number(b.category === "B.S. required") -
+        Number(a.category === "B.S. required") || a.id.localeCompare(b.id),
+  );

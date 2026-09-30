@@ -54,8 +54,16 @@ const careerKeys = {
   "CAR-DS-AI": "data",
   "CAR-ROBOTICS": "robotics",
 } as const;
+export const backendCareerId = {
+  software: "CAR-SWE",
+  data: "CAR-DS-AI",
+  robotics: "CAR-ROBOTICS",
+} as const;
 const skillNames = new Map(skillRecords.map((skill) => [skill.id, skill.name]));
-const displayId = (id: string) => id.replace(/^([A-Z]+)([0-9]+)$/, "$1 $2");
+export const displayId = (id: string) =>
+  id.replace(/^([A-Z]+)([0-9]+)$/, "$1 $2");
+export const apiId = (id: string) => id.replace(" ", "");
+export const skillName = (id: string) => skillNames.get(id) ?? id;
 // Major course slots listed in the UA B.S. CS requirements.
 const requiredForBs = new Set([
   "CS100",
@@ -70,8 +78,20 @@ const requiredForBs = new Set([
   "ECE383",
 ]);
 
-export const courses: Course[] = courseRecords
-  .map((record): Course => ({
+export interface ApiCourse {
+  id: string;
+  title: string;
+  credit_hours: number;
+  degree_category: string;
+  description: string;
+  learning_objectives: string[];
+  skill_ids: string[];
+  prerequisites: string[][];
+  source: string;
+}
+
+export function mapCourse(record: ApiCourse): Course {
+  return {
     id: displayId(record.id),
     title: record.title,
     credits: record.credit_hours,
@@ -97,7 +117,11 @@ export const courses: Course[] = courseRecords
     ],
     effort: "Not assessed",
     source: record.source,
-  }))
+  };
+}
+
+export const courses: Course[] = courseRecords
+  .map(mapCourse)
   .sort(
     (a, b) =>
       Number(b.category === "B.S. required") -

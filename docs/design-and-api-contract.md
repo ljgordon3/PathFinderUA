@@ -37,6 +37,8 @@ Scope — passwords and email-based accounts are explicitly excluded).
 
 ## Module boundary diagram
 
+The current browser calls `src/api.ts` for `GET /courses`, `GET /careers`, `POST /eligibility`, `POST /recommendations`, `POST /courses/compare`, and `POST /schedule/summary`. Vite proxies `/api/*` to FastAPI on port 8000 during local development. Course cards use the returned eligibility flags and recommendation explanations; semester totals and career-skill coverage come from the schedule response. The profile and proposed course IDs remain in browser local storage. Career cards use the API's description, skills, and responsibilities with concise local titles; salary/outlook fields are not yet shown. The bundled JSON is retained for profile migration validation and course/skill display mappings, so backend and browser must be deployed from the same revision.
+
 ```mermaid
 graph TB
     subgraph Frontend [React + TypeScript Client — src/]
@@ -65,7 +67,7 @@ graph TB
     UIProfile -->|HTTP JSON| RCourses
     UIProfile -->|HTTP JSON| RElig
     UIReco -->|HTTP JSON| RReco
-    UIReco -->|HTTP JSON| RCareers
+    UIProfile -->|HTTP JSON| RCareers
     UISchedule -->|HTTP JSON| RSched
     UISchedule -->|HTTP JSON| RCourses
 

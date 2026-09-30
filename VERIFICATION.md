@@ -1,93 +1,47 @@
-# Milestone 1 Verification Guide
+# Milestone 1 setup, verification, and demonstration
 
-This describes what to run and check to verify the tagged `milestone-1`
-version of PathFinder UA. It exercises the primary end-to-end MVP flow:
-select completed courses → select a career → get explained
-recommendations → build a proposed schedule.
+This guide is ready for a teammate to run on a second computer. An independent-machine run and teammate approval must be recorded separately before calling the Definition of Done complete. Use the commit under review; create the `milestone-1` tag after review and final verification.
 
-## 1. Clone and check out the tag
+## Setup from a fresh clone
 
-```bash
+Install Git, Python 3.11+, and Node.js 22.12+. Then run:
+
+```powershell
 git clone https://github.com/ljgordon3/PathFinderUA.git
 cd PathFinderUA
-git checkout milestone-1
-```
-
-## 2. Run the backend
-
-```bash
 cd backend
-python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env
-uvicorn app.main:app --reload
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+cd ..
+npm.cmd install
 ```
 
-**Check:** open <http://127.0.0.1:8000/health> — expect `{"status":"ok"}`.
-**Check:** open <http://127.0.0.1:8000/docs> — expect interactive API
-docs listing `/courses`, `/careers`, `/eligibility`, `/recommendations`,
-and `/schedule/summary`.
+On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, and `npm install`. No `.env` file or database is needed with the default settings.
 
-## 3. Run the backend automated tests
+## Automated verification
 
-```bash
-# from backend/, with the virtual environment still active
-pytest
+From `backend`, run `.venv\Scripts\python.exe -m pytest -q`. From the repository root, run:
+
+```powershell
+npm.cmd test
+npm.cmd run build
+npm.cmd run test:e2e
 ```
 
-**Check:** all tests pass, including `test_recommendations.py` (SC-04,
-SC-05) and `test_api.py` (integration coverage of every endpoint).
+Playwright starts both the API and website. On macOS/Linux, use `.venv/bin/python` and `npm`. The browser tests cover setup, API requests, visible recommendation explanations, comparison, schedule warnings, persistence, export, deletion, mobile layout, and legacy profile handling.
 
-## 4. Run the frontend
+## Live working demonstration
 
-In a second terminal:
+Open two terminals. In the first, run `cd backend` and `.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000`. In the second, from the root, run `npm.cmd run dev -- --port 5173`. Check <http://127.0.0.1:8000/health> for `{"status":"ok"}`, then open <http://127.0.0.1:5173>.
 
-```bash
-npm install
-npm run dev
-```
+1. Select **Find my starting point**, choose Software engineering, mark `CS 100` and `CS 101` complete, and set a 3-credit target. Save the profile.
+2. Show the recommendations' eligibility, degree relevance, career skills, learning objectives, later courses, and source notes.
+3. Add `CS 200` and `CS 201` to comparison and the semester. Show the comparison table and 8-credit total with a 5-credit-over-target warning.
+4. Export the plan, reload to show local persistence, change career interest to show reranking, then delete the profile.
+5. In the browser Network panel, show requests to `/api/courses`, `/api/careers`, `/api/eligibility`, `/api/recommendations`, `/api/courses/compare`, and `/api/schedule/summary`. API docs are at <http://127.0.0.1:8000/docs>.
 
-**Check:** open <http://127.0.0.1:5173> (or the address printed in the
-terminal). The application loads without a console error about a
-missing backend connection.
+The 19-course set is a curated subset, not a degree audit. Math/general education prerequisites, grades, overrides, alternate paths outside the set, and availability are not checked. Confirm current requirements with UA.
 
-## 5. Walk the primary end-to-end flow
+## Independent verification record
 
-Using either the running frontend or the API docs at `/docs` directly:
-
-1. Submit completed courses `CS100`, `CS101`, and `CS201` and confirm
-   `POST /eligibility` marks `CS301` ineligible until `CS200` is also
-   included (`CS301` requires `CS201` **and** `CS200` in the curated model).
-2. Select the `CAR-SWE` (Software Engineering) career, a target of 15
-   credit hours, and call `POST /recommendations`.
-   **Check:** the response contains 3–5 recommendations, each with a
-   non-empty `explanation` (degree relevance, learning objectives,
-   career skills, sources) and a `why_eligible` reason.
-3. Add two or three of the recommended course IDs to
-   `POST /schedule/summary` with the same 15-credit target.
-   **Check:** `total_credit_hours` is correct and a warning appears only
-   when the total exceeds 15 or three-plus courses are included.
-4. Repeat step 2 with `career_id` set to `CAR-DS-AI` or `CAR-ROBOTICS`
-   and confirm the ranked list changes to reflect that career's course
-   relevance.
-
-The browser displays IDs with spaces (for example, `CS 200`), while the
-API uses `CS200`. Both read the same course records. Prerequisite checks
-only cover modeled CS/ECE relationships; students must confirm all other
-requirements with UA. The browser still calculates recommendations locally
-from those shared records rather than calling the API.
-
-## 6. What "passing" looks like for Milestone 1
-
-- Backend starts without a data-validation error (proves FR-01/NFR-04).
-- `pytest` passes with no failures.
-- The primary flow in step 5 completes without a server error and
-  produces recommendations that visibly differ by career choice.
-- No `.env` file, password, transcript, student ID, or API key appears
-  anywhere in the repository (`git grep` for obvious secrets is a
-  reasonable spot check).
-
-If anything in this guide fails, please open a GitHub Issue on the
-repository rather than assuming the whole milestone is broken — most
-likely causes are a Python/Node version mismatch (see the version
-requirements in `backend/README.md` and the root `README.md`).
+Second computer / verifier: **Pending**. Record the machine/OS, commit SHA, date, test results, demo result, and any issues in `docs/review-evidence.md` after the teammate performs the run. Do not mark that record complete based on this workspace's tests.

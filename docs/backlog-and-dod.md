@@ -25,6 +25,13 @@ sufficient.
 | P2 | US-14 | View employment examples | Deferred — requires USAJOBS integration (see MVP Scope) |
 
 P0 items form the single end-to-end MVP flow required for Milestone 1.
+The browser now calls FastAPI for the course list, eligibility,
+recommendations, comparison, and schedule summary. Stories US-01–10 and
+US-12 are implemented and browser-tested, but remain **review pending**
+under the Definition of Done until a teammate approves the work. US-11
+is partial: the API contains sourced career salary/outlook data, while
+the browser shows only concise career summaries. US-13 and US-14 are
+deferred. `BACKLOG.md` is the status ledger.
 P1 items round out the primary workflow (schedule building, comparison,
 career detail) and are included in this milestone where feasible. P2
 items are explicitly listed in the project brief as MVP-excluded or

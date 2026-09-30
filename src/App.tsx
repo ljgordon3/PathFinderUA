@@ -28,16 +28,24 @@ import {
   CalendarDays,
   Bot,
 } from "lucide-react";
-import { careers, courses, emptyProfile } from "./data";
+import { emptyProfile } from "./data";
 import {
-  localPlanningService,
+  getCareers,
+  getComparison,
+  getCourses,
+  getEligibility,
+  getRecommendations,
+  getScheduleSummary,
+  type ScheduleSummary,
+} from "./api";
+import {
   formatPrerequisites,
   isEligible,
   legacyStorageKey,
   parseProfile,
   storageKey,
 } from "./planning";
-import type { Course, Page, Profile, Recommendation } from "./types";
+import type { Career, Course, Page, Profile, Recommendation } from "./types";
 
 const navigation: { id: Page; label: string; icon: typeof Compass }[] = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
@@ -89,10 +97,14 @@ function Modal({
 
 function Setup({
   profile,
+  catalog,
+  careers,
   onSave,
   onClose,
 }: {
   profile: Profile;
+  catalog: Course[];
+  careers: Career[];
   onSave: (value: Profile) => void;
   onClose: () => void;
 }) {
@@ -144,7 +156,7 @@ function Setup({
                 (id) =>
                   !draft.completed.includes(id) &&
                   isEligible(
-                    courses.find((c) => c.id === id)!,
+                    catalog.find((c) => c.id === id)!,
                     draft.completed,
                   ),
               ),
@@ -220,7 +232,7 @@ function Setup({
               />
             </label>
             <div className="completed-list">
-              {courses
+              {catalog
                 .filter((c) =>
                   `${c.id} ${c.title}`
                     .toLowerCase()
@@ -239,7 +251,7 @@ function Setup({
                     <small>{course.credits} cr.</small>
                   </label>
                 ))}
-              {!courses.some((c) =>
+              {!catalog.some((c) =>
                 `${c.id} ${c.title}`
                   .toLowerCase()
                   .includes(search.toLowerCase()),
@@ -338,6 +350,8 @@ function Setup({
 function CourseCard({
   course,
   profile,
+  eligible,
+  explanation,
   compared,
   onCompare,
   onAdd,
@@ -345,12 +359,13 @@ function CourseCard({
 }: {
   course: Course;
   profile: Profile;
+  eligible: boolean;
+  explanation?: Recommendation["explanation"];
   compared: boolean;
   onCompare: () => void;
   onAdd: () => void;
   onDetails: () => void;
 }) {
-  const eligible = isEligible(course, profile.completed);
   const completed = profile.completed.includes(course.id);
   const added = profile.schedule.includes(course.id);
   return (
@@ -364,6 +379,31 @@ function CourseCard({
         <ChevronRight size={17} />
       </button>
       <p>{course.description}</p>
+      {explanation && (
+        <div className="recommendation-explanation">
+          <p>
+            <strong>Eligibility:</strong> {explanation.whyEligible}
+          </p>
+          <p>
+            <strong>Degree relevance:</strong> {explanation.degreeRelevance}
+          </p>
+          <p>
+            <strong>Career skills:</strong>{" "}
+            {explanation.careerSkills.join(", ") || "No mapped career skills"}
+          </p>
+          <p>
+            <strong>Learning objectives:</strong>{" "}
+            {explanation.learningObjectives.join("; ") || "None listed"}
+          </p>
+          <p>
+            <strong>Later courses:</strong>{" "}
+            {explanation.unlocks.join(", ") || "None in this course set"}
+          </p>
+          <p>
+            <strong>Sources:</strong> {explanation.sources.join("; ")}
+          </p>
+        </div>
+      )}
       <div className="tags">
         {course.skills.slice(0, 2).map((skill) => (
           <span key={skill}>{skill}</span>
@@ -437,26 +477,65 @@ export default function App() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [loading, setLoading] = useState(false);
   const [recommendationError, setRecommendationError] = useState(false);
+  const [catalog, setCatalog] = useState<Course[]>([]);
+  const [careers, setCareers] = useState<Career[]>([]);
+  const [catalogError, setCatalogError] = useState(false);
+  const [eligibility, setEligibility] = useState<Record<string, boolean>>({});
+  const [scheduleSummary, setScheduleSummary] =
+    useState<ScheduleSummary | null>(null);
+  const [comparedCourses, setComparedCourses] = useState<Course[]>([]);
+  const eligible = (course: Course) => eligibility[course.id] === true;
   const currentCareer = careers.find((c) => c.id === profile.career);
-  const planned = courses.filter((c) => profile.schedule.includes(c.id));
-  const credits = planned.reduce((total, c) => total + c.credits, 0);
-  const selectedCourses = courses.filter((c) => compared.includes(c.id));
-  const filtered = courses.filter(
+  const planned = catalog.filter((c) => profile.schedule.includes(c.id));
+  const credits = scheduleSummary?.totalCredits ?? 0;
+  const selectedCourses = comparedCourses;
+  const filtered = catalog.filter(
     (c) =>
       `${c.id} ${c.title} ${c.skills.join(" ")}`
         .toLowerCase()
         .includes(query.toLowerCase()) &&
-      (!eligibleOnly ||
-        (isEligible(c, profile.completed) &&
-          !profile.completed.includes(c.id))),
+      (!eligibleOnly || (eligible(c) && !profile.completed.includes(c.id))),
   );
 
   useEffect(() => {
     let active = true;
+    Promise.all([getCourses(), getCareers()])
+      .then(([courseData, careerData]) => {
+        if (active) {
+          setCatalog(courseData);
+          setCareers(careerData);
+        }
+      })
+      .catch(() => {
+        if (active) setCatalogError(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+  useEffect(() => {
+    if (!catalog.length) return;
+    let active = true;
+    getEligibility(profile.completed)
+      .then((result) => {
+        if (active) setEligibility(result);
+      })
+      .catch(() => {
+        if (active) setEligibility({});
+      });
+    return () => {
+      active = false;
+    };
+  }, [catalog, profile.completed]);
+  useEffect(() => {
+    let active = true;
+    if (!profile.career) {
+      setRecommendations([]);
+      return;
+    }
     setLoading(true);
     setRecommendationError(false);
-    localPlanningService
-      .recommend(profile, courses)
+    getRecommendations(profile)
       .then((result) => {
         if (active) setRecommendations(result);
       })
@@ -470,6 +549,32 @@ export default function App() {
       active = false;
     };
   }, [profile]);
+  useEffect(() => {
+    let active = true;
+    getScheduleSummary(profile)
+      .then((result) => {
+        if (active) setScheduleSummary(result);
+      })
+      .catch(() => {
+        if (active) setScheduleSummary(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, [profile]);
+  useEffect(() => {
+    let active = true;
+    getComparison(compared)
+      .then((result) => {
+        if (active) setComparedCourses(result);
+      })
+      .catch(() => {
+        if (active) setComparedCourses([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, [compared]);
   useEffect(() => {
     if (!notice) return;
     const timer = window.setTimeout(() => setNotice(""), 4500);
@@ -505,11 +610,7 @@ export default function App() {
     }
   }
   function toggleSchedule(course: Course) {
-    if (
-      profile.completed.includes(course.id) ||
-      !isEligible(course, profile.completed)
-    )
-      return;
+    if (profile.completed.includes(course.id) || !eligible(course)) return;
     const removing = profile.schedule.includes(course.id);
     saveProfile({
       ...profile,
@@ -538,11 +639,13 @@ export default function App() {
     a.click();
     URL.revokeObjectURL(url);
   }
-  const card = (course: Course) => (
+  const card = (course: Course, recommendation?: Recommendation) => (
     <CourseCard
       key={course.id}
       course={course}
       profile={profile}
+      eligible={eligible(course)}
+      explanation={recommendation?.explanation}
       compared={compared.includes(course.id)}
       onCompare={() => compare(course)}
       onAdd={() => toggleSchedule(course)}
@@ -673,6 +776,12 @@ export default function App() {
           </div>
         </header>
         <main id="main" tabIndex={-1}>
+          {catalogError && (
+            <div className="warning" role="alert">
+              Planning data could not be loaded. Start the FastAPI server and
+              reload.
+            </div>
+          )}
           {storageError && (
             <div className="warning" role="alert">
               {storageError}
@@ -889,12 +998,12 @@ export default function App() {
                   </div>
                 ) : (
                   <div className="course-grid">
-                    {(profile.setupComplete
-                      ? recommendations.slice(0, 3).map((r) => r.course)
-                      : courses
+                    {profile.setupComplete
+                      ? recommendations.map((r) => card(r.course, r))
+                      : catalog
                           .filter((c) => c.category === "B.S. required")
                           .slice(0, 3)
-                    ).map(card)}
+                          .map((c) => card(c))}
                   </div>
                 )}
               </section>
@@ -957,7 +1066,9 @@ export default function App() {
                 does not include every course required for the B.S.
               </div>
               {filtered.length ? (
-                <div className="course-grid catalog">{filtered.map(card)}</div>
+                <div className="course-grid catalog">
+                  {filtered.map((course) => card(course))}
+                </div>
               ) : (
                 <div className="empty-state">
                   <Search size={30} />
@@ -1114,7 +1225,7 @@ export default function App() {
                         {
                           label: "Later connections",
                           value: (c: Course) =>
-                            courses
+                            catalog
                               .filter((next) =>
                                 next.prerequisites.some((g) =>
                                   g.includes(c.id),
@@ -1142,8 +1253,7 @@ export default function App() {
                             <button
                               className="button secondary"
                               disabled={
-                                profile.completed.includes(c.id) ||
-                                !isEligible(c, profile.completed)
+                                profile.completed.includes(c.id) || !eligible(c)
                               }
                               onClick={() => toggleSchedule(c)}
                             >
@@ -1264,13 +1374,22 @@ export default function App() {
                     Adjust your preferences
                     <Settings2 size={14} />
                   </button>
-                  {credits > profile.creditTarget && (
+                  {scheduleSummary?.warnings.some(
+                    (warning) => warning.code === "OVER_CREDIT_TARGET",
+                  ) && (
                     <div className="warning" role="status">
                       Your plan is {credits - profile.creditTarget} credits over
                       your target. Consider removing a course or adjusting your
                       goal.
                     </div>
                   )}
+                  {scheduleSummary?.warnings
+                    .filter((warning) => warning.code !== "OVER_CREDIT_TARGET")
+                    .map((warning) => (
+                      <div className="warning" role="status" key={warning.code}>
+                        {warning.message}
+                      </div>
+                    ))}
                   <p className="small muted">
                     Workload data is unavailable. Compare course demands with an
                     advisor.
@@ -1278,11 +1397,9 @@ export default function App() {
                   <hr />
                   <h3>Skills you’re building</h3>
                   <div className="tags">
-                    {[...new Set(planned.flatMap((c) => c.skills))].map(
-                      (skill) => (
-                        <span key={skill}>{skill}</span>
-                      ),
-                    )}
+                    {(scheduleSummary?.careerSkills ?? []).map((skill) => (
+                      <span key={skill}>{skill}</span>
+                    ))}
                   </div>
                   {!planned.length && (
                     <p className="small muted">
@@ -1344,6 +1461,8 @@ export default function App() {
       {setup && (
         <Setup
           profile={profile}
+          catalog={catalog}
+          careers={careers}
           onClose={() => setSetup(false)}
           onSave={(next) => {
             saveProfile(next);
@@ -1376,13 +1495,13 @@ export default function App() {
             <h3>Prerequisites</h3>
             <p>{formatPrerequisites(details)}</p>
             <span className="eligibility">
-              {isEligible(details, profile.completed)
+              {eligible(details)
                 ? "Your selections match modeled CS/ECE prerequisites. Confirm all catalog requirements with UA."
                 : "Add the required completed CS/ECE courses to your profile."}
             </span>
             <h3>Where it could lead</h3>
             <p>
-              {courses
+              {catalog
                 .filter((c) =>
                   c.prerequisites.some((g) => g.includes(details.id)),
                 )
@@ -1409,8 +1528,7 @@ export default function App() {
             <button
               className="button primary"
               disabled={
-                profile.completed.includes(details.id) ||
-                !isEligible(details, profile.completed)
+                profile.completed.includes(details.id) || !eligible(details)
               }
               onClick={() => toggleSchedule(details)}
             >

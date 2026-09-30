@@ -834,6 +834,20 @@ progress::-moz-progress-bar {
   margin: 9px 0 15px;
   line-height: 1.8;
 }
+.recommendation-explanation {
+  border-top: 1px solid var(--line);
+  padding: 8px 0 14px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #51594e;
+}
+.recommendation-explanation p {
+  margin: 6px 0;
+  overflow-wrap: anywhere;
+}
+.recommendation-explanation strong {
+  color: #304232;
+}
 .tags {
   display: flex;
   flex-wrap: wrap;

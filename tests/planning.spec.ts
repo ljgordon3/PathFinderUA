@@ -4,6 +4,11 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
   page,
 }) => {
   const errors: string[] = [];
+  const apiCalls = new Set<string>();
+  page.on("request", (request) => {
+    if (request.url().includes("/api/"))
+      apiCalls.add(new URL(request.url()).pathname);
+  });
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
   await page.getByRole("button", { name: "Find my starting point" }).click();
@@ -20,6 +25,15 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
   await expect(
     page.getByRole("heading", { name: "Welcome back, Taylor." }),
   ).toBeVisible();
+  await expect(page.getByText("Degree relevance:").first()).toBeVisible();
+  for (const label of [
+    "Eligibility:",
+    "Career skills:",
+    "Learning objectives:",
+    "Later courses:",
+    "Sources:",
+  ])
+    await expect(page.getByText(label).first()).toBeVisible();
   await page
     .getByRole("button", { name: "Compare CS 200", exact: true })
     .click();
@@ -76,6 +90,17 @@ test("setup, compare, plan, persist, export, and delete a profile", async ({
     ),
   ).toBeNull();
   expect(errors).toEqual([]);
+  for (const path of [
+    "/api/courses",
+    "/api/careers",
+    "/api/eligibility",
+    "/api/recommendations",
+    "/api/courses/compare",
+    "/api/schedule/summary",
+  ])
+    expect(apiCalls.has(path), `Expected browser request to ${path}`).toBe(
+      true,
+    );
 });
 
 test("mobile navigation, search, and dialogs work without overflow", async ({

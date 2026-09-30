@@ -1,11 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { courses, emptyProfile } from "./data";
-import {
-  formatPrerequisites,
-  isEligible,
-  parseProfile,
-  rankCourses,
-} from "./planning";
+import { courses } from "./data";
+import { formatPrerequisites, isEligible, parseProfile } from "./planning";
 
 const get = (id: string) => courses.find((c) => c.id === id)!;
 
@@ -24,33 +19,6 @@ describe("curated UA course planning", () => {
     expect(isEligible(get("CS 495"), ["CS 403", "CS 460"])).toBe(true);
     expect(isEligible(get("CS 495"), ["CS 470", "CS 481"])).toBe(true);
     expect(formatPrerequisites(get("CS 495"))).toContain(" or ");
-  });
-  it("ranks core choices ahead of electives and excludes completed courses", () => {
-    const profile = {
-      ...emptyProfile,
-      career: "software" as const,
-      completed: ["CS 100", "CS 101"],
-    };
-    const result = rankCourses(profile, courses);
-    expect(result.map((r) => r.course.id)).toContain("CS 200");
-    expect(result.map((r) => r.course.id)).toContain("CS 201");
-    expect(
-      result.every(
-        (r) =>
-          !profile.completed.includes(r.course.id) &&
-          isEligible(r.course, profile.completed),
-      ),
-    ).toBe(true);
-    const firstElective = result.findIndex(
-      (r) => r.course.category !== "B.S. required",
-    );
-    if (firstElective >= 0)
-      expect(
-        result
-          .slice(0, firstElective)
-          .every((r) => r.course.category === "B.S. required"),
-      ).toBe(true);
-    expect(rankCourses(profile, courses)).toEqual(result);
   });
   it("preserves a valid local plan and removes invalid selections", () => {
     const restored = parseProfile(

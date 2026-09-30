@@ -39,9 +39,16 @@ export interface Recommendation {
   course: Course;
   score: number;
   reasons: string[];
+  explanation: {
+    whyEligible: string;
+    degreeRelevance: string;
+    unlocks: string[];
+    learningObjectives: string[];
+    careerSkills: string[];
+    sources: string[];
+  };
 }
 
-// Boundary for a future FastAPI adapter. UI components do not need API-specific fields.
 export interface PlanningService {
-  recommend(profile: Profile, courses: Course[]): Promise<Recommendation[]>;
+  recommend(profile: Profile): Promise<Recommendation[]>;
 }

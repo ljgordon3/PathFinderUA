@@ -1,0 +1,34 @@
+[
+  {
+    "id": "SRC-UA-FLOWCHART",
+    "name": "UA 2021-24 Computer Science Curriculum flowchart",
+    "url": "https://catalog.ua.edu/undergraduate/engineering/computer-science/",
+    "publication_date": "2021-24 (last updated March 2021)",
+    "last_reviewed": "2026-09-29",
+    "data_quality": "official-curriculum-chart"
+  },
+  {
+    "id": "SRC-UA-SYLLABI",
+    "name": "UA Computer Science / ECE course syllabi (project reference set, 17 courses)",
+    "url": "https://www.ua.edu/",
+    "publication_date": "Fall 2023 - Fall 2026 (various sections)",
+    "last_reviewed": "2026-09-29",
+    "data_quality": "official-syllabus"
+  },
+  {
+    "id": "SRC-ONET",
+    "name": "O*NET Database",
+    "url": "https://www.onetcenter.org/database.html",
+    "publication_date": "31.0",
+    "last_reviewed": "2026-09-02",
+    "data_quality": "authoritative-external"
+  },
+  {
+    "id": "SRC-BLS",
+    "name": "U.S. Bureau of Labor Statistics, Occupational Outlook Handbook",
+    "url": "https://www.bls.gov/ooh/",
+    "publication_date": "2026",
+    "last_reviewed": "2026-09-02",
+    "data_quality": "authoritative-external"
+  }
+]

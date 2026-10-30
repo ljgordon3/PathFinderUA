@@ -28,6 +28,8 @@ The API serves the 19 curated UA CS/ECE records in [backend/data/courses.json](b
 
 The interface ranks courses listed in the UA B.S. CS major requirements first. This 19-course set does not contain every required course, and the site does not certify degree completion.
 
+Course titles and credits were audited against the current UA CS/ECE catalogs on October 30, 2026. CS 121 and CS 300 remain explicitly identified as historical records. See [the course audit](docs/course-catalog-audit.md) for verification details and prerequisite limitations. Learning objectives are project summaries rather than official catalog outcomes.
+
 Prerequisite checks cover the CS/ECE relationships represented in this dataset. They do not check math, general education, grades, overrides, or other registration conditions. Confirm the full rules and degree applicability with the [UA catalog](https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/) or an academic advisor.
 
 If you previously used the fictional course demo, the updated course list starts a new saved browser profile. The old selections are not silently applied to courses with the same codes but different subjects.

@@ -2,25 +2,25 @@
   {
     "id": "CS121",
     "title": "The Discipline of Computing",
-    "description": "Orientation to computing as a field of study for students considering a Computer Science major, a Cyber Security major, or a Computer Science minor.",
+    "description": "Historical course, not listed on the current CS catalog page. Introduces computing disciplines to students considering CS or Cyber Security majors or a CS minor.",
     "credit_hours": 1,
     "degree_category": "Core",
     "learning_objectives": ["Describe career paths and subfields within computing", "Evaluate fit for a computing major or minor"],
     "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 121-001, Fall 2023",
+    "catalog_year": "Fall 2024 (historical)",
+    "source": "UA Fall 2024 course record (reviewed 2026-10-30): https://ssb.ua.edu/pls/PROD/bwckctlg.p_disp_course_detail?cat_term_in=202440&crse_numb_in=121&subj_code_in=CS. Historical record: 1 credit. Math coursework/concurrency or placement requirements are not checked by this app.",
     "prerequisites": []
   },
   {
     "id": "CS100",
-    "title": "Computer Science I",
-    "description": "First course in the CS-major programming sequence: variables, control flow, functions, and structured problem solving.",
+    "title": "CS I for Majors",
+    "description": "Introductory programming for CS majors covering basic values, variables, sequencing, functions, branching, loops, and recursion, along with testing, debugging, file-system navigation, and text editing.",
     "credit_hours": 4,
     "degree_category": "Core",
-    "learning_objectives": ["Write and debug structured programs", "Apply control structures and functions to solve problems"],
+    "learning_objectives": ["Apply variables, functions, branching, iteration, and recursion in programs", "Test and debug programs and work with files, directories, paths, and text editors"],
     "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart (no syllabus provided for this course number in this project's reference set)",
+    "catalog_year": "Current catalog (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS 100 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Requires qualifying math placement/test scores, qualifying prior math coursework, or concurrent MATH 125, 145, 126, or 146. These math conditions are not checked by this app; consult the catalog for exact thresholds and grades.",
     "prerequisites": []
   },
   {
@@ -31,8 +31,8 @@
     "degree_category": "Core",
     "learning_objectives": ["Apply object-oriented programming practices", "Analyze algorithm complexity for searching and sorting"],
     "skill_ids": ["SK-PROG-FUND", "SK-OOP"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 101-002, Spring 2024",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS101 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 100 or CS 110) and (MATH 125 or MATH 145). Only the CS 100 path is modeled; math and the CS 110 alternative are not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS100"]]
   },
   {
@@ -43,8 +43,8 @@
     "degree_category": "Core",
     "learning_objectives": ["Apply software design and modeling techniques", "Practice team-based development and testing methodology"],
     "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 200-001, Fall 2024",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS200 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisite: CS 101 or CS 111. Only the CS 101 path is modeled. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS101"]]
   },
   {
@@ -55,8 +55,8 @@
     "degree_category": "Core",
     "learning_objectives": ["Select and implement appropriate data structures", "Apply core algorithm design techniques and analyze their complexity"],
     "skill_ids": ["SK-DATA-STRUCT", "SK-ALGO"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 201-001, Spring 2025",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS201 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites also require MATH 301 and specified UA/engineering introductory-course combinations. Only the CS 101 path is modeled; CS 111 and the other requirements are not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS101"]]
   },
   {
@@ -67,8 +67,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Build web pages using HTML and CSS", "Apply basic client-side web development techniques"],
     "skill_ids": ["SK-WEB"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 202-910, Fall 2023",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS202 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. No prerequisites are listed on the current course entry. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": []
   },
   {
@@ -79,8 +79,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Write Python programs to solve structured problems", "Apply general problem-solving strategies in a high-level language"],
     "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 223-910, Fall 2024",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS223 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog math prerequisites include MATH 112 or concurrent enrollment in MATH 113, MATH 115, or higher. Math and concurrent enrollment are not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": []
   },
   {
@@ -91,8 +91,8 @@
     "degree_category": "Core",
     "learning_objectives": ["Design combinational and sequential logic circuits", "Apply Boolean algebra to digital circuit design"],
     "skill_ids": ["SK-DIGITAL-LOGIC"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: ECE 380-001, Fall 2024",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate ECE course catalog, ECE380 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/electrical-computer/courses/. Catalog prerequisites: (ENGR 104, ENGR 103, ENGR 123, or MUS 308) and (CS 100 or CS 110). Only CS 100 is modeled; the introductory-course requirement and CS 110 alternative are not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS100"]]
   },
   {
@@ -103,20 +103,20 @@
     "degree_category": "Core",
     "learning_objectives": ["Write assembly-language programs for a microcontroller", "Interface software with hardware peripherals via interrupts and polling"],
     "skill_ids": ["SK-EMBEDDED"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: ECE 383-001, Fall 2025",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate ECE course catalog, ECE383 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/electrical-computer/courses/. Catalog prerequisite: ECE 380. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["ECE380"]]
   },
   {
     "id": "CS300",
     "title": "Operating Systems",
-    "description": "Core operating-system concepts, including process management, memory management, concurrency, and file systems.",
+    "description": "Historical operating-systems course, not listed as a standalone course on the current CS catalog page. The current catalog instead lists CS 338, Networking and Operating Systems, and accepts CS 300 in several prerequisite alternatives. Detailed historical content has not been verified.",
     "credit_hours": 3,
     "degree_category": "Core",
-    "learning_objectives": ["Explain process and memory management strategies", "Reason about concurrency and synchronization in an OS"],
+    "learning_objectives": ["Study operating-system concepts; detailed historical learning outcomes have not been verified."],
     "skill_ids": ["SK-OS"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart (no syllabus provided for this course number in this project's reference set)",
+    "catalog_year": "2024-25 (historical)",
+    "source": "UA 2024-25 CS curriculum flowchart (reviewed 2026-10-30): https://eng.ua.edu/wp-content/uploads/2020/01/CS-Flowchart-24-25-1.pdf. Confirms Operating Systems, 3 credits. Current CS catalog lists CS 338 instead; CS 300 is retained for historical completed-course selections. The existing CS 201 prerequisite path is historical and has not been reverified against a course-level catalog record.",
     "prerequisites": [["CS201"]]
   },
   {
@@ -127,8 +127,8 @@
     "degree_category": "Core",
     "learning_objectives": ["Design a normalized relational schema", "Write SQL for common data manipulation and query tasks"],
     "skill_ids": ["SK-DB"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 301-002, Fall 2025",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS301 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: CS 201 and (CS 200 or MATH 355). Only the CS 200 path is modeled. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS201", "CS200"]]
   },
   {
@@ -139,8 +139,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Compare programming paradigms and language design choices", "Analyze run-time support structures for a language implementation"],
     "skill_ids": ["SK-PL-DESIGN", "SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 403-001, Fall 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS403 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -151,8 +151,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Apply agile methodology and design patterns to a team software project", "Build and operate a CI/CD workflow for a deployed application"],
     "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 415-001, Fall 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS415 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -163,8 +163,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Implement basic robot motion and kinematics control", "Incorporate sensor data into robot control software"],
     "skill_ids": ["SK-ROBOTICS", "SK-PERCEPTION"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 460-001, Fall 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS460 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -175,8 +175,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Explain approaches to passive neurophysiological measurement", "Connect physiological signal data to human-computer interaction design"],
     "skill_ids": ["SK-HCI", "SK-AI-ML"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 461-001, Spring 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS461 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Instructor permission is also possible for non-CS majors and is not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -187,20 +187,20 @@
     "degree_category": "Elective",
     "learning_objectives": ["Design and analyze efficient algorithms", "Select an algorithmic strategy appropriate to a problem's constraints"],
     "skill_ids": ["SK-ALGO", "SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 470-001, Spring 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS470 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: CS 301 and either MATH 359 or ((CS 300 or CS 338) and ECE 383). Only the CS 300 / CS 301 / ECE 383 path is modeled. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
     "id": "CS475",
-    "title": "Theory of Computing",
-    "description": "Theoretical foundations of computing, offered as an alternative to CS 470 in the curriculum's Theory requirement.",
+    "title": "Formal Languages & Machines",
+    "description": "Study of formal language classes and their computational models, from regular expressions and finite-state automata to context-free grammars, stack-based automata, Turing machines, and the Chomsky hierarchy.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Reason about computability and formal models of computation", "Apply theoretical models to analyze algorithm limits"],
+    "learning_objectives": ["Relate regular and context-free languages to finite-state and pushdown automata", "Explain Turing machines, recursively enumerable languages, and the Chomsky hierarchy"],
     "skill_ids": ["SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart, listed as an alternative to CS 470 (no syllabus provided for this course number in this project's reference set)",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS475 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -211,8 +211,8 @@
     "degree_category": "Elective",
     "learning_objectives": ["Design a parallel algorithm for a computational problem", "Analyze the performance of a parallel program"],
     "skill_ids": ["SK-HPC", "SK-ALGO"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 481-001, Spring 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS481 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: (CS 300 or CS 338), CS 301, and ECE 383. Only the CS 300 path is modeled; CS 338 is outside this dataset. Instructor permission is also possible and is not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [["CS300", "CS301", "ECE383"]]
   },
   {
@@ -223,8 +223,8 @@
     "degree_category": "Capstone",
     "learning_objectives": ["Integrate prior coursework into a comprehensive software project", "Communicate a completed project's design and development process in writing"],
     "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 495-001, Fall 2026",
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate CS course catalog, CS495 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Catalog prerequisites: CS 403 or CS 470, plus an approved additional upper-level CS course, with C- or higher. The app models CS 460, CS 461, CS 475, and CS 481 as that additional course; other approved electives and grades are not checked. Learning objectives are project summaries, not official catalog outcomes.",
     "prerequisites": [
       ["CS403", "CS460"], ["CS403", "CS461"], ["CS403", "CS475"], ["CS403", "CS481"],
       ["CS470", "CS460"], ["CS470", "CS461"], ["CS470", "CS475"], ["CS470", "CS481"]

@@ -10,7 +10,7 @@ describe("curated UA course planning", () => {
     expect(get("CS 100").credits).toBe(4);
     expect(get("CS 301").title).toBe("Database Management Systems");
     expect(get("CS 202").title).toBe("Web Foundations");
-    expect(get("CS 495").source).toContain("UA Computer Science syllabus");
+    expect(get("CS 495").source).toContain("UA undergraduate CS course catalog");
   });
   it("matches an entire prerequisite path, including capstone alternatives", () => {
     expect(isEligible(get("CS 301"), ["CS 201"])).toBe(false);

@@ -24,6 +24,36 @@ Open **http://127.0.0.1:5173** (or the address printed in the terminal). Press *
 
 On Windows PowerShell, use `npm.cmd install` and `npm.cmd run dev` if `npm` is blocked. Both servers are required for planning; no database or API keys are needed.
 
+Run `npm install` from the **project root** (the folder containing `package.json`) once after cloning and again after pulling changes that touch `package.json`. If `npm run dev` reports `Cannot find package '@vitejs/plugin-react'`, dependencies are not installed there.
+
+### Windows with Cygwin
+
+Use the Windows installs of Python 3.11+ and Node.js 22.12+, not Cygwin's own packages (the backend's compiled dependencies do not build on Cygwin). Cygwin does not include the `py` launcher, so call Python by its full path. Cygwin paths start with `/cygdrive/c/`. Find the install with `cmd.exe /c "where python"`; the default is under `AppData/Local/Programs/Python/Python312/`:
+
+```sh
+PY="/cygdrive/c/Users/<you>/AppData/Local/Programs/Python/Python312/python.exe"
+cd backend
+"$PY" -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+.venv/Scripts/python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+### Windows with Git Bash
+
+Git Bash paths start with `/c/` (not `/cygdrive/c/`). Git Bash inherits the Windows `PATH`, so `py -3` usually works. If it does not, use the full path:
+
+```sh
+PY="/c/Users/<you>/AppData/Local/Programs/Python/Python312/python.exe"
+cd backend
+"$PY" -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+.venv/Scripts/python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+### Frontend (Cygwin and Git Bash)
+
+In a second terminal at the project root, run `npm install` and `npm run dev` (use `npm.cmd` if `npm` fails). Check <http://127.0.0.1:8000/health> before opening the app.
+
 The API serves the 57 curated UA CS/ECE records in [backend/data/courses.json](backend/data/courses.json). The browser uses FastAPI for course selection, prerequisite checks, career course roadmaps, and comparison. Career relevance and objectives are project interpretations. See the [revised scope](docs/product-brief-and-mvp.md).
 
 The course catalog lists courses identified as UA B.S. CS major requirements first. Personalized recommendations use the scoring described below. This 57-course set does not contain every required course, and the site does not certify degree completion.
@@ -41,6 +71,12 @@ If you previously used the fictional course demo, the updated course list starts
 For the complete Milestone 2 QA run and saved reports, run `python scripts/verify.py` from the repository root after installing dependencies. It uses `backend/.venv`, runs coverage gates, build, and browser tests, and saves reports under `docs/evidence`. Stop manually running servers first when you want Playwright to start fresh servers for the tested code. The frontend coverage metric covers logic and API modules, not React rendering. See [QA plan](docs/qa-plan.md), [security evidence](docs/security-evidence.md), [threat model](docs/threat-model.md), [OWASP review](docs/owasp-review.md), and [changelog](CHANGELOG.md).
 
 Coverage targets are 80% lines and 75% branches for each documented scope. Run `npm run test:coverage` for frontend coverage alone. HTML reports are generated under `coverage/`; submitted report archives and exact run metadata are in `docs/evidence/`.
+
+On a fresh machine, install the Playwright browser once before running the browser tests or `scripts/verify.py`:
+
+```sh
+npx playwright install chromium
+```
 
 ```sh
 npm test

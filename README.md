@@ -24,6 +24,22 @@ Open **http://127.0.0.1:5173** (or the address printed in the terminal). Press *
 
 On Windows PowerShell, use `npm.cmd install` and `npm.cmd run dev` if `npm` is blocked. Both servers are required for planning; no database or API keys are needed.
 
+Run `npm install` from the **project root** (the folder containing `package.json`) once after cloning and again after pulling changes that touch `package.json`. If `npm run dev` reports `Cannot find package '@vitejs/plugin-react'`, dependencies are not installed there.
+
+### Windows with Cygwin or Git Bash
+
+Use the Windows installs of Python 3.11+ and Node.js 22.12+, not Cygwin's own packages (the backend's compiled dependencies do not build on Cygwin). Cygwin does not include the `py` launcher, so call Python by its full path (find it with `cmd.exe /c "where python"`; the default install is under `AppData/Local/Programs/Python/Python312/`):
+
+```sh
+PY="/cygdrive/c/Users/<you>/AppData/Local/Programs/Python/Python312/python.exe"
+cd backend
+"$PY" -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+.venv/Scripts/python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+In a second terminal at the project root, run `npm install` and `npm run dev` (use `npm.cmd` if `npm` fails). Check <http://127.0.0.1:8000/health> before opening the app.
+
 The API serves the 57 curated UA CS/ECE records in [backend/data/courses.json](backend/data/courses.json). The browser uses FastAPI for course selection, prerequisite checks, career course roadmaps, and comparison. Career relevance and objectives are project interpretations. See the [revised scope](docs/product-brief-and-mvp.md).
 
 The course catalog lists courses identified as UA B.S. CS major requirements first. Personalized recommendations use the scoring described below. This 57-course set does not contain every required course, and the site does not certify degree completion.

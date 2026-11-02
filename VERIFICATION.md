@@ -18,6 +18,8 @@ npm.cmd install
 
 On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, and `npm install`. No `.env` file or database is needed with the default settings.
 
+On Windows with Cygwin or Git Bash, follow the "Windows with Cygwin or Git Bash" steps in the [README](README.md) (full path to the Windows `python.exe`, `.venv/Scripts/python.exe` for backend commands). Run `npm install` from the repository root before `npm run dev`, `npm test`, or `npm run test:e2e`; skipping it causes `Cannot find package '@vitejs/plugin-react'`.
+
 ## Automated verification
 
 Milestone 2 evidence: run `python scripts/verify.py` at the repository root. See [QA plan](docs/qa-plan.md) for scope/targets and evidence interpretation. For the security demonstration run `backend/.venv/Scripts/python.exe -m pytest -q backend/tests/test_security.py` on Windows, or `backend/.venv/bin/python -m pytest -q backend/tests/test_security.py` on macOS/Linux. The tests show excessive course lists rejected with 422, ordinary requests accepted, and CORS preflights allowed/rejected by origin. The initial failing security baseline is preserved separately. See [security evidence](docs/security-evidence.md).

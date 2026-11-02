@@ -65,7 +65,7 @@ for the full list):
 
 - Career IDs: `CAR-SWE`, `CAR-DS-AI`, `CAR-ROBOTICS`
 - Zero-modeled-prerequisite courses (good starting points):
-  `CS100`, `CS121`, `CS202`, `CS223`
+  `CS100`, `CS104`, `CS110`, `CS121`, `CS202`, `CS223`, `CS340`
 
 Example request:
 
@@ -80,7 +80,7 @@ curl -X POST http://127.0.0.1:8000/recommendations \
       }'
 ```
 
-The 19 curated course records in `data/courses.json` also drive the React interface.
+The 57 curated course records in `data/courses.json` also drive the React interface. The `/recommendations` and `/schedule/summary` endpoints shown here are the original Milestone 1 API, kept and regression-tested; the current interface uses `/roadmap` (see `/docs` for the live contract).
 Modeled prerequisite checks cover listed CS/ECE courses only. Confirm math,
 grades, other enrollment rules, and degree applicability with UA.
 

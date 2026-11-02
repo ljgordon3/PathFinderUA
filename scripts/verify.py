@@ -9,6 +9,7 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
+sys.stdout.reconfigure(encoding="utf-8")
 root = Path(__file__).resolve().parent.parent
 os.chdir(root)
 evidence = root / "docs/evidence"

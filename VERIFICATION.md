@@ -20,6 +20,8 @@ On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r
 
 ## Automated verification
 
+Milestone 2 evidence: run `python scripts/verify.py` at the repository root. See [QA plan](docs/qa-plan.md) for scope/targets and evidence interpretation. For the security demonstration run `backend/.venv/Scripts/python.exe -m pytest -q backend/tests/test_security.py` on Windows, or `backend/.venv/bin/python -m pytest -q backend/tests/test_security.py` on macOS/Linux. The tests show excessive course lists rejected with 422, ordinary requests accepted, and CORS preflights allowed/rejected by origin. The initial failing security baseline is preserved separately. See [security evidence](docs/security-evidence.md).
+
 From `backend`, run `.venv\Scripts\python.exe -m pytest -q`. From the repository root, run:
 
 ```powershell

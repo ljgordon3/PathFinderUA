@@ -5,8 +5,13 @@ These models are the source of truth for FastAPI's request validation
 and the auto-generated OpenAPI docs (see docs/api-contract.md for the
 human-readable version of the same contract).
 """
-from typing import List, Optional
+from typing import Annotated, List, Optional
 from pydantic import BaseModel, Field
+
+# Cap repeated work and identifier size before prerequisite/scoring loops run.
+# 200 entries leaves room for catalog growth beyond the current 57 records.
+CourseId = Annotated[str, Field(min_length=1, max_length=32)]
+CourseIds = Annotated[List[CourseId], Field(max_length=200)]
 
 
 class Course(BaseModel):
@@ -39,7 +44,7 @@ class Career(BaseModel):
 
 
 class EligibilityRequest(BaseModel):
-    completed_course_ids: List[str] = Field(default_factory=list)
+    completed_course_ids: CourseIds = Field(default_factory=list)
 
 
 class EligibilityResult(BaseModel):
@@ -53,7 +58,7 @@ class EligibilityResult(BaseModel):
 
 
 class RecommendationRequest(BaseModel):
-    completed_course_ids: List[str] = Field(default_factory=list)
+    completed_course_ids: CourseIds = Field(default_factory=list)
     career_id: str
     target_credit_hours: int = Field(gt=0, le=21)
     workload_preference: str = Field(
@@ -83,7 +88,7 @@ class RecommendationResponse(BaseModel):
 
 
 class RoadmapRequest(BaseModel):
-    completed_course_ids: List[str] = Field(default_factory=list)
+    completed_course_ids: CourseIds = Field(default_factory=list)
     career_id: str
 
 
@@ -101,11 +106,11 @@ class RoadmapResponse(BaseModel):
 
 
 class CompareRequest(BaseModel):
-    course_ids: List[str] = Field(min_length=1, max_length=3)
+    course_ids: List[CourseId] = Field(min_length=1, max_length=3)
 
 
 class ScheduleRequest(BaseModel):
-    course_ids: List[str] = Field(default_factory=list)
+    course_ids: CourseIds = Field(default_factory=list)
     target_credit_hours: int = Field(gt=0, le=21)
     career_id: Optional[str] = None
 

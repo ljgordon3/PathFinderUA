@@ -38,6 +38,10 @@ If you previously used the fictional course demo, the updated course list starts
 
 ## Verify
 
+For the complete Milestone 2 QA run and saved reports, run `python scripts/verify.py` from the repository root after installing dependencies. It uses `backend/.venv`, runs coverage gates, build, and browser tests, and saves reports under `docs/evidence`. Stop manually running servers first when you want Playwright to start fresh servers for the tested code. The frontend coverage metric covers logic and API modules, not React rendering. See [QA plan](docs/qa-plan.md), [security evidence](docs/security-evidence.md), [threat model](docs/threat-model.md), [OWASP review](docs/owasp-review.md), and [changelog](CHANGELOG.md).
+
+Coverage targets are 80% lines and 75% branches for each documented scope. Run `npm run test:coverage` for frontend coverage alone. HTML reports are generated under `coverage/`; submitted report archives and exact run metadata are in `docs/evidence/`.
+
 ```sh
 npm test
 npm run build

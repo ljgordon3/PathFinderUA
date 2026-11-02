@@ -1,0 +1,55 @@
+{
+  "recorded_at_utc": "2026-11-02T02:12:33.904678+00:00",
+  "commit": "22b3d69cb21f8bb064e79b063f33a6d388d8a64e",
+  "tracked_code_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tracked_code_changes": false,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "Python 3.11.1",
+  "node": "v22.22.2",
+  "results": [
+    {
+      "check": "backend-tests",
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "backend/tests",
+        "--cov=backend/app",
+        "--cov-branch",
+        "--cov-report=term-missing",
+        "--cov-report=json:docs/evidence/backend-coverage.json",
+        "--cov-report=html:coverage/backend",
+        "--cov-fail-under=80"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "frontend-tests",
+      "command": [
+        "run",
+        "test:coverage"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "build",
+      "command": [
+        "run",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "browser-tests",
+      "command": [
+        "run",
+        "test:e2e"
+      ],
+      "exit_code": 1
+    },
+    {
+      "check": "backend-separate-coverage-targets",
+      "exit_code": 0
+    }
+  ]
+}

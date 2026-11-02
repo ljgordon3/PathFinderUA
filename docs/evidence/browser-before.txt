@@ -1,0 +1,100 @@
+
+> pathfinder-ua@0.1.0 test:e2e
+> playwright test
+
+[WebServer] INFO:     Started server process [26012]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[WebServer] (node:16116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:28816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\planning.spec.ts:3:1 › setup, compare, save a roadmap, persist, export, and delete a profile (10.2s)
+  ok 2 tests\planning.spec.ts:135:1 › high-priority future courses stay in their tier as readiness changes (3.9s)
+  ok 3 tests\planning.spec.ts:230:1 › mobile navigation, search, and dialogs work without overflow (2.2s)
+  ok 4 tests\planning.spec.ts:263:1 › old fictional course selections are not reused (907ms)
+  x  5 tests\planning.spec.ts:285:1 › saving preferences refreshes recommendations and persists the new profile (5.9s)
+(node:39892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 tests\planning.spec.ts:358:1 › Explore courses switches between personalized suggestions and the complete catalog (30.2s)
+
+
+  1) tests\planning.spec.ts:285:1 › saving preferences refreshes recommendations and persists the new profile
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.recommendation-section .course-card').first().getByRole('button', { name: 'Testing and Quality Assurance', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.recommendation-section .course-card').first().getByRole('button', { name: 'Testing and Quality Assurance', exact: true }) with timeout 5000ms
+      - waiting for locator('.recommendation-section .course-card').first().getByRole('button', { name: 'Testing and Quality Assurance', exact: true })
+
+
+      317 |       exact: true,
+      318 |     }),
+    > 319 |   ).toBeVisible();
+          |     ^
+      320 |   await page.getByRole("button", { name: /Edit planning profile/ }).click();
+      321 |   await page.getByRole("radio", { name: /Robotics/ }).check();
+      322 |   await page.getByRole("button", { name: "Continue", exact: true }).click();
+        at C:\Users\jylen\Desktop\PathFinderUA\tests\planning.spec.ts:319:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\planning-saving-preference-9cbf1-nd-persists-the-new-profile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\planning-saving-preference-9cbf1-nd-persists-the-new-profile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\planning-saving-preference-9cbf1-nd-persists-the-new-profile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\planning-saving-preference-9cbf1-nd-persists-the-new-profile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\planning.spec.ts:358:1 › Explore courses switches between personalized suggestions and the complete catalog
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: /Robotics/ })
+
+
+      360 | }) => {
+      361 |   await page.goto("/");
+    > 362 |   await page.getByRole("radio", { name: /Robotics/ }).check();
+          |                                                       ^
+      363 |   await page.getByRole("button", { name: "Continue", exact: true }).click();
+      364 |   await page.getByRole("checkbox", { name: /CS 100/ }).check();
+      365 |   await page.getByRole("button", { name: "Show my recommendations" }).click();
+        at C:\Users\jylen\Desktop\PathFinderUA\tests\planning.spec.ts:362:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\planning-Explore-courses-s-4fd18-ns-and-the-complete-catalog\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\planning-Explore-courses-s-4fd18-ns-and-the-complete-catalog\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\planning-Explore-courses-s-4fd18-ns-and-the-complete-catalog\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\planning-Explore-courses-s-4fd18-ns-and-the-complete-catalog\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\planning.spec.ts:285:1 › saving preferences refreshes recommendations and persists the new profile
+    tests\planning.spec.ts:358:1 › Explore courses switches between personalized suggestions and the complete catalog
+  4 passed (1.1m)

@@ -1,0 +1,115 @@
+FFFFF...                                                                 [100%]
+================================== FAILURES ===================================
+__________ test_rejects_excessive_course_lists[/eligibility-extra0] ___________
+
+path = '/eligibility', extra = {}
+
+    @pytest.mark.parametrize("path,extra", [
+        ("/eligibility", {}),
+        ("/roadmap", {"career_id": "CAR-SWE"}),
+        ("/recommendations", {"career_id": "CAR-SWE", "target_credit_hours": 15}),
+        ("/schedule/summary", {"target_credit_hours": 15}),
+    ])
+    def test_rejects_excessive_course_lists(path, extra):
+        field = "course_ids" if path.startswith("/schedule") else "completed_course_ids"
+        response = client.post(path, json={field: ["CS100"] * 201, **extra})
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_security.py:19: AssertionError
+____________ test_rejects_excessive_course_lists[/roadmap-extra1] _____________
+
+path = '/roadmap', extra = {'career_id': 'CAR-SWE'}
+
+    @pytest.mark.parametrize("path,extra", [
+        ("/eligibility", {}),
+        ("/roadmap", {"career_id": "CAR-SWE"}),
+        ("/recommendations", {"career_id": "CAR-SWE", "target_credit_hours": 15}),
+        ("/schedule/summary", {"target_credit_hours": 15}),
+    ])
+    def test_rejects_excessive_course_lists(path, extra):
+        field = "course_ids" if path.startswith("/schedule") else "completed_course_ids"
+        response = client.post(path, json={field: ["CS100"] * 201, **extra})
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_security.py:19: AssertionError
+________ test_rejects_excessive_course_lists[/recommendations-extra2] _________
+
+path = '/recommendations'
+extra = {'career_id': 'CAR-SWE', 'target_credit_hours': 15}
+
+    @pytest.mark.parametrize("path,extra", [
+        ("/eligibility", {}),
+        ("/roadmap", {"career_id": "CAR-SWE"}),
+        ("/recommendations", {"career_id": "CAR-SWE", "target_credit_hours": 15}),
+        ("/schedule/summary", {"target_credit_hours": 15}),
+    ])
+    def test_rejects_excessive_course_lists(path, extra):
+        field = "course_ids" if path.startswith("/schedule") else "completed_course_ids"
+        response = client.post(path, json={field: ["CS100"] * 201, **extra})
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_security.py:19: AssertionError
+________ test_rejects_excessive_course_lists[/schedule/summary-extra3] ________
+
+path = '/schedule/summary', extra = {'target_credit_hours': 15}
+
+    @pytest.mark.parametrize("path,extra", [
+        ("/eligibility", {}),
+        ("/roadmap", {"career_id": "CAR-SWE"}),
+        ("/recommendations", {"career_id": "CAR-SWE", "target_credit_hours": 15}),
+        ("/schedule/summary", {"target_credit_hours": 15}),
+    ])
+    def test_rejects_excessive_course_lists(path, extra):
+        field = "course_ids" if path.startswith("/schedule") else "completed_course_ids"
+        response = client.post(path, json={field: ["CS100"] * 201, **extra})
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_security.py:19: AssertionError
+___________________ test_rejects_overlong_course_identifier ___________________
+
+    def test_rejects_overlong_course_identifier():
+        response = client.post("/eligibility", json={"completed_course_ids": ["X" * 33]})
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_security.py:25: AssertionError
+============================== warnings summary ===============================
+backend\.venv\Lib\site-packages\starlette\testclient.py:40
+  C:\Users\jylen\Desktop\PathFinderUA\backend\.venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+backend\app\main.py:33
+  C:\Users\jylen\Desktop\PathFinderUA\backend\app\main.py:33: DeprecationWarning:
+          on_event is deprecated, use lifespan event handlers instead.
+
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+
+    @app.on_event("startup")
+
+backend\.venv\Lib\site-packages\fastapi\applications.py:4495
+  C:\Users\jylen\Desktop\PathFinderUA\backend\.venv\Lib\site-packages\fastapi\applications.py:4495: DeprecationWarning:
+          on_event is deprecated, use lifespan event handlers instead.
+
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+
+    return self.router.on_event(event_type)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend\tests\test_security.py::test_rejects_excessive_course_lists[/eligibility-extra0]
+FAILED backend\tests\test_security.py::test_rejects_excessive_course_lists[/roadmap-extra1]
+FAILED backend\tests\test_security.py::test_rejects_excessive_course_lists[/recommendations-extra2]
+FAILED backend\tests\test_security.py::test_rejects_excessive_course_lists[/schedule/summary-extra3]
+FAILED backend\tests\test_security.py::test_rejects_overlong_course_identifier
+5 failed, 3 passed, 3 warnings in 1.37s

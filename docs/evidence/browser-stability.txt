@@ -1,0 +1,33 @@
+
+> pathfinder-ua@0.1.0 test:e2e
+> playwright test --repeat-each=2
+
+[WebServer] INFO:     Started server process [4908]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[WebServer] (node:12772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 2 workers
+
+(node:35348) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 tests\planning.spec.ts:3:1 › setup, compare, save a roadmap, persist, export, and delete a profile (18.7s)
+  ok  1 tests\planning.spec.ts:3:1 › setup, compare, save a roadmap, persist, export, and delete a profile (18.8s)
+  ok  4 tests\planning.spec.ts:135:1 › high-priority future courses stay in their tier as readiness changes (14.8s)
+  ok  3 tests\planning.spec.ts:135:1 › high-priority future courses stay in their tier as readiness changes (15.0s)
+  ok  5 tests\planning.spec.ts:230:1 › mobile navigation, search, and dialogs work without overflow (2.2s)
+  ok  6 tests\planning.spec.ts:230:1 › mobile navigation, search, and dialogs work without overflow (2.2s)
+  ok  7 tests\planning.spec.ts:263:1 › old fictional course selections are not reused (903ms)
+  ok  8 tests\planning.spec.ts:263:1 › old fictional course selections are not reused (869ms)
+  ok 10 tests\planning.spec.ts:285:1 › saving preferences refreshes recommendations and persists the new profile (3.3s)
+  ok  9 tests\planning.spec.ts:285:1 › saving preferences refreshes recommendations and persists the new profile (3.4s)
+  ok 11 tests\planning.spec.ts:358:1 › Explore courses switches between personalized suggestions and the complete catalog (4.0s)
+  ok 12 tests\planning.spec.ts:358:1 › Explore courses switches between personalized suggestions and the complete catalog (4.2s)
+
+  12 passed (53.3s)

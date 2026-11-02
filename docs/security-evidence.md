@@ -2,7 +2,7 @@
 
 ## Request input bounds: implemented Milestone 2 fix
 
-Baseline application commit: `484ef98`. Before modifying schemas, the new `backend/tests/test_security.py` was run against that implementation. It expected oversized lists and IDs to be rejected but five cases failed because the API accepted them. The untouched output is [security-before.txt](evidence/security-before.txt): 5 failed, 3 passed. A separate local probe also confirmed 1,000 repeated completed-course entries were accepted by eligibility and roadmap.
+Baseline application commit: `484ef98`. Before modifying schemas, the new `backend/tests/test_security.py` was run against that implementation. It expected oversized lists and IDs to be rejected but five cases failed because the API accepted them. The captured output is [security-before.txt](evidence/security-before.txt): 5 failed, 3 passed. Evidence text is normalized to UTF-8/LF with trailing whitespace removed; assertions and results are unchanged. A separate local probe also confirmed 1,000 repeated completed-course entries were accepted by eligibility and roadmap.
 
 This is an input-resource hardening gap, not evidence of a successfully demonstrated service outage. No vulnerability was deliberately introduced. Milestone 1 did not need an earlier security fix to make this comparison valid.
 

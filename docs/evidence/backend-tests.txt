@@ -1,0 +1,50 @@
+..................................................                       [100%]
+============================== warnings summary ===============================
+backend\.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jylen\Desktop\PathFinderUA\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend\app\main.py:33
+  C:\Users\jylen\Desktop\PathFinderUA\backend\app\main.py:33: DeprecationWarning:
+          on_event is deprecated, use lifespan event handlers instead.
+
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+
+    @app.on_event("startup")
+
+backend\.venv\Lib\site-packages\fastapi\applications.py:4723
+  C:\Users\jylen\Desktop\PathFinderUA\backend\.venv\Lib\site-packages\fastapi\applications.py:4723: DeprecationWarning:
+          on_event is deprecated, use lifespan event handlers instead.
+
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.11.1-final-0 _______________
+
+Name                                     Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------
+backend\app\__init__.py                      0      0      0      0   100%
+backend\app\config.py                        8      0      0      0   100%
+backend\app\data_loader.py                  66      9     34      6    85%   38, 42-43, 60, 65, 69, 71, 74, 99
+backend\app\main.py                         19      1      0      0    95%   36
+backend\app\prerequisites.py                26      0     10      0   100%
+backend\app\recommendations.py             101      0     48      0   100%
+backend\app\routers\__init__.py              0      0      0      0   100%
+backend\app\routers\careers.py              13      3      2      0    67%   19-21
+backend\app\routers\courses.py              29      5      4      0    79%   28-30, 40-41
+backend\app\routers\eligibility.py           9      0      0      0   100%
+backend\app\routers\recommendations.py      12      0      0      0   100%
+backend\app\routers\roadmap.py              13      0      0      0   100%
+backend\app\routers\schedule.py             27      3     12      4    82%   22-23, 28->35, 30, 36->46, 46->57
+backend\app\schemas.py                      82      0      0      0   100%
+------------------------------------------------------------------------------------
+TOTAL                                      405     21    110     10    93%
+Coverage HTML written to dir coverage/backend
+Coverage JSON written to file docs/evidence/backend-coverage.json
+Required test coverage of 80% reached. Total coverage: 93.20%
+50 passed, 3 warnings in 3.09s

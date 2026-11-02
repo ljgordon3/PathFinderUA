@@ -26,30 +26,29 @@ def is_eligible(course: Course, completed_course_ids: List[str]) -> bool:
     return any(set(group).issubset(completed) for group in course.prerequisites)
 
 
-def missing_prerequisites(course: Course, completed_course_ids: List[str]) -> List[str]:
-    """
-    Returns the smallest unmet AND-group (fewest missing courses) so the
-    student sees the most achievable path to eligibility, per US-05.
-    """
+def prerequisite_progress(course: Course, completed_course_ids: List[str]) -> tuple[List[str], List[str]]:
+    """Return completed and missing courses on one shortest remaining prerequisite path."""
     if not course.prerequisites:
-        return []
+        return [], []
     completed = set(completed_course_ids)
-    best_missing: List[str] = []
-    for group in course.prerequisites:
-        missing = [c for c in group if c not in completed]
-        if not best_missing or len(missing) < len(best_missing):
-            best_missing = missing
-        if not missing:
-            return []  # a fully satisfied group exists; not actually missing anything
-    return best_missing
+    path = min(course.prerequisites, key=lambda group: (
+        len(set(group) - completed), tuple(group),
+    ))
+    return ([cid for cid in path if cid in completed],
+            [cid for cid in path if cid not in completed])
+
+
+def missing_prerequisites(course: Course, completed_course_ids: List[str]) -> List[str]:
+    return prerequisite_progress(course, completed_course_ids)[1]
 
 
 def evaluate(course: Course, completed_course_ids: List[str]) -> EligibilityResult:
-    eligible = is_eligible(course, completed_course_ids)
+    matched, missing = prerequisite_progress(course, completed_course_ids)
     return EligibilityResult(
         course_id=course.id,
-        eligible=eligible,
-        missing_prerequisites=[] if eligible else missing_prerequisites(course, completed_course_ids),
+        eligible=not missing,
+        matched_prerequisites=matched,
+        missing_prerequisites=missing,
     )
 
 

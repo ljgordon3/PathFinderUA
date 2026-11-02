@@ -1,5 +1,9 @@
 # Prioritized Backlog and Definition of Done
 
+## Milestone 2 scope update
+
+The current implementation replaces semester scheduling with a career course roadmap. See [the revised scope and acceptance criteria](product-brief-and-mvp.md). The Milestone 1 table below records the earlier workflow; credit/workload preferences and schedule construction are no longer roadmap UI requirements. Teammate review and independent-machine verification remain pending until actually performed.
+
 ## Prioritization for Milestone 1
 
 Priority reflects what is required to demonstrate one complete, working

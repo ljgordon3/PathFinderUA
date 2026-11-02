@@ -30,5 +30,13 @@
     "publication_date": "2026",
     "last_reviewed": "2026-09-02",
     "data_quality": "authoritative-external"
+  },
+  {
+    "id": "SRC-UA-CS-CATALOG",
+    "name": "UA 2026-27 undergraduate CS course catalog",
+    "url": "https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/",
+    "publication_date": "2026-27",
+    "last_reviewed": "2026-11-01",
+    "data_quality": "official-catalog"
   }
 ]

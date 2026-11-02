@@ -1,0 +1,276 @@
+{
+  "source_url": "https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/",
+  "reviewed": "2026-11-01",
+  "courses": [
+    {
+      "id": "CS100",
+      "title": "CS I for Majors",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS101",
+      "title": "CS II for Majors",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS104",
+      "title": "Computer Science Principles",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS110",
+      "title": "Honors CS I for Majors",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS111",
+      "title": "Honors CSII for Majors",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS140",
+      "title": "Introduction to Cyber Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS200",
+      "title": "Software Design and Engineering",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS201",
+      "title": "Data Structures and Algorithms",
+      "credit_hours": 4
+    },
+    {
+      "id": "CS202",
+      "title": "Web Foundations",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS223",
+      "title": "Introduction to Python Programming",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS240",
+      "title": "Hands-On Cyber Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS247",
+      "title": "Cyber Law and Ethics",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS265",
+      "title": "Introduction to AI and Data Science",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS301",
+      "title": "Database Management Systems",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS323",
+      "title": "Intermediate Python Programming",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS330",
+      "title": "Full-Stack Development",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS338",
+      "title": "Networking and Operating Systems",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS340",
+      "title": "Legal & Ethical Issues in Comp",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS345",
+      "title": "Adv. Legal & Ethical Issues",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS393",
+      "title": "Software Practicum",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS403",
+      "title": "Programming Languages",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS404",
+      "title": "CS Curriculum for Math Educators",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS407",
+      "title": "Software Interface Desgn",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS415",
+      "title": "Software Design & Development",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS416",
+      "title": "Testing and Quality Assurance",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS417",
+      "title": "Requirements Engineering",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS420",
+      "title": "Software Evolution",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS423",
+      "title": "Python for Big Data",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS428",
+      "title": "Computer Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS434",
+      "title": "Compiler Construction",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS435",
+      "title": "Computer Graphics",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS438",
+      "title": "Computer Comm & Networks",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS442",
+      "title": "Cryptography",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS443",
+      "title": "Digital Forensics",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS444",
+      "title": "Software Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS445",
+      "title": "Software Reverse Engineering",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS448",
+      "title": "Network Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS451",
+      "title": "Data Science",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS452",
+      "title": "Information Retrieval",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS455",
+      "title": "Social Media Data Analytics",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS456",
+      "title": "AI for Cyber Security",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS460",
+      "title": "Intro to Autonomous Robotics",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS461",
+      "title": "Brain Computer Interface",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS463",
+      "title": "Computer Vision",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS464",
+      "title": "Digital Image Processing",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS465",
+      "title": "Artificial Intelligence",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS466",
+      "title": "AI Computation and Theory",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS470",
+      "title": "Computer Algorithms",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS475",
+      "title": "Formal Languages & Machines",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS480",
+      "title": "Computer Simulation",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS481",
+      "title": "High Performance Computing",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS483",
+      "title": "Computational Foundations of Machine Learning",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS484",
+      "title": "Reinforcement Learning",
+      "credit_hours": 3
+    },
+    {
+      "id": "CS495",
+      "title": "Capstone Computing",
+      "credit_hours": 3
+    }
+  ]
+}

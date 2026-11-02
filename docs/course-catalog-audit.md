@@ -1,5 +1,17 @@
 # Course catalog audit
 
+## November 1, 2026 expansion
+
+Added 39 CS courses, bringing the dataset to 57: 54 current CS catalog courses, 1 historical CS record, and 2 ECE records. Excluded as requested: CS 102, 106, 112, 206, 285, 302, 305, 312, 385, 391, 491, 492, 493, 494, and 499. The offline title/credit snapshot is `backend/tests/fixtures/cs-catalog-2026-11-01.json`, derived from the official CS catalog. Tests compare every included current CS title and credit value against it.
+
+New course summaries, objectives, and career mappings are project-authored interpretations of catalog topics. The teacher-preparation course remains browsable without invented career-specific recommendations.
+
+Honors CS 110/111 paths and the CS 338 alternative are now modeled. CS 495 includes all listed elective paths supported by this expanded dataset. Completing a standard foundation suppresses redundant honors suggestions, and vice versa. Prerequisite traversal does not suggest an unused alternative foundation when a prerequisite path is already satisfied.
+
+CS 330 and CS 393 allow concurrent CS 301 in the catalog; the app conservatively requires it completed. Non-CS conditions, grades, math-based alternatives, honors admission, and instructor permission are not verified.
+
+## Original October 30 audit (historical snapshot)
+
 Reviewed October 30, 2026 against the [UA CS catalog](https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/) and [UA ECE catalog](https://catalog.ua.edu/undergraduate/engineering/electrical-computer/courses/).
 
 All 17 current course records match the official titles and credits. This includes the corrected CS 100 and CS 475 titles. No further credit changes were needed.

@@ -15,6 +15,7 @@ class Course(BaseModel):
     description: str
     credit_hours: int
     degree_category: str
+    is_required: bool = False
     learning_objectives: List[str]
     skill_ids: List[str]
     catalog_year: str
@@ -44,6 +45,7 @@ class EligibilityRequest(BaseModel):
 class EligibilityResult(BaseModel):
     course_id: str
     eligible: bool
+    matched_prerequisites: List[str] = Field(default_factory=list)
     missing_prerequisites: List[str] = Field(
         default_factory=list,
         description="The smallest unmet AND-group of prerequisite course IDs, if any.",
@@ -60,6 +62,7 @@ class RecommendationRequest(BaseModel):
 
 
 class RecommendationExplanation(BaseModel):
+    career_reason: str = ""
     degree_relevance: str
     unlocks_course_ids: List[str]
     learning_objectives: List[str]
@@ -77,6 +80,24 @@ class RecommendationItem(BaseModel):
 class RecommendationResponse(BaseModel):
     career_id: str
     recommendations: List[RecommendationItem]
+
+
+class RoadmapRequest(BaseModel):
+    completed_course_ids: List[str] = Field(default_factory=list)
+    career_id: str
+
+
+class RoadmapItem(RecommendationItem):
+    missing_prerequisites: List[str] = Field(default_factory=list)
+    matched_prerequisites: List[str] = Field(default_factory=list)
+    priority_reason: str
+
+
+class RoadmapResponse(BaseModel):
+    career_id: str
+    strongly_recommended: List[RoadmapItem]
+    worth_considering: List[RoadmapItem]
+    broaden_skills: List[RoadmapItem]
 
 
 class CompareRequest(BaseModel):

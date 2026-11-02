@@ -4,9 +4,7 @@ export const emptyProfile: Profile = {
   name: "",
   completed: [],
   career: null,
-  creditTarget: 12,
-  workload: "balanced",
-  schedule: [],
+  saved: [],
   setupComplete: false,
 };
 
@@ -64,25 +62,12 @@ export const displayId = (id: string) =>
   id.replace(/^([A-Z]+)([0-9]+)$/, "$1 $2");
 export const apiId = (id: string) => id.replace(" ", "");
 export const skillName = (id: string) => skillNames.get(id) ?? id;
-// Major course slots listed in the UA B.S. CS requirements.
-const requiredForBs = new Set([
-  "CS100",
-  "CS101",
-  "CS200",
-  "CS201",
-  "CS301",
-  "CS403",
-  "CS470",
-  "CS495",
-  "ECE380",
-  "ECE383",
-]);
-
 export interface ApiCourse {
   id: string;
   title: string;
   credit_hours: number;
   degree_category: string;
+  is_required: boolean;
   description: string;
   learning_objectives: string[];
   skill_ids: string[];
@@ -95,11 +80,13 @@ export function mapCourse(record: ApiCourse): Course {
     id: displayId(record.id),
     title: record.title,
     credits: record.credit_hours,
-    category: requiredForBs.has(record.id)
-      ? "B.S. required"
-      : Number(record.id.replace(/^[A-Z]+/, "")) >= 400
-        ? "Upper-level option"
-        : "Other course",
+    category: ["CS110", "CS111"].includes(record.id)
+      ? "Honors foundation alternative"
+      : record.is_required
+        ? "B.S. required"
+        : Number(record.id.replace(/^[A-Z]+/, "")) >= 400
+          ? "Upper-level option"
+          : "Other course",
     description: record.description,
     objectives: record.learning_objectives,
     skills: record.skill_ids.map((id) => skillNames.get(id) ?? id),

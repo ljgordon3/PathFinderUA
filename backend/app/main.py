@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import ALLOWED_ORIGINS
 from app.data_loader import load_data_store
-from app.routers import careers, courses, eligibility, recommendations, schedule
+from app.routers import careers, courses, eligibility, recommendations, schedule, roadmap
 
 app = FastAPI(
     title="PathFinder UA API",
@@ -46,3 +46,4 @@ app.include_router(careers.router)
 app.include_router(eligibility.router)
 app.include_router(recommendations.router)
 app.include_router(schedule.router)
+app.include_router(roadmap.router)

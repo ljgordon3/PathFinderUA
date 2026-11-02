@@ -12,20 +12,14 @@ import {
   ExternalLink,
   GitCompareArrows,
   GraduationCap,
-  LayoutDashboard,
-  Leaf,
   Menu,
   Plus,
   Route,
   Search,
   Settings2,
-  ShieldCheck,
-  SlidersHorizontal,
   Sparkles,
-  Target,
   Trash2,
   X,
-  CalendarDays,
   Bot,
 } from "lucide-react";
 import { emptyProfile } from "./data";
@@ -34,25 +28,52 @@ import {
   getComparison,
   getCourses,
   getEligibility,
-  getRecommendations,
-  getScheduleSummary,
-  type ScheduleSummary,
+  getRoadmap,
+  type EligibilityStatus,
 } from "./api";
 import {
   formatPrerequisites,
-  isEligible,
   legacyStorageKey,
   parseProfile,
   storageKey,
 } from "./planning";
-import type { Career, Course, Page, Profile, Recommendation } from "./types";
+import type {
+  Career,
+  Course,
+  Page,
+  Profile,
+  Recommendation,
+  Roadmap,
+} from "./types";
 
 const navigation: { id: Page; label: string; icon: typeof Compass }[] = [
-  { id: "overview", label: "Overview", icon: LayoutDashboard },
   { id: "courses", label: "Explore courses", icon: BookOpen },
   { id: "careers", label: "Career paths", icon: Route },
-  { id: "compare", label: "Compare courses", icon: GitCompareArrows },
-  { id: "schedule", label: "My semester", icon: CalendarDays },
+  { id: "roadmap", label: "My roadmap", icon: Route },
+];
+const priorityTiers: {
+  key: keyof Roadmap;
+  title: string;
+  description: string;
+}[] = [
+  {
+    key: "stronglyRecommended",
+    title: "Strongly recommended",
+    description:
+      "Required courses in this set, your strongest career matches, and the foundations that help you reach them.",
+  },
+  {
+    key: "worthConsidering",
+    title: "Worth considering",
+    description:
+      "Useful career-aligned options to complement your highest priorities.",
+  },
+  {
+    key: "broadenSkills",
+    title: "Broaden your skills",
+    description:
+      "Supporting skills and academic foundations that add breadth to your preparation.",
+  },
 ];
 const careerIcons = { software: Code2, data: Database, robotics: Bot };
 
@@ -101,12 +122,14 @@ function Setup({
   careers,
   onSave,
   onClose,
+  inline = false,
 }: {
   profile: Profile;
   catalog: Course[];
   careers: Career[];
   onSave: (value: Profile) => void;
   onClose: () => void;
+  inline?: boolean;
 }) {
   const [draft, setDraft] = useState<Profile>({
     ...profile,
@@ -114,11 +137,6 @@ function Setup({
   });
   const [step, setStep] = useState(0);
   const [search, setSearch] = useState("");
-  const [creditInput, setCreditInput] = useState(String(profile.creditTarget));
-  const validCredits =
-    /^\d+$/.test(creditInput) &&
-    Number(creditInput) >= 1 &&
-    Number(creditInput) <= 21;
   const toggle = (id: string) =>
     setDraft((p) => ({
       ...p,
@@ -126,17 +144,10 @@ function Setup({
         ? p.completed.filter((c) => c !== id)
         : [...p.completed, id],
     }));
-  return (
-    <Modal
-      title={
-        profile.setupComplete
-          ? "Your planning profile"
-          : "Let’s find your starting point"
-      }
-      onClose={onClose}
-    >
-      <div className="wizard-steps" aria-label={`Step ${step + 1} of 3`}>
-        {["About you", "Your progress", "Your semester"].map((label, index) => (
+  const content = (
+    <>
+      <div className="wizard-steps" aria-label={`Step ${step + 1} of 2`}>
+        {["Your career", "Your progress"].map((label, index) => (
           <span key={label} className={index <= step ? "active" : ""}>
             <b>{index < step ? <Check size={13} /> : index + 1}</b>
             {label}
@@ -146,20 +157,12 @@ function Setup({
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (step < 2) setStep(step + 1);
-          else if (validCredits && draft.career)
+          if (step === 0) setStep(1);
+          else if (draft.career)
             onSave({
               ...draft,
-              creditTarget: Number(creditInput),
               setupComplete: true,
-              schedule: draft.schedule.filter(
-                (id) =>
-                  !draft.completed.includes(id) &&
-                  isEligible(
-                    catalog.find((c) => c.id === id)!,
-                    draft.completed,
-                  ),
-              ),
+              saved: draft.saved.filter((id) => !draft.completed.includes(id)),
             });
         }}
       >
@@ -169,19 +172,9 @@ function Setup({
               A little direction goes a long way. You can change all of this
               later.
             </p>
-            <label className="field">
-              What should we call you?{" "}
-              <span className="optional">Optional</span>
-              <input
-                maxLength={40}
-                value={draft.name}
-                onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                placeholder="Your first name"
-                autoComplete="given-name"
-              />
-            </label>
+
             <fieldset>
-              <legend>What are you curious about?</legend>
+              <legend>Choose your career interest</legend>
               <div className="career-options">
                 {careers.map((career) => {
                   const Icon = careerIcons[career.id];
@@ -210,6 +203,17 @@ function Setup({
                 })}
               </div>
             </fieldset>
+            <label className="field">
+              What should we call you?{" "}
+              <span className="optional">Optional</span>
+              <input
+                maxLength={40}
+                value={draft.name}
+                onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                placeholder="Your first name"
+                autoComplete="given-name"
+              />
+            </label>
           </div>
         )}
         {step === 1 && (
@@ -262,87 +266,33 @@ function Setup({
             </p>
           </div>
         )}
-        {step === 2 && (
-          <div className="wizard-content">
-            <p className="muted">
-              Make room for the semester you want to have.
-            </p>
-            <label className="field">
-              Target credit hours
-              <input
-                type="number"
-                min="1"
-                max="21"
-                step="1"
-                required
-                value={creditInput}
-                onChange={(e) => setCreditInput(e.target.value)}
-                aria-describedby="credit-help"
-              />
-            </label>
-            <p id="credit-help" className="small muted">
-              Choose a whole number from 1 to 21. This is a planning target, not
-              registration advice.
-            </p>
-            <fieldset>
-              <legend>Preferred workload</legend>
-              <div className="workload-options">
-                {(["balanced", "lighter"] as const).map((value) => (
-                  <label
-                    key={value}
-                    className={`workload-option ${draft.workload === value ? "selected" : ""}`}
-                  >
-                    <input
-                      type="radio"
-                      name="workload"
-                      checked={draft.workload === value}
-                      onChange={() => setDraft({ ...draft, workload: value })}
-                    />
-                    <Leaf size={20} />
-                    <strong>
-                      {value === "balanced" ? "Balanced" : "A little lighter"}
-                    </strong>
-                    <small>
-                      {value === "balanced"
-                        ? "A mix of challenge and breathing room"
-                        : "Favor fewer credits; workload data is unavailable"}
-                    </small>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-            <div className="privacy-note">
-              <ShieldCheck size={20} />
-              <span>
-                Yours to keep. Yours to delete.
-                <small>
-                  Your profile stays in this browser. No account or academic
-                  records needed.
-                </small>
-              </span>
-            </div>
-          </div>
-        )}
         <div className="modal-actions">
           <button
             type="button"
             className="button secondary"
             onClick={() => (step ? setStep(step - 1) : onClose())}
           >
-            {step ? "Back" : "Maybe later"}
+            {step ? "Back" : inline ? "Browse all courses" : "Cancel"}
           </button>
           <button
             className="button primary"
             type="submit"
-            disabled={
-              step === 0 ? !draft.career : step === 2 ? !validCredits : false
-            }
+            disabled={!draft.career}
           >
-            {step === 2 ? "Save & see my recommendations" : "Continue"}
+            {step === 1 ? "Show my recommendations" : "Continue"}
             <ArrowRight size={16} />
           </button>
         </div>
       </form>
+    </>
+  );
+  return inline ? (
+    <section className="onboarding-form" aria-label="Your course preferences">
+      {content}
+    </section>
+  ) : (
+    <Modal title="Your course preferences" onClose={onClose}>
+      {content}
     </Modal>
   );
 }
@@ -350,8 +300,8 @@ function Setup({
 function CourseCard({
   course,
   profile,
-  eligible,
-  explanation,
+  prerequisiteStatus,
+  careerSkills = [],
   compared,
   onCompare,
   onAdd,
@@ -359,15 +309,19 @@ function CourseCard({
 }: {
   course: Course;
   profile: Profile;
-  eligible: boolean;
-  explanation?: Recommendation["explanation"];
+  prerequisiteStatus?: EligibilityStatus;
+  careerSkills?: string[];
   compared: boolean;
   onCompare: () => void;
   onAdd: () => void;
   onDetails: () => void;
 }) {
   const completed = profile.completed.includes(course.id);
-  const added = profile.schedule.includes(course.id);
+  const added = profile.saved.includes(course.id);
+  const missing = prerequisiteStatus?.missingPrerequisites ?? [];
+  const matched = prerequisiteStatus?.matchedPrerequisites ?? [];
+  const eligible = prerequisiteStatus?.eligible === true;
+  const skills = [...new Set([...careerSkills, ...course.skills])];
   return (
     <article className="course-card">
       <div className="course-top">
@@ -378,36 +332,40 @@ function CourseCard({
         {course.title}
         <ChevronRight size={17} />
       </button>
+      <span className="small muted">{course.category}</span>
       <p>{course.description}</p>
-      {explanation && (
-        <div className="recommendation-explanation">
-          <p>
-            <strong>Eligibility:</strong> {explanation.whyEligible}
+      <div className="recommendation-explanation">
+        <p>
+          <strong>Eligibility:</strong>{" "}
+          {completed
+            ? "You have completed this course."
+            : !prerequisiteStatus
+              ? "Checking prerequisites..."
+              : missing.length
+                ? `Take ${missing.join(" and ")} to unlock this course (one modeled prerequisite path).`
+                : matched.length
+                  ? `Unlocked by completing ${matched.join(" and ")}.`
+                  : "No modeled CS/ECE prerequisites."}
+        </p>
+        {!completed && missing.length > 0 && matched.length > 0 && (
+          <p className="small muted">
+            Already completed on this path: {matched.join(", ")}.
           </p>
-          <p>
-            <strong>Degree relevance:</strong> {explanation.degreeRelevance}
+        )}
+      </div>
+      <div className="course-skills">
+        <h3>Career skills</h3>
+        {skills.length ? (
+          <div className="tags">
+            {skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
+        ) : (
+          <p className="small muted">
+            No career skills recorded for this course.
           </p>
-          <p>
-            <strong>Career skills:</strong>{" "}
-            {explanation.careerSkills.join(", ") || "No mapped career skills"}
-          </p>
-          <p>
-            <strong>Learning objectives:</strong>{" "}
-            {explanation.learningObjectives.join("; ") || "None listed"}
-          </p>
-          <p>
-            <strong>Later courses:</strong>{" "}
-            {explanation.unlocks.join(", ") || "None in this course set"}
-          </p>
-          <p>
-            <strong>Sources:</strong> {explanation.sources.join("; ")}
-          </p>
-        </div>
-      )}
-      <div className="tags">
-        {course.skills.slice(0, 2).map((skill) => (
-          <span key={skill}>{skill}</span>
-        ))}
+        )}
       </div>
       <div className="course-bottom">
         <span className={`eligibility ${completed || eligible ? "good" : ""}`}>
@@ -415,9 +373,11 @@ function CourseCard({
             <>
               <CheckCircle2 size={14} /> Completed
             </>
+          ) : !prerequisiteStatus ? (
+            "Checking prerequisites..."
           ) : eligible ? (
             <>
-              <CheckCircle2 size={14} /> CS/ECE prerequisites matched
+              <CheckCircle2 size={14} /> Prerequisites met
             </>
           ) : (
             "Prerequisites needed"
@@ -433,8 +393,8 @@ function CourseCard({
         </button>
         <button
           className={`icon-button ${added ? "chosen" : ""}`}
-          disabled={completed || !eligible}
-          aria-label={`${added ? "Remove" : "Add"} ${course.id} ${added ? "from" : "to"} semester`}
+          disabled={completed}
+          aria-label={`${added ? "Remove" : "Add"} ${course.id} ${added ? "from" : "to"} roadmap`}
           onClick={onAdd}
         >
           {added ? <Check size={17} /> : <Plus size={17} />}
@@ -465,7 +425,7 @@ export default function App() {
   });
   const [profile, setProfile] = useState<Profile>(initial.profile);
   const [storageError, setStorageError] = useState(initial.error);
-  const [page, setPage] = useState<Page>("overview");
+  const [page, setPage] = useState<Page>("courses");
   const [mobileNav, setMobileNav] = useState(false);
   const [setup, setSetup] = useState(false);
   const [details, setDetails] = useState<Course | null>(null);
@@ -473,29 +433,46 @@ export default function App() {
   const [compared, setCompared] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [eligibleOnly, setEligibleOnly] = useState(false);
+  const [courseView, setCourseView] = useState<"recommended" | "all">(
+    "recommended",
+  );
   const [notice, setNotice] = useState("");
-  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [roadmap, setRoadmap] = useState<Roadmap>({
+    stronglyRecommended: [],
+    worthConsidering: [],
+    broadenSkills: [],
+  });
   const [loading, setLoading] = useState(false);
   const [recommendationError, setRecommendationError] = useState(false);
   const [catalog, setCatalog] = useState<Course[]>([]);
   const [careers, setCareers] = useState<Career[]>([]);
   const [catalogError, setCatalogError] = useState(false);
-  const [eligibility, setEligibility] = useState<Record<string, boolean>>({});
-  const [scheduleSummary, setScheduleSummary] =
-    useState<ScheduleSummary | null>(null);
+  const [eligibility, setEligibility] = useState<
+    Record<string, EligibilityStatus>
+  >({});
   const [comparedCourses, setComparedCourses] = useState<Course[]>([]);
-  const eligible = (course: Course) => eligibility[course.id] === true;
+  const eligible = (course: Course) =>
+    eligibility[course.id]?.eligible === true;
   const currentCareer = careers.find((c) => c.id === profile.career);
-  const planned = catalog.filter((c) => profile.schedule.includes(c.id));
-  const credits = scheduleSummary?.totalCredits ?? 0;
+  const planned = catalog.filter((c) => profile.saved.includes(c.id));
+  const savedSkills = [...new Set(planned.flatMap((course) => course.skills))];
   const selectedCourses = comparedCourses;
-  const filtered = catalog.filter(
-    (c) =>
-      `${c.id} ${c.title} ${c.skills.join(" ")}`
-        .toLowerCase()
-        .includes(query.toLowerCase()) &&
-      (!eligibleOnly || (eligible(c) && !profile.completed.includes(c.id))),
-  );
+  const matchesCourse = (c: Course) =>
+    `${c.id} ${c.title} ${c.skills.join(" ")}`
+      .toLowerCase()
+      .includes(query.toLowerCase()) &&
+    (!eligibleOnly || (eligible(c) && !profile.completed.includes(c.id)));
+  const filtered = catalog.filter(matchesCourse);
+  const visibleCourseCount =
+    courseView === "all"
+      ? filtered.length
+      : priorityTiers.reduce(
+          (count, tier) =>
+            count +
+            roadmap[tier.key].filter((item) => matchesCourse(item.course))
+              .length,
+          0,
+        );
 
   useEffect(() => {
     let active = true;
@@ -516,6 +493,7 @@ export default function App() {
   useEffect(() => {
     if (!catalog.length) return;
     let active = true;
+    setEligibility({});
     getEligibility(profile.completed)
       .then((result) => {
         if (active) setEligibility(result);
@@ -530,14 +508,23 @@ export default function App() {
   useEffect(() => {
     let active = true;
     if (!profile.career) {
-      setRecommendations([]);
+      setRoadmap({
+        stronglyRecommended: [],
+        worthConsidering: [],
+        broadenSkills: [],
+      });
+      setLoading(false);
       return;
     }
     setLoading(true);
     setRecommendationError(false);
-    getRecommendations(profile)
+    const controller = new AbortController();
+    getRoadmap(
+      { career: profile.career, completed: profile.completed },
+      controller.signal,
+    )
       .then((result) => {
-        if (active) setRecommendations(result);
+        if (active) setRoadmap(result);
       })
       .catch(() => {
         if (active) setRecommendationError(true);
@@ -547,21 +534,9 @@ export default function App() {
       });
     return () => {
       active = false;
+      controller.abort();
     };
-  }, [profile]);
-  useEffect(() => {
-    let active = true;
-    getScheduleSummary(profile)
-      .then((result) => {
-        if (active) setScheduleSummary(result);
-      })
-      .catch(() => {
-        if (active) setScheduleSummary(null);
-      });
-    return () => {
-      active = false;
-    };
-  }, [profile]);
+  }, [profile.career, profile.completed]);
   useEffect(() => {
     let active = true;
     getComparison(compared)
@@ -592,6 +567,15 @@ export default function App() {
       );
     }
   }
+  function applyPreferences(next: Profile) {
+    saveProfile(next);
+    setCourseView("recommended");
+    setQuery("");
+    setEligibleOnly(false);
+    setSetup(false);
+    navigate("courses");
+    setNotice("Preferences saved. Updating your course priorities.");
+  }
   function navigate(next: Page) {
     setPage(next);
     setMobileNav(false);
@@ -609,49 +593,100 @@ export default function App() {
       setNotice(`${course.id} added to comparison.`);
     }
   }
-  function toggleSchedule(course: Course) {
-    if (profile.completed.includes(course.id) || !eligible(course)) return;
-    const removing = profile.schedule.includes(course.id);
+  function toggleSaved(course: Course) {
+    if (profile.completed.includes(course.id)) return;
+    const removing = profile.saved.includes(course.id);
     saveProfile({
       ...profile,
-      schedule: removing
-        ? profile.schedule.filter((id) => id !== course.id)
-        : [...profile.schedule, course.id],
+      saved: removing
+        ? profile.saved.filter((id) => id !== course.id)
+        : [...profile.saved, course.id],
     });
     setNotice(
-      `${course.id} ${removing ? "removed from" : "added to"} your semester.`,
+      `${course.id} ${removing ? "removed from" : "added to"} your roadmap.`,
     );
   }
   function exportPlan() {
     const text = [
-      "PathFinder UA — proposed semester",
+      "PathFinder UA - career course roadmap",
       "Curated UA CS/ECE courses. Confirm all prerequisites and degree requirements with an advisor.",
       "",
       `Career: ${currentCareer?.title ?? "Not selected"}`,
-      `Credits: ${credits} / ${profile.creditTarget}`,
+      "Saved interests for the rest of your degree; not a semester schedule or degree audit.",
       "",
-      ...planned.map((c) => `${c.id}: ${c.title} (${c.credits} credits)`),
+      ...planned.map(
+        (c) =>
+          `${c.id}: ${c.title} (${c.credits} credits) - ${eligible(c) ? "Modeled prerequisites matched" : "Prerequisites needed: " + formatPrerequisites(c)}`,
+      ),
     ].join("\n");
     const url = URL.createObjectURL(new Blob([text], { type: "text/plain" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = "pathfinder-semester.txt";
+    a.download = "pathfinder-roadmap.txt";
     a.click();
     URL.revokeObjectURL(url);
   }
-  const card = (course: Course, recommendation?: Recommendation) => (
+  const card = (
+    course: Course,
+    recommendation: Recommendation | undefined = [
+      ...roadmap.stronglyRecommended,
+      ...roadmap.worthConsidering,
+      ...roadmap.broadenSkills,
+    ].find((item) => item.course.id === course.id),
+  ) => (
     <CourseCard
       key={course.id}
       course={course}
       profile={profile}
-      eligible={eligible(course)}
-      explanation={recommendation?.explanation}
+      prerequisiteStatus={
+        eligibility[course.id] ??
+        (recommendation
+          ? {
+              eligible: recommendation.missingPrerequisites.length === 0,
+              matchedPrerequisites: recommendation.matchedPrerequisites,
+              missingPrerequisites: recommendation.missingPrerequisites,
+            }
+          : undefined)
+      }
+      careerSkills={recommendation?.careerSkills}
       compared={compared.includes(course.id)}
       onCompare={() => compare(course)}
-      onAdd={() => toggleSchedule(course)}
+      onAdd={() => toggleSaved(course)}
       onDetails={() => setDetails(course)}
     />
   );
+
+  const priorityGroups = (applyFilters = false) =>
+    priorityTiers.map((tier, index) => {
+      const items = applyFilters
+        ? roadmap[tier.key].filter((item) => matchesCourse(item.course))
+        : roadmap[tier.key];
+      return (
+        <section
+          key={tier.key}
+          className={`recommendation-section priority-tier priority-tier-${index + 1}`}
+          aria-label={tier.title}
+        >
+          <div className="section-heading">
+            <div>
+              <span className="priority-label">Priority {index + 1}</span>
+              <h2>{tier.title}</h2>
+              <p>{tier.description}</p>
+            </div>
+            <span className="tier-count">{items.length} courses</span>
+          </div>
+          {items.length ? (
+            <div className="course-grid">
+              {items.map((item) => card(item.course, item))}
+            </div>
+          ) : (
+            <p className="small muted">
+              No courses in this tier match your profile and current filters.
+            </p>
+          )}
+        </section>
+      );
+    });
 
   return (
     <div className="app-shell">
@@ -671,7 +706,7 @@ export default function App() {
           className="brand"
           onClick={(e) => {
             e.preventDefault();
-            navigate("overview");
+            navigate("courses");
           }}
         >
           <span className="brand-mark">
@@ -701,10 +736,7 @@ export default function App() {
             >
               <Icon size={19} />
               <span>{label}</span>
-              {id === "compare" && compared.length > 0 && (
-                <span className="nav-count">{compared.length}</span>
-              )}
-              {id === "schedule" && planned.length > 0 && (
+              {id === "roadmap" && planned.length > 0 && (
                 <span className="nav-count">{planned.length}</span>
               )}
             </button>
@@ -756,11 +788,15 @@ export default function App() {
             </button>
             <span>My workspace</span>
             <ChevronRight size={14} />
-            <strong>{navigation.find((n) => n.id === page)?.label}</strong>
+            <strong>
+              {page === "compare"
+                ? "Compare courses"
+                : navigation.find((n) => n.id === page)?.label}
+            </strong>
           </div>
           <div className="topbar-right">
             <span className="demo-pill">
-              <span /> CS course planner
+              <span /> CS career course guide
             </span>
             <button
               className="top-avatar"
@@ -787,239 +823,6 @@ export default function App() {
               {storageError}
             </div>
           )}
-          {page === "overview" && (
-            <>
-              <div className="page-heading">
-                <div>
-                  <p className="eyebrow">YOUR PATH, YOUR POSSIBILITIES</p>
-                  <h1>
-                    {profile.setupComplete
-                      ? `Welcome back${profile.name ? `, ${profile.name}` : ""}.`
-                      : "Your next step starts here."}
-                  </h1>
-                  <p>
-                    You don’t need your whole future figured out. Just a
-                    direction to explore.
-                  </p>
-                </div>
-                <span className="semester-label">
-                  <CalendarDays size={15} /> Plan your next semester
-                </span>
-              </div>
-              <section className="welcome-card">
-                <div className="welcome-copy">
-                  <span className="light-eyebrow">
-                    <span /> BUILT FOR YOUR NEXT CHAPTER
-                  </span>
-                  <h2>
-                    A course today.
-                    <br />A possibility tomorrow.
-                  </h2>
-                  <p>
-                    Connect what you’ve learned with where you want to go. Let’s
-                    build a semester that makes sense for you.
-                  </p>
-                  <button
-                    className="button white"
-                    onClick={() =>
-                      profile.setupComplete
-                        ? navigate("courses")
-                        : setSetup(true)
-                    }
-                  >
-                    {profile.setupComplete
-                      ? "Explore my next courses"
-                      : "Find my starting point"}
-                    <ArrowRight size={17} />
-                  </button>
-                  <span className="welcome-footnote">
-                    {profile.setupComplete
-                      ? "A little curiosity can take you a long way."
-                      : "About 2 minutes · No account needed"}
-                  </span>
-                </div>
-                <div className="journey-art" aria-hidden="true">
-                  <div className="orbit orbit-one" />
-                  <div className="orbit orbit-two" />
-                  <div className="orbit orbit-three" />
-                  <div className="path-line" />
-                  <span className="journey-dot dot-one" />
-                  <span className="journey-dot dot-two" />
-                  <span className="journey-dot dot-three" />
-                  <div className="journey-label start">
-                    <BookOpen size={16} /> What you know
-                  </div>
-                  <div className="journey-center">
-                    <Compass size={64} strokeWidth={1.1} />
-                  </div>
-                  <div className="journey-label destination">
-                    <Sparkles size={16} /> Where you could go
-                  </div>
-                  <span className="art-caption">
-                    THERE’S MORE THAN ONE WAY FORWARD.
-                  </span>
-                </div>
-              </section>
-              <div className="overview-columns">
-                <section>
-                  <div className="section-heading">
-                    <div>
-                      <h2>A little about you</h2>
-                      <p>Three small steps. A more personal path.</p>
-                    </div>
-                    <span className="step-count">
-                      {profile.setupComplete ? "3 of 3" : "0 of 3"} complete
-                    </span>
-                  </div>
-                  <div className="setup-cards">
-                    {[
-                      {
-                        icon: BookOpen,
-                        title: "Start with what you know",
-                        text: profile.setupComplete
-                          ? `${profile.completed.length} completed courses selected`
-                          : "Add the courses you’ve already completed.",
-                        label: "Add your courses",
-                      },
-                      {
-                        icon: Target,
-                        title: "Follow your curiosity",
-                        text:
-                          currentCareer?.title ??
-                          "Choose a career direction that interests you.",
-                        label: "Explore your interests",
-                      },
-                      {
-                        icon: SlidersHorizontal,
-                        title: "Find your balance",
-                        text: profile.setupComplete
-                          ? `${profile.creditTarget} credits · ${profile.workload} workload`
-                          : "Set your credit goal and preferred workload.",
-                        label: "Set your preferences",
-                      },
-                    ].map(({ icon: Icon, title, text, label }, i) => (
-                      <button
-                        className="setup-card"
-                        key={title}
-                        onClick={() => setSetup(true)}
-                      >
-                        <span className={`step-icon tone-${i}`}>
-                          <Icon size={21} />
-                        </span>
-                        <span className="step-number">
-                          {profile.setupComplete ? (
-                            <CheckCircle2 size={17} />
-                          ) : (
-                            `0${i + 1}`
-                          )}
-                        </span>
-                        <h3>{title}</h3>
-                        <p>{text}</p>
-                        <span className="card-link">
-                          {profile.setupComplete ? "Edit details" : label}
-                          <ArrowRight size={14} />
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </section>
-                <section className="semester-preview">
-                  <div className="section-heading">
-                    <h2>Your semester, at a glance</h2>
-                    <CalendarDays size={18} />
-                  </div>
-                  <div className="credit-overview">
-                    <strong>{credits}</strong>
-                    <span>/ {profile.creditTarget} credits planned</span>
-                  </div>
-                  <progress
-                    aria-label="Planned credits"
-                    max={profile.creditTarget}
-                    value={Math.min(credits, profile.creditTarget)}
-                  />
-                  <p>
-                    {planned.length
-                      ? `${planned.length} courses in your plan. Keep shaping your next step.`
-                      : "A fresh start. Add courses as you discover what fits."}
-                  </p>
-                  <button
-                    className="text-button"
-                    onClick={() => navigate("schedule")}
-                  >
-                    Open semester planner
-                    <ArrowRight size={15} />
-                  </button>
-                </section>
-              </div>
-              <section className="recommendation-section">
-                <div className="section-heading">
-                  <div>
-                    <h2>
-                      {profile.setupComplete
-                        ? "Your next possibilities"
-                        : "A few possibilities to get you thinking"}
-                    </h2>
-                    <p>
-                      {profile.setupComplete
-                        ? "B.S. required courses first, then career-related options. Confirm full prerequisites with UA."
-                        : "A small preview of what you could explore. Set up your profile for recommendations."}
-                    </p>
-                  </div>
-                  <button
-                    className="text-button"
-                    onClick={() => navigate("courses")}
-                  >
-                    Explore all courses
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-                {loading ? (
-                  <p role="status">Finding your next possibilities…</p>
-                ) : recommendationError ? (
-                  <div className="warning">
-                    Recommendations could not be loaded. Explore the course
-                    catalog or try updating your profile.
-                  </div>
-                ) : profile.setupComplete && !recommendations.length ? (
-                  <div className="empty-state">
-                    <GraduationCap size={30} />
-                    <h3>You’ve explored this corner of the catalog.</h3>
-                    <p>
-                      No courses in this set match your current completed-course
-                      selections. Review your completed courses or explore the
-                      full list.
-                    </p>
-                    <button
-                      className="button secondary"
-                      onClick={() => setSetup(true)}
-                    >
-                      Review profile
-                    </button>
-                  </div>
-                ) : (
-                  <div className="course-grid">
-                    {profile.setupComplete
-                      ? recommendations.map((r) => card(r.course, r))
-                      : catalog
-                          .filter((c) => c.category === "B.S. required")
-                          .slice(0, 3)
-                          .map((c) => card(c))}
-                  </div>
-                )}
-              </section>
-              <div className="reassurance">
-                <ShieldCheck size={18} />
-                <span>
-                  Your journey stays yours. Planning information is saved only
-                  in this browser.
-                </span>
-                <button onClick={() => setSetup(true)}>
-                  Manage profile
-                  <ArrowRight size={13} />
-                </button>
-              </div>
-            </>
-          )}
           {page === "courses" && (
             <>
               <div className="page-heading">
@@ -1027,53 +830,150 @@ export default function App() {
                   <p className="eyebrow">MAKE ROOM FOR CURIOSITY</p>
                   <h1>Explore your next possibility.</h1>
                   <p>
-                    Discover the skills, connections, and next steps behind each
-                    course.
+                    {profile.setupComplete
+                      ? `${currentCareer?.title ?? "Your career"} priorities, based on ${profile.completed.length} completed courses.`
+                      : "Select your career interest and completed courses to find what to study next."}
                   </p>
                 </div>
-                <button
-                  className="button secondary"
-                  onClick={() => setSetup(true)}
-                >
-                  <Settings2 size={16} />
-                  Edit my preferences
-                </button>
+                {profile.setupComplete && (
+                  <>
+                    <button
+                      className="button secondary"
+                      onClick={() => setSetup(true)}
+                    >
+                      <Settings2 size={16} />
+                      Edit my preferences
+                    </button>
+                  </>
+                )}
               </div>
-              <div className="filter-bar">
-                <label className="search-box">
-                  <Search size={18} />
-                  <input
-                    placeholder="Search courses, codes, or skills…"
-                    aria-label="Search courses"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                </label>
-                <label className="filter-toggle">
-                  <input
-                    type="checkbox"
-                    checked={eligibleOnly}
-                    onChange={(e) => setEligibleOnly(e.target.checked)}
-                  />
-                  Eligible for me
-                </label>
-                <span className="small muted">{filtered.length} courses</span>
-              </div>
-              <div className="inline-note">
-                <BookOpen size={17} /> Curated UA CS/ECE course list.
-                Prerequisite checks cover listed CS/ECE courses; confirm math,
-                grades, enrollment, and degree applicability with UA. This set
-                does not include every course required for the B.S.
-              </div>
-              {filtered.length ? (
-                <div className="course-grid catalog">
-                  {filtered.map((course) => card(course))}
+              {(profile.setupComplete || courseView === "all") && (
+                <>
+                  <div
+                    className="course-views"
+                    role="group"
+                    aria-label="Course view"
+                  >
+                    <button
+                      type="button"
+                      aria-pressed={courseView === "recommended"}
+                      onClick={() => setCourseView("recommended")}
+                    >
+                      <Sparkles size={16} /> Recommended for you
+                    </button>
+                    <button
+                      type="button"
+                      aria-pressed={courseView === "all"}
+                      onClick={() => setCourseView("all")}
+                    >
+                      <BookOpen size={16} /> All courses
+                    </button>
+                  </div>
+                  <p className="course-view-description">
+                    {courseView === "recommended"
+                      ? `Courses selected for ${currentCareer?.title ?? "your career interest"}, based on your completed courses. Review three priority levels, with prerequisite readiness shown on each course.`
+                      : "Browse every course in our curated set, including completed courses and options outside your career recommendations."}
+                  </p>
+                  <div className="filter-bar">
+                    <label className="search-box">
+                      <Search size={18} />
+                      <input
+                        placeholder="Search courses, codes, or skills…"
+                        aria-label="Search courses"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                      />
+                    </label>
+                    <label className="filter-toggle">
+                      <input
+                        type="checkbox"
+                        checked={eligibleOnly}
+                        onChange={(e) => setEligibleOnly(e.target.checked)}
+                      />
+                      Eligible for me
+                    </label>
+                    <span className="small muted">
+                      {courseView === "recommended" &&
+                      (!profile.setupComplete || loading || recommendationError)
+                        ? ""
+                        : `${visibleCourseCount} courses`}
+                    </span>
+                  </div>
+                  <div className="inline-note">
+                    <BookOpen size={17} /> Curated UA CS/ECE course list.
+                    Prerequisite checks cover listed CS/ECE courses; confirm
+                    math, grades, enrollment, and degree applicability with UA.
+                    This set does not include every course required for the B.S.
+                    These tiers reflect career priorities, not official
+                    graduation requirements.
+                  </div>
+                </>
+              )}
+              {courseView === "recommended" && !profile.setupComplete ? (
+                <div className="onboarding">
+                  <div className="onboarding-intro">
+                    <span className="priority-label">
+                      YOUR PERSONAL COURSE GUIDE
+                    </span>
+                    <h2>Start with your career. Build on what you know.</h2>
+                    <p>
+                      Choose a career interest, select the courses you have
+                      completed, and get three levels of personalized course
+                      recommendations. No account needed.
+                    </p>
+                  </div>
+                  {catalogError ? (
+                    <p>
+                      Reload the page to retry loading your course preferences.
+                    </p>
+                  ) : !catalog.length || !careers.length ? (
+                    <p role="status">Loading your course preferences...</p>
+                  ) : (
+                    <Setup
+                      inline
+                      profile={profile}
+                      catalog={catalog}
+                      careers={careers}
+                      onSave={applyPreferences}
+                      onClose={() => setCourseView("all")}
+                    />
+                  )}
                 </div>
+              ) : courseView === "recommended" && loading ? (
+                <p role="status">Updating your course recommendations...</p>
+              ) : courseView === "recommended" && recommendationError ? (
+                <div className="warning" role="alert">
+                  Recommendations could not be loaded.{" "}
+                  <button
+                    className="text-button"
+                    onClick={() => setSetup(true)}
+                  >
+                    Review preferences and retry
+                  </button>
+                </div>
+              ) : visibleCourseCount > 0 ? (
+                courseView === "all" ? (
+                  <div className="course-grid catalog">
+                    {filtered.map((course) => card(course))}
+                  </div>
+                ) : (
+                  <div aria-label="Personalized course recommendations">
+                    {priorityGroups(true)}
+                  </div>
+                )
               ) : (
                 <div className="empty-state">
                   <Search size={30} />
-                  <h2>No courses found</h2>
-                  <p>Try a different search or clear the eligibility filter.</p>
+                  <h2>
+                    {courseView === "recommended" && !query && !eligibleOnly
+                      ? "No remaining recommendations in this set"
+                      : "No courses found"}
+                  </h2>
+                  <p>
+                    {courseView === "recommended" && !query && !eligibleOnly
+                      ? "Update your preferences or browse All courses for other options. This curated dataset does not cover the full CS degree."
+                      : "Try a different search or clear the eligibility filter."}
+                  </p>
                   <button
                     className="button secondary"
                     onClick={() => {
@@ -1247,19 +1147,17 @@ export default function App() {
                         </tr>
                       ))}
                       <tr>
-                        <th scope="row">Your semester</th>
+                        <th scope="row">Your roadmap</th>
                         {selectedCourses.map((c) => (
                           <td key={c.id}>
                             <button
                               className="button secondary"
-                              disabled={
-                                profile.completed.includes(c.id) || !eligible(c)
-                              }
-                              onClick={() => toggleSchedule(c)}
+                              disabled={profile.completed.includes(c.id)}
+                              onClick={() => toggleSaved(c)}
                             >
-                              {profile.schedule.includes(c.id)
-                                ? "Remove from plan"
-                                : "Add to plan"}
+                              {profile.saved.includes(c.id)
+                                ? "Remove from roadmap"
+                                : "Save to roadmap"}
                             </button>
                           </td>
                         ))}
@@ -1283,13 +1181,16 @@ export default function App() {
               )}
             </>
           )}
-          {page === "schedule" && (
+          {page === "roadmap" && (
             <>
               <div className="page-heading">
                 <div>
-                  <p className="eyebrow">ONE SEMESTER. YOUR POSSIBILITIES.</p>
-                  <h1>Give your next chapter a shape.</h1>
-                  <p>A flexible place to bring your course choices together.</p>
+                  <p className="eyebrow">YOUR CAREER. YOUR PATH.</p>
+                  <h1>My course roadmap</h1>
+                  <p>
+                    Courses worth considering before graduation, guided by your
+                    career interest and completed coursework.
+                  </p>
                 </div>
                 <button
                   className="button secondary"
@@ -1297,135 +1198,79 @@ export default function App() {
                   onClick={exportPlan}
                 >
                   <ArrowDownToLine size={16} />
-                  Export plan
+                  Export roadmap
                 </button>
               </div>
-              <div className="planner-layout">
-                <section className="plan-courses">
-                  <div className="section-heading">
-                    <h2>Your proposed courses</h2>
-                    <button
-                      className="text-button"
-                      onClick={() => navigate("courses")}
-                    >
-                      <Plus size={16} />
-                      Add courses
-                    </button>
+              <div className="inline-note">
+                This curated course set is incomplete. Required major courses
+                and suggested electives are labeled separately. Confirm
+                catalog-year requirements, full prerequisites, and graduation
+                progress with DegreeWorks and your advisor.
+              </div>
+              <section className="recommendation-section">
+                <div className="section-heading">
+                  <div>
+                    <h2>Saved interests</h2>
+                    <p>
+                      Your shortlist can include courses you are working toward.
+                      Saving a course does not establish eligibility.
+                    </p>
                   </div>
-                  {planned.length ? (
-                    planned.map((course) => (
-                      <article className="plan-row" key={course.id}>
-                        <span className="step-icon">
-                          <BookOpen size={21} />
-                        </span>
-                        <div>
-                          <span className="course-code">{course.id}</span>
-                          <button
-                            className="course-title"
-                            onClick={() => setDetails(course)}
-                          >
-                            {course.title}
-                          </button>
-                          <p>{course.skills.join(" · ")}</p>
-                        </div>
-                        <span>{course.credits} cr.</span>
-                        <button
-                          className="icon-button"
-                          aria-label={`Remove ${course.id} from semester`}
-                          onClick={() => toggleSchedule(course)}
-                        >
-                          <Trash2 size={17} />
-                        </button>
-                      </article>
-                    ))
-                  ) : (
-                    <div className="empty-state large">
-                      <CalendarDays size={36} />
-                      <h2>A little space for what comes next.</h2>
-                      <p>
-                        Add eligible courses from Explore courses to start
-                        shaping your semester.
-                      </p>
-                      <button
-                        className="button primary"
-                        onClick={() => navigate("courses")}
-                      >
-                        Explore courses
-                        <ArrowRight size={16} />
-                      </button>
+                </div>
+                {planned.length ? (
+                  <div className="course-grid">
+                    {planned.map((course) => card(course))}
+                  </div>
+                ) : (
+                  <div className="empty-state">
+                    <BookOpen size={30} />
+                    <h3>Start your course shortlist</h3>
+                    <p>
+                      Save courses from the suggestions below or Explore
+                      courses.
+                    </p>
+                  </div>
+                )}
+                {savedSkills.length > 0 && (
+                  <>
+                    <h3>Skills to explore</h3>
+                    <div className="tags">
+                      {savedSkills.map((skill) => (
+                        <span key={skill}>{skill}</span>
+                      ))}
                     </div>
-                  )}
-                </section>
-                <aside className="plan-summary">
-                  <h2>The bigger picture</h2>
-                  <div className="credit-overview">
-                    <strong>{credits}</strong>
-                    <span>/ {profile.creditTarget} credits</span>
-                  </div>
-                  <progress
-                    aria-label="Semester credit target"
-                    max={profile.creditTarget}
-                    value={Math.min(credits, profile.creditTarget)}
-                  />
+                  </>
+                )}
+              </section>
+              {!profile.setupComplete ? (
+                <button
+                  className="button primary"
+                  onClick={() => setSetup(true)}
+                >
+                  Build my roadmap
+                </button>
+              ) : loading ? (
+                <p role="status">Updating your roadmap...</p>
+              ) : recommendationError ? (
+                <div className="warning" role="alert">
+                  Your roadmap could not be loaded.{" "}
                   <button
                     className="text-button"
                     onClick={() => setSetup(true)}
                   >
-                    Adjust your preferences
-                    <Settings2 size={14} />
+                    Review profile and retry
                   </button>
-                  {scheduleSummary?.warnings.some(
-                    (warning) => warning.code === "OVER_CREDIT_TARGET",
-                  ) && (
-                    <div className="warning" role="status">
-                      Your plan is {credits - profile.creditTarget} credits over
-                      your target. Consider removing a course or adjusting your
-                      goal.
-                    </div>
-                  )}
-                  {scheduleSummary?.warnings
-                    .filter((warning) => warning.code !== "OVER_CREDIT_TARGET")
-                    .map((warning) => (
-                      <div className="warning" role="status" key={warning.code}>
-                        {warning.message}
-                      </div>
-                    ))}
-                  <p className="small muted">
-                    Workload data is unavailable. Compare course demands with an
-                    advisor.
-                  </p>
-                  <hr />
-                  <h3>Skills you’re building</h3>
-                  <div className="tags">
-                    {(scheduleSummary?.careerSkills ?? []).map((skill) => (
-                      <span key={skill}>{skill}</span>
-                    ))}
-                  </div>
-                  {!planned.length && (
-                    <p className="small muted">
-                      Your skill coverage will appear as you add courses.
-                    </p>
-                  )}
-                  <hr />
-                  <div className="privacy-note">
-                    <ShieldCheck size={19} />
-                    <span>
-                      A starting point for advising.
-                      <small>
-                        Verify prerequisites, availability, and degree
-                        applicability with your advisor.
-                      </small>
-                    </span>
-                  </div>
-                </aside>
-              </div>
+                </div>
+              ) : (
+                <>{priorityGroups()}</>
+              )}
             </>
           )}
           <footer>
             <span>
               Made for the next step. <b>PathFinder UA</b>
             </span>
-            <span>Demo data · Not an official UA advising tool</span>
+            <span>Curated course data · Not an official UA advising tool</span>
           </footer>
         </main>
       </div>
@@ -1464,11 +1309,7 @@ export default function App() {
           catalog={catalog}
           careers={careers}
           onClose={() => setSetup(false)}
-          onSave={(next) => {
-            saveProfile(next);
-            setSetup(false);
-            setNotice("Your profile is ready. Let’s explore your next step.");
-          }}
+          onSave={applyPreferences}
         />
       )}
       {details && (
@@ -1527,19 +1368,17 @@ export default function App() {
             </button>
             <button
               className="button primary"
-              disabled={
-                profile.completed.includes(details.id) || !eligible(details)
-              }
-              onClick={() => toggleSchedule(details)}
+              disabled={profile.completed.includes(details.id)}
+              onClick={() => toggleSaved(details)}
             >
-              {profile.schedule.includes(details.id)
-                ? "Remove from semester"
-                : "Add to semester"}
+              {profile.saved.includes(details.id)
+                ? "Remove from roadmap"
+                : "Save to roadmap"}
             </button>
           </div>
         </Modal>
       )}
-      {profile.setupComplete && page === "overview" && (
+      {profile.setupComplete && page === "courses" && (
         <button className="delete-profile" onClick={() => setDeleteOpen(true)}>
           <Trash2 size={13} />
           Delete saved profile
@@ -1551,8 +1390,8 @@ export default function App() {
           onClose={() => setDeleteOpen(false)}
         >
           <p className="muted">
-            This deletes your saved profile, completed courses, and semester
-            plan from this browser.
+            This deletes your saved profile, completed courses, and saved
+            roadmap plan from this browser.
           </p>
           <div className="modal-actions">
             <button
@@ -1568,6 +1407,7 @@ export default function App() {
                   localStorage.removeItem(storageKey);
                   localStorage.removeItem(legacyStorageKey);
                   setProfile({ ...emptyProfile });
+                  setCourseView("recommended");
                   setStorageError("");
                   setCompared([]);
                   setDeleteOpen(false);

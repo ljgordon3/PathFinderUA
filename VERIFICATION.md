@@ -1,6 +1,6 @@
-# Milestone 1 setup, verification, and demonstration
+# Career roadmap setup, verification, and demonstration
 
-This guide is ready for a teammate to run on a second computer. An independent-machine run and teammate approval must be recorded separately before calling the Definition of Done complete. Use the commit under review; create the `milestone-1` tag after review and final verification.
+Use the branch or commit under review. Teammate approval and independent-machine verification must be recorded separately. The milestone-1 tag preserves the earlier semester-planning version; this guide describes the Milestone 2 roadmap revision.
 
 ## Setup from a fresh clone
 
@@ -20,6 +20,8 @@ On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r
 
 ## Automated verification
 
+Milestone 2 evidence: run `python scripts/verify.py` at the repository root. See [QA plan](docs/qa-plan.md) for scope/targets and evidence interpretation. For the security demonstration run `backend/.venv/Scripts/python.exe -m pytest -q backend/tests/test_security.py` on Windows, or `backend/.venv/bin/python -m pytest -q backend/tests/test_security.py` on macOS/Linux. The tests show excessive course lists rejected with 422, ordinary requests accepted, and CORS preflights allowed/rejected by origin. The initial failing security baseline is preserved separately. See [security evidence](docs/security-evidence.md).
+
 From `backend`, run `.venv\Scripts\python.exe -m pytest -q`. From the repository root, run:
 
 ```powershell
@@ -28,20 +30,25 @@ npm.cmd run build
 npm.cmd run test:e2e
 ```
 
-Playwright starts both the API and website. On macOS/Linux, use `.venv/bin/python` and `npm`. The browser tests cover setup, API requests, visible recommendation explanations, comparison, schedule warnings, persistence, export, deletion, mobile layout, and legacy profile handling.
+Playwright starts both the API and website. On macOS/Linux, use `.venv/bin/python` and `npm`. The browser tests cover setup, API requests, visible recommendation explanations, comparison, future-course saving and progress transitions, persistence, export, deletion, mobile layout, and legacy profile handling.
 
 ## Live working demonstration
 
 Open two terminals. In the first, run `cd backend` and `.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000`. In the second, from the root, run `npm.cmd run dev -- --port 5173`. Check <http://127.0.0.1:8000/health> for `{"status":"ok"}`, then open <http://127.0.0.1:5173>.
 
-1. Select **Find my starting point**, choose Software engineering, mark `CS 100` and `CS 101` complete, and set a 3-credit target. Save the profile.
-2. Show the recommendations' eligibility, degree relevance, career skills, learning objectives, later courses, and source notes.
-3. Add `CS 200` and `CS 201` to comparison and the semester. Show the comparison table and 8-credit total with a 5-credit-over-target warning.
-4. Export the plan, reload to show local persistence, change career interest to show reranking, then delete the profile.
-5. In the browser Network panel, show requests to `/api/courses`, `/api/careers`, `/api/eligibility`, `/api/recommendations`, `/api/courses/compare`, and `/api/schedule/summary`. API docs are at <http://127.0.0.1:8000/docs>.
+1. The app opens on **Explore courses**. The sidebar contains only **Explore courses**, **Career paths**, and **My roadmap**. The inline form appears immediately for new users. Choose Robotics, continue to completed courses, and select **Show my recommendations**. Returning users can use **Edit my preferences**.
+2. Inspect Strongly recommended, Worth considering, and Broaden your skills. CS 460 is Strongly recommended for Robotics, with missing CS 338, CS 301, and ECE 383 prerequisites shown independently of its tier.
+3. Save CS 460 despite unmet prerequisites. Open **My roadmap**, export the saved interest, reload, and verify persistence.
+4. Mark CS 338, CS 301, and ECE 383 completed. CS 460 stays Strongly recommended and now matches the modeled prerequisites. Mark CS 460 completed: it leaves saved interests and all recommendation tiers; its completed status remains visible in All courses.
+5. Compare courses, change career interests, and delete the profile. Inspect category labels and source limitations.
+6. Show requests to `/api/courses`, `/api/careers`, `/api/eligibility`, `/api/roadmap`, and `/api/courses/compare`. API docs: <http://127.0.0.1:8000/docs>.
 
-The 19-course set is a curated subset, not a degree audit. Math/general education prerequisites, grades, overrides, alternate paths outside the set, and availability are not checked. Confirm current requirements with UA.
+The 57-course set is a curated subset, not a degree audit. Math/general education prerequisites, grades, overrides, alternate paths outside the set, and availability are not checked. Confirm current requirements with UA.
 
 ## Independent verification record
 
 Second computer / verifier: **Pending**. Record the machine/OS, commit SHA, date, test results, demo result, and any issues in `docs/review-evidence.md` after the teammate performs the run. Do not mark that record complete based on this workspace's tests.
+
+## Required course and simplified-card check
+
+With any career selected, confirm that uncompleted required courses, including CS 403, CS 470, and CS 495, are in Strongly recommended even when their prerequisites are missing. Cards show career skills and an Eligibility line. Mark CS 201 complete: CS 338 should say to take CS 200, with CS 201 already completed. Mark CS 200 complete too: CS 338 should name CS 201 and CS 200 as the courses that unlocked it. The removed explanation headings do not appear on cards.

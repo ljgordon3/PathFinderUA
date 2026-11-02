@@ -1,27 +1,21 @@
 [
   {
-    "id": "CS121",
-    "title": "The Discipline of Computing",
-    "description": "Orientation to computing as a field of study for students considering a Computer Science major, a Cyber Security major, or a Computer Science minor.",
-    "credit_hours": 1,
-    "degree_category": "Core",
-    "learning_objectives": ["Describe career paths and subfields within computing", "Evaluate fit for a computing major or minor"],
-    "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 121-001, Fall 2023",
-    "prerequisites": []
-  },
-  {
     "id": "CS100",
-    "title": "Computer Science I",
-    "description": "First course in the CS-major programming sequence: variables, control flow, functions, and structured problem solving.",
+    "title": "CS I for Majors",
+    "description": "Introductory programming for CS majors covering basic values, variables, sequencing, functions, branching, loops, and recursion, along with testing, debugging, file-system navigation, and text editing.",
     "credit_hours": 4,
     "degree_category": "Core",
-    "learning_objectives": ["Write and debug structured programs", "Apply control structures and functions to solve problems"],
-    "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart (no syllabus provided for this course number in this project's reference set)",
-    "prerequisites": []
+    "learning_objectives": [
+      "Apply variables, functions, branching, iteration, and recursion in programs",
+      "Test and debug programs and work with files, directories, paths, and text editors"
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS100, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): UA Placement Mathematics 440 or UA ACT Subject Math Placement 565 or ACT Mathematics 30 or SAT Mathematics 680 or SAT Mathematics (New) 710 or (C- or higher in ( MATH 112 and MATH 113 ) or MATH 115 ) or (( MATH 125 or MATH 145 or MATH 126 or MATH 146 ) with Concurrency) Prerequisite(s) with concurrency: MATH 125 or MATH 145 or MATH 126 or MATH 146 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": true
   },
   {
     "id": "CS101",
@@ -29,11 +23,127 @@
     "description": "Second programming course for CS majors: object-oriented practices, fundamental data structures, computability, problem complexity, and efficient searching and sorting.",
     "credit_hours": 4,
     "degree_category": "Core",
-    "learning_objectives": ["Apply object-oriented programming practices", "Analyze algorithm complexity for searching and sorting"],
-    "skill_ids": ["SK-PROG-FUND", "SK-OOP"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 101-002, Spring 2024",
-    "prerequisites": [["CS100"]]
+    "learning_objectives": [
+      "Apply object-oriented programming practices",
+      "Analyze algorithm complexity for searching and sorting"
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND",
+      "SK-OOP"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS101, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): ( CS 100 or CS 110 ) and ( MATH 125 or MATH 145 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS100"
+      ],
+      [
+        "CS110"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "CS104",
+    "title": "Computer Science Principles",
+    "description": "Explore computing through Python projects, data, networks, and the social effects of technology.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply programming fundamentals to the course topics.",
+      "Apply computer networks to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND",
+      "SK-NETWORKS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS104, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s) with concurrency: MATH 112 or MATH 115 or MATH 125 or MATH 126 or MATH 145 or MATH 146 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": false
+  },
+  {
+    "id": "CS110",
+    "title": "Honors CS I for Majors",
+    "description": "Honors programming foundation covering program structure, recursive solutions, debugging, and file-based tools.",
+    "credit_hours": 4,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Apply programming fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS110, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): UA Placement Mathematics 440 or UA ACT Subject Math Placement 565 or ACT Mathematics 30 or SAT Mathematics 680 or SAT Mathematics (New) 710 or (C- or higher in ( MATH 112 and MATH 113 ) or MATH 115 ) or (( MATH 125 or MATH 145 or MATH 126 or MATH 146 ) with Concurrency) Prerequisite(s) with concurrency: MATH 125 or MATH 145 or MATH 126 or MATH 146 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": false
+  },
+  {
+    "id": "CS111",
+    "title": "Honors CSII for Majors",
+    "description": "Honors study of object-oriented programs, data organization, and algorithm efficiency.",
+    "credit_hours": 4,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Apply object-oriented design to the course topics.",
+      "Apply data structures to the course topics."
+    ],
+    "skill_ids": [
+      "SK-OOP",
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS111, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): ( CS 110 or CS 100 or RRS 102 ) and ( MATH 125 or MATH 145 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS100"
+      ],
+      [
+        "CS110"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS121",
+    "title": "The Discipline of Computing",
+    "description": "Historical course, not listed on the current CS catalog page. Introduces computing disciplines to students considering CS or Cyber Security majors or a CS minor.",
+    "credit_hours": 1,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Describe career paths and subfields within computing",
+      "Evaluate fit for a computing major or minor"
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "Fall 2024 (historical)",
+    "source": "UA Fall 2024 course record (reviewed 2026-10-30): https://ssb.ua.edu/pls/PROD/bwckctlg.p_disp_course_detail?cat_term_in=202440&crse_numb_in=121&subj_code_in=CS. Historical record: 1 credit. Math coursework/concurrency or placement requirements are not checked by this app.",
+    "prerequisites": [],
+    "is_required": false
+  },
+  {
+    "id": "CS140",
+    "title": "Introduction to Cyber Security",
+    "description": "Explore security threats and the technical and organizational defenses used to reduce them.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS140, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 100 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS100"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS200",
@@ -41,11 +151,26 @@
     "description": "Software engineering practice across the program life cycle: systems analysis, software modeling, design theory and practice, testing methodology, team organization, and verification.",
     "credit_hours": 4,
     "degree_category": "Core",
-    "learning_objectives": ["Apply software design and modeling techniques", "Practice team-based development and testing methodology"],
-    "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 200-001, Fall 2024",
-    "prerequisites": [["CS101"]]
+    "learning_objectives": [
+      "Apply software design and modeling techniques",
+      "Practice team-based development and testing methodology"
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK",
+      "SK-TESTING"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS200, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 101 or CS 111 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS101"
+      ],
+      [
+        "CS111"
+      ]
+    ],
+    "is_required": true
   },
   {
     "id": "CS201",
@@ -53,11 +178,25 @@
     "description": "Data structures including balanced search trees, heaps, hash tables, and graphs, plus algorithm design techniques such as divide-and-conquer, greedy methods, and dynamic programming.",
     "credit_hours": 4,
     "degree_category": "Core",
-    "learning_objectives": ["Select and implement appropriate data structures", "Apply core algorithm design techniques and analyze their complexity"],
-    "skill_ids": ["SK-DATA-STRUCT", "SK-ALGO"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 201-001, Spring 2025",
-    "prerequisites": [["CS101"]]
+    "learning_objectives": [
+      "Select and implement appropriate data structures",
+      "Apply core algorithm design techniques and analyze their complexity"
+    ],
+    "skill_ids": [
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS201, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (( CS 101 or CS 111 ), MATH 301 , ( UA 101 or UA 201 ) and (( ENGR 101 and ENGR 104 ) or AS 110 or AS 310 )) or (( CS 101 or CS 111 ), MATH 301 , and ( ENGR 103 or ENGR 123 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS101"
+      ],
+      [
+        "CS111"
+      ]
+    ],
+    "is_required": true
   },
   {
     "id": "CS202",
@@ -65,11 +204,17 @@
     "description": "Fundamentals of the internet and web page design and development, including HTML, hyperlinks, tables, basic CSS styling, frames, and forms.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Build web pages using HTML and CSS", "Apply basic client-side web development techniques"],
-    "skill_ids": ["SK-WEB"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 202-910, Fall 2023",
-    "prerequisites": []
+    "learning_objectives": [
+      "Build web pages using HTML and CSS",
+      "Apply basic client-side web development techniques"
+    ],
+    "skill_ids": [
+      "SK-WEB"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS202, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. No prerequisites listed. Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": false
   },
   {
     "id": "CS223",
@@ -77,47 +222,91 @@
     "description": "Introduction to programming and problem solving using Python.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Write Python programs to solve structured problems", "Apply general problem-solving strategies in a high-level language"],
-    "skill_ids": ["SK-PROG-FUND"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 223-910, Fall 2024",
-    "prerequisites": []
+    "learning_objectives": [
+      "Write Python programs to solve structured problems",
+      "Apply general problem-solving strategies in a high-level language"
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS223, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): MATH 112 or currently enrolled in MATH 113 or MATH 115 or higher Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": false
   },
   {
-    "id": "ECE380",
-    "title": "Digital Logic",
-    "description": "Number systems, Boolean algebra, logic functions and gates, design of combinational logic systems, flip-flops, and design of synchronous sequential systems, with laboratory experiments.",
-    "credit_hours": 4,
-    "degree_category": "Core",
-    "learning_objectives": ["Design combinational and sequential logic circuits", "Apply Boolean algebra to digital circuit design"],
-    "skill_ids": ["SK-DIGITAL-LOGIC"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: ECE 380-001, Fall 2024",
-    "prerequisites": [["CS100"]]
-  },
-  {
-    "id": "ECE383",
-    "title": "Microcomputers",
-    "description": "Microprocessors, microcontrollers, assembly-language programming, interrupts, polling, and hardware interfaces, with laboratory experiments.",
-    "credit_hours": 4,
-    "degree_category": "Core",
-    "learning_objectives": ["Write assembly-language programs for a microcontroller", "Interface software with hardware peripherals via interrupts and polling"],
-    "skill_ids": ["SK-EMBEDDED"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: ECE 383-001, Fall 2025",
-    "prerequisites": [["ECE380"]]
-  },
-  {
-    "id": "CS300",
-    "title": "Operating Systems",
-    "description": "Core operating-system concepts, including process management, memory management, concurrency, and file systems.",
+    "id": "CS240",
+    "title": "Hands-On Cyber Security",
+    "description": "Practice security investigation and defensive techniques through capture-the-flag exercises.",
     "credit_hours": 3,
-    "degree_category": "Core",
-    "learning_objectives": ["Explain process and memory management strategies", "Reason about concurrency and synchronization in an OS"],
-    "skill_ids": ["SK-OS"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart (no syllabus provided for this course number in this project's reference set)",
-    "prerequisites": [["CS201"]]
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply computer networks to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS240, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 140 and CS 101 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS140",
+        "CS101"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS247",
+    "title": "Cyber Law and Ethics",
+    "description": "Examine legal and ethical decisions involving digital systems, privacy, and social responsibility.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS247, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 100 or CS 110 or CS 223 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS100"
+      ],
+      [
+        "CS110"
+      ],
+      [
+        "CS223"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS265",
+    "title": "Introduction to AI and Data Science",
+    "description": "Build introductory AI and data projects while considering responsible use and practical resource costs.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply probability & statistics to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS265, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 101 , GES 255 , and MATH 126 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS101"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS301",
@@ -125,11 +314,161 @@
     "description": "Constituent parts of database management: design, creation, and manipulation of databases, including conceptual and relational data models, SQL, normalization, and security.",
     "credit_hours": 3,
     "degree_category": "Core",
-    "learning_objectives": ["Design a normalized relational schema", "Write SQL for common data manipulation and query tasks"],
-    "skill_ids": ["SK-DB"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 301-002, Fall 2025",
-    "prerequisites": [["CS201", "CS200"]]
+    "learning_objectives": [
+      "Design a normalized relational schema",
+      "Write SQL for common data manipulation and query tasks"
+    ],
+    "skill_ids": [
+      "SK-DB"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS301, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 201 and ( CS 200 or MATH 355 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS201",
+        "CS200"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "CS323",
+    "title": "Intermediate Python Programming",
+    "description": "Extend Python programming skills through increasingly complex software and problem-solving tasks.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply programming fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS323, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 223 or CS 100 or by permission of instructor Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS223"
+      ],
+      [
+        "CS100"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS330",
+    "title": "Full-Stack Development",
+    "description": "Build applications across the web stack using established frameworks and software design practices.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply web application development to the course topics.",
+      "Apply software system design to the course topics."
+    ],
+    "skill_ids": [
+      "SK-WEB",
+      "SK-SYS-DESIGN"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS330, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s) with concurrency: CS 301 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Concurrent CS 301 is allowed by the catalog; this app conservatively requires it to be marked completed. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS301"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS338",
+    "title": "Networking and Operating Systems",
+    "description": "Develop system and network programs while studying OS services, process communication, and basic security.",
+    "credit_hours": 3,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Apply operating systems concepts to the course topics.",
+      "Apply computer networks to the course topics."
+    ],
+    "skill_ids": [
+      "SK-OS",
+      "SK-NETWORKS",
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS338, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 201 and ( CS 200 or CS 240 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS201",
+        "CS200"
+      ],
+      [
+        "CS201",
+        "CS240"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "CS340",
+    "title": "Legal & Ethical Issues in Comp",
+    "description": "Analyze computing cases involving privacy, expression, ownership, security, and professional responsibility.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS340, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. No prerequisites listed. Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [],
+    "is_required": false
+  },
+  {
+    "id": "CS345",
+    "title": "Adv. Legal & Ethical Issues",
+    "description": "Investigate advanced technology ethics cases and communicate a researched position through a project.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply team-based software development to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-TEAMWORK"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS345, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 340 with a grade of C- or higher Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS340"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS393",
+    "title": "Software Practicum",
+    "description": "Develop software for an enterprise through a project tailored to individual student needs.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply software system design to the course topics.",
+      "Apply team-based software development to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS393, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s) with concurrency: CS 301 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Concurrent CS 301 is allowed by the catalog; this app conservatively requires it to be marked completed. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS301"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS403",
@@ -137,11 +476,68 @@
     "description": "Formal study of programming language specification, analysis, implementation, and run-time support structures, including language constructs and non-procedural programming paradigms.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Compare programming paradigms and language design choices", "Analyze run-time support structures for a language implementation"],
-    "skill_ids": ["SK-PL-DESIGN", "SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 403-001, Fall 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Compare programming paradigms and language design choices",
+      "Analyze run-time support structures for a language implementation"
+    ],
+    "skill_ids": [
+      "SK-PL-DESIGN",
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS403, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "CS404",
+    "title": "CS Curriculum for Math Educators",
+    "description": "Examine secondary-school computing instruction and develop resources for CS Principles education.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply programming fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS404, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 104 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS104"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS407",
+    "title": "Software Interface Desgn",
+    "description": "Design and evaluate user interfaces using human-computer interaction principles.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply human-computer interaction to the course topics."
+    ],
+    "skill_ids": [
+      "SK-HCI"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS407, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS415",
@@ -149,11 +545,433 @@
     "description": "Modern software engineering practice for reliable, maintainable systems: requirements analysis, software architecture and design patterns, agile methodology, version control workflows, automated testing, and CI/CD. Teams design, implement, test, and deploy a medium-scale software project.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Apply agile methodology and design patterns to a team software project", "Build and operate a CI/CD workflow for a deployed application"],
-    "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 415-001, Fall 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Apply agile methodology and design patterns to a team software project",
+      "Build and operate a CI/CD workflow for a deployed application"
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK",
+      "SK-TESTING"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS415, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS416",
+    "title": "Testing and Quality Assurance",
+    "description": "Apply software analysis, validation, and quality practices to evaluate system behavior.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply software testing to the course topics."
+    ],
+    "skill_ids": [
+      "SK-TESTING"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS416, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS417",
+    "title": "Requirements Engineering",
+    "description": "Develop and assess software requirements through elicitation, analysis, documentation, and management.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply software system design to the course topics.",
+      "Apply team-based software development to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS417, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS420",
+    "title": "Software Evolution",
+    "description": "Study how software systems change through maintenance, refactoring, modeling, and adaptation.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply software system design to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS420, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS423",
+    "title": "Python for Big Data",
+    "description": "Process large datasets with Python-based distributed and parallel computing tools.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply parallel & high-performance computing to the course topics.",
+      "Apply probability & statistics to the course topics."
+    ],
+    "skill_ids": [
+      "SK-HPC",
+      "SK-STATS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS423, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS428",
+    "title": "Computer Security",
+    "description": "Evaluate system defenses, authentication, access control, malicious software, and security weaknesses.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply operating systems concepts to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-OS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS428, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 140 and (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383",
+        "CS140"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS434",
+    "title": "Compiler Construction",
+    "description": "Construct language translation software using formal syntax, meaning, and compiler implementation techniques.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply programming language design to the course topics.",
+      "Apply theory of computation to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PL-DESIGN",
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS434, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS435",
+    "title": "Computer Graphics",
+    "description": "Implement interactive 3D graphics through geometry, viewing, lighting, and rendering techniques.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply algorithm design & analysis to the course topics.",
+      "Apply computer vision / perception to the course topics."
+    ],
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-PERCEPTION"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS435, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS438",
+    "title": "Computer Comm & Networks",
+    "description": "Analyze network protocols, routing, congestion, and communication behavior while building network programs.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply computer networks to the course topics."
+    ],
+    "skill_ids": [
+      "SK-NETWORKS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS438, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS442",
+    "title": "Cryptography",
+    "description": "Study encryption, hashing, authentication, and key management for protecting digital information.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply theory of computation to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS442, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS443",
+    "title": "Digital Forensics",
+    "description": "Investigate digital evidence and apply methods for examining computer-related incidents.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS443, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 428 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS428"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS444",
+    "title": "Software Security",
+    "description": "Design software defenses against vulnerabilities using secure architecture and programming practices.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply software system design to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-SYS-DESIGN"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS444, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 428 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS428"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS445",
+    "title": "Software Reverse Engineering",
+    "description": "Analyze software implementations and behavior through reverse-engineering methods.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply programming language design to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-PL-DESIGN"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS445, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 428 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS428"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS448",
+    "title": "Network Security",
+    "description": "Analyze attacks and defenses affecting communication networks and their protocols.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply security fundamentals to the course topics.",
+      "Apply computer networks to the course topics."
+    ],
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS448, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 438 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS438"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS451",
+    "title": "Data Science",
+    "description": "Prepare, explore, and model diverse datasets using statistical and machine-learning approaches.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply probability & statistics to the course topics.",
+      "Apply ai / machine learning foundations to the course topics."
+    ],
+    "skill_ids": [
+      "SK-STATS",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS451, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) and ( MATH 355 or GES 255 ) and MATH 237 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS452",
+    "title": "Information Retrieval",
+    "description": "Build search and retrieval systems using indexing, classification, and document analysis.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply algorithm design & analysis to the course topics.",
+      "Apply ai / machine learning foundations to the course topics."
+    ],
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS452, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS455",
+    "title": "Social Media Data Analytics",
+    "description": "Acquire and analyze social-platform data while examining challenges of large, changing datasets.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply probability & statistics to the course topics.",
+      "Apply ai / machine learning foundations to the course topics."
+    ],
+    "skill_ids": [
+      "SK-STATS",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS455, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS456",
+    "title": "AI for Cyber Security",
+    "description": "Apply AI methods to security datasets and examine attacks against machine-learning systems.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply security fundamentals to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-SECURITY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS456, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 465 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS465"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS460",
@@ -161,11 +979,24 @@
     "description": "Implementation of robot control software, including motion, kinematics, simulation testing, sensor incorporation, and unmodeled factors.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Implement basic robot motion and kinematics control", "Incorporate sensor data into robot control software"],
-    "skill_ids": ["SK-ROBOTICS", "SK-PERCEPTION"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 460-001, Fall 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Implement basic robot motion and kinematics control",
+      "Incorporate sensor data into robot control software"
+    ],
+    "skill_ids": [
+      "SK-ROBOTICS",
+      "SK-PERCEPTION"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS460, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS461",
@@ -173,11 +1004,124 @@
     "description": "New forms of human-computer interaction based on passive measurement of neurophysiological states, including cognitive workload and affective engagement.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Explain approaches to passive neurophysiological measurement", "Connect physiological signal data to human-computer interaction design"],
-    "skill_ids": ["SK-HCI", "SK-AI-ML"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 461-001, Spring 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Explain approaches to passive neurophysiological measurement",
+      "Connect physiological signal data to human-computer interaction design"
+    ],
+    "skill_ids": [
+      "SK-HCI",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS461, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): ((CS 300 or CS 338 ) and CS 301 and ECE 383 ) or permission of instructor for non-CS majors Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS463",
+    "title": "Computer Vision",
+    "description": "Develop visual interpretation methods using camera geometry, reconstruction, and recognition techniques.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply computer vision / perception to the course topics.",
+      "Apply ai / machine learning foundations to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS463, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS464",
+    "title": "Digital Image Processing",
+    "description": "Transform and analyze digital images through filtering, segmentation, recognition, and learning-based methods.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply computer vision / perception to the course topics.",
+      "Apply ai / machine learning foundations to the course topics."
+    ],
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS464, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 338 and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS465",
+    "title": "Artificial Intelligence",
+    "description": "Develop AI problem-solving approaches using knowledge models, planning, and machine learning.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply algorithm design & analysis to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ALGO"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS465, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS466",
+    "title": "AI Computation and Theory",
+    "description": "Connect mathematical foundations with the design and analysis of AI algorithms.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply probability & statistics to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS466, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and (CS 300 or CS 338 ) and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS470",
@@ -185,23 +1129,73 @@
     "description": "Construction of efficient algorithms for computer implementation.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Design and analyze efficient algorithms", "Select an algorithmic strategy appropriate to a problem's constraints"],
-    "skill_ids": ["SK-ALGO", "SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 470-001, Spring 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Design and analyze efficient algorithms",
+      "Select an algorithmic strategy appropriate to a problem's constraints"
+    ],
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS470, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": true
   },
   {
     "id": "CS475",
-    "title": "Theory of Computing",
-    "description": "Theoretical foundations of computing, offered as an alternative to CS 470 in the curriculum's Theory requirement.",
+    "title": "Formal Languages & Machines",
+    "description": "Study of formal language classes and their computational models, from regular expressions and finite-state automata to context-free grammars, stack-based automata, Turing machines, and the Chomsky hierarchy.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Reason about computability and formal models of computation", "Apply theoretical models to analyze algorithm limits"],
-    "skill_ids": ["SK-THEORY"],
-    "catalog_year": "2021-24",
-    "source": "UA 2021-24 Computer Science Curriculum flowchart, listed as an alternative to CS 470 (no syllabus provided for this course number in this project's reference set)",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Relate regular and context-free languages to finite-state and pushdown automata",
+      "Explain Turing machines, recursively enumerable languages, and the Chomsky hierarchy"
+    ],
+    "skill_ids": [
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS475, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS480",
+    "title": "Computer Simulation",
+    "description": "Design simulation models, generate random inputs, and interpret experimental results.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply probability & statistics to the course topics.",
+      "Apply algorithm design & analysis to the course topics."
+    ],
+    "skill_ids": [
+      "SK-STATS",
+      "SK-ALGO"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS480, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): (CS 300 or CS 338 ) and CS 301 and ECE 383 Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS481",
@@ -209,11 +1203,74 @@
     "description": "Fundamental concepts of high performance computing, including optimizing sequential programs for modern memory hierarchies, parallel algorithm design, developing parallel programs with MPI, and analyzing parallel program performance.",
     "credit_hours": 3,
     "degree_category": "Elective",
-    "learning_objectives": ["Design a parallel algorithm for a computational problem", "Analyze the performance of a parallel program"],
-    "skill_ids": ["SK-HPC", "SK-ALGO"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 481-001, Spring 2026",
-    "prerequisites": [["CS300", "CS301", "ECE383"]]
+    "learning_objectives": [
+      "Design a parallel algorithm for a computational problem",
+      "Analyze the performance of a parallel program"
+    ],
+    "skill_ids": [
+      "SK-HPC",
+      "SK-ALGO"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS481, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): ((CS 300 or CS 338 ) and CS 301 and ECE 383 ) or permission of instructor. Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS483",
+    "title": "Computational Foundations of Machine Learning",
+    "description": "Study learning algorithms and theory across supervised, unsupervised, deep, and reinforcement learning.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply theory of computation to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-THEORY"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS483, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) and ( MATH 355 or GES 255 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
+  },
+  {
+    "id": "CS484",
+    "title": "Reinforcement Learning",
+    "description": "Develop agents that learn decisions through interaction, rewards, and sequential feedback.",
+    "credit_hours": 3,
+    "degree_category": "Elective",
+    "learning_objectives": [
+      "Apply ai / machine learning foundations to the course topics.",
+      "Apply robotics & autonomous systems to the course topics."
+    ],
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ROBOTICS"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS484, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): CS 301 and ( MATH 359 or ((CS 300 or CS 338 ) and ECE 383 )) and ( GES 255 or MATH 355 ) Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
+    "prerequisites": [
+      [
+        "CS338",
+        "CS301",
+        "ECE383"
+      ]
+    ],
+    "is_required": false
   },
   {
     "id": "CS495",
@@ -221,13 +1278,242 @@
     "description": "Culminating capstone project course integrating skills and abilities from across the curriculum into a comprehensive design and development experience for computer science majors.",
     "credit_hours": 3,
     "degree_category": "Capstone",
-    "learning_objectives": ["Integrate prior coursework into a comprehensive software project", "Communicate a completed project's design and development process in writing"],
-    "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"],
-    "catalog_year": "2021-24",
-    "source": "UA Computer Science syllabus: CS 495-001, Fall 2026",
+    "learning_objectives": [
+      "Integrate prior coursework into a comprehensive software project",
+      "Communicate a completed project's design and development process in writing"
+    ],
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK",
+      "SK-TESTING"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-11-01)",
+    "source": "UA undergraduate CS course catalog, CS495, reviewed 2026-11-01: https://catalog.ua.edu/undergraduate/engineering/computer-science/courses/. Prerequisite(s): ( CS 403 or CS 470 ) and ( CS 407 or CS 416 or CS 420 or CS 428 or CS 435 or CS 438 or CS 442 or CS443 or CS 444 or CS 445 or CS 448 or CS 451 or CS 452 or CS 455 or CS 460 or CS 461 or CS 465 or CS 475 or CS 480 or CS 481 or CS 483 or CS 484 ) with grade of C- or higher Modeled rules cover CS/ECE course paths only; grades, math, placement, instructor permission, and other non-CS conditions are not checked. Summaries, objectives, and career links are project interpretations.",
     "prerequisites": [
-      ["CS403", "CS460"], ["CS403", "CS461"], ["CS403", "CS475"], ["CS403", "CS481"],
-      ["CS470", "CS460"], ["CS470", "CS461"], ["CS470", "CS475"], ["CS470", "CS481"]
-    ]
+      [
+        "CS403",
+        "CS407"
+      ],
+      [
+        "CS403",
+        "CS416"
+      ],
+      [
+        "CS403",
+        "CS420"
+      ],
+      [
+        "CS403",
+        "CS428"
+      ],
+      [
+        "CS403",
+        "CS435"
+      ],
+      [
+        "CS403",
+        "CS438"
+      ],
+      [
+        "CS403",
+        "CS442"
+      ],
+      [
+        "CS403",
+        "CS443"
+      ],
+      [
+        "CS403",
+        "CS444"
+      ],
+      [
+        "CS403",
+        "CS445"
+      ],
+      [
+        "CS403",
+        "CS448"
+      ],
+      [
+        "CS403",
+        "CS451"
+      ],
+      [
+        "CS403",
+        "CS452"
+      ],
+      [
+        "CS403",
+        "CS455"
+      ],
+      [
+        "CS403",
+        "CS460"
+      ],
+      [
+        "CS403",
+        "CS461"
+      ],
+      [
+        "CS403",
+        "CS465"
+      ],
+      [
+        "CS403",
+        "CS475"
+      ],
+      [
+        "CS403",
+        "CS480"
+      ],
+      [
+        "CS403",
+        "CS481"
+      ],
+      [
+        "CS403",
+        "CS483"
+      ],
+      [
+        "CS403",
+        "CS484"
+      ],
+      [
+        "CS470",
+        "CS407"
+      ],
+      [
+        "CS470",
+        "CS416"
+      ],
+      [
+        "CS470",
+        "CS420"
+      ],
+      [
+        "CS470",
+        "CS428"
+      ],
+      [
+        "CS470",
+        "CS435"
+      ],
+      [
+        "CS470",
+        "CS438"
+      ],
+      [
+        "CS470",
+        "CS442"
+      ],
+      [
+        "CS470",
+        "CS443"
+      ],
+      [
+        "CS470",
+        "CS444"
+      ],
+      [
+        "CS470",
+        "CS445"
+      ],
+      [
+        "CS470",
+        "CS448"
+      ],
+      [
+        "CS470",
+        "CS451"
+      ],
+      [
+        "CS470",
+        "CS452"
+      ],
+      [
+        "CS470",
+        "CS455"
+      ],
+      [
+        "CS470",
+        "CS460"
+      ],
+      [
+        "CS470",
+        "CS461"
+      ],
+      [
+        "CS470",
+        "CS465"
+      ],
+      [
+        "CS470",
+        "CS475"
+      ],
+      [
+        "CS470",
+        "CS480"
+      ],
+      [
+        "CS470",
+        "CS481"
+      ],
+      [
+        "CS470",
+        "CS483"
+      ],
+      [
+        "CS470",
+        "CS484"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "ECE380",
+    "title": "Digital Logic",
+    "description": "Number systems, Boolean algebra, logic functions and gates, design of combinational logic systems, flip-flops, and design of synchronous sequential systems, with laboratory experiments.",
+    "credit_hours": 4,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Design combinational and sequential logic circuits",
+      "Apply Boolean algebra to digital circuit design"
+    ],
+    "skill_ids": [
+      "SK-DIGITAL-LOGIC"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate ECE course catalog, ECE380 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/electrical-computer/courses/. Catalog prerequisites: (ENGR 104, ENGR 103, ENGR 123, or MUS 308) and (CS 100 or CS 110). Both CS 100 and CS 110 paths are modeled; the introductory-course requirement is not checked (updated 2026-11-01). Learning objectives are project summaries, not official catalog outcomes.",
+    "prerequisites": [
+      [
+        "CS100"
+      ],
+      [
+        "CS110"
+      ]
+    ],
+    "is_required": true
+  },
+  {
+    "id": "ECE383",
+    "title": "Microcomputers",
+    "description": "Microprocessors, microcontrollers, assembly-language programming, interrupts, polling, and hardware interfaces, with laboratory experiments.",
+    "credit_hours": 4,
+    "degree_category": "Core",
+    "learning_objectives": [
+      "Write assembly-language programs for a microcontroller",
+      "Interface software with hardware peripherals via interrupts and polling"
+    ],
+    "skill_ids": [
+      "SK-EMBEDDED"
+    ],
+    "catalog_year": "2026-27 (reviewed 2026-10-30)",
+    "source": "UA undergraduate ECE course catalog, ECE383 (reviewed 2026-10-30): https://catalog.ua.edu/undergraduate/engineering/electrical-computer/courses/. Catalog prerequisite: ECE 380. Learning objectives are project summaries, not official catalog outcomes.",
+    "prerequisites": [
+      [
+        "ECE380"
+      ]
+    ],
+    "is_required": true
   }
 ]

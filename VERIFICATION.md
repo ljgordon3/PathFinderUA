@@ -18,7 +18,9 @@ npm.cmd install
 
 On macOS/Linux, use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, and `npm install`. No `.env` file or database is needed with the default settings.
 
-On Windows with Cygwin or Git Bash, follow the "Windows with Cygwin or Git Bash" steps in the [README](README.md) (full path to the Windows `python.exe`, `.venv/Scripts/python.exe` for backend commands). Run `npm install` from the repository root before `npm run dev`, `npm test`, or `npm run test:e2e`; skipping it causes `Cannot find package '@vitejs/plugin-react'`.
+On Windows, follow the "Windows with Cygwin" or "Windows with Git Bash" steps in the [README](README.md). The two shells use different paths to the same Python: `/cygdrive/c/...` in Cygwin and `/c/...` in Git Bash. Use `.venv/Scripts/python.exe` for backend commands in both. Run `npm install` from the repository root before `npm run dev`, `npm test`, or `npm run test:e2e`; skipping it causes `Cannot find package '@vitejs/plugin-react'`.
+
+On a fresh machine, also install the browser used by the end-to-end tests once: `npx playwright install chromium`.
 
 ## Automated verification
 
@@ -35,6 +37,8 @@ npm.cmd run test:e2e
 Playwright starts both the API and website. On macOS/Linux, use `.venv/bin/python` and `npm`. The browser tests cover setup, API requests, visible recommendation explanations, comparison, future-course saving and progress transitions, persistence, export, deletion, mobile layout, and legacy profile handling.
 
 ## Live working demonstration
+
+Recorded walkthrough: https://drive.google.com/file/d/1qFKDaulPsH8DVgPciqOcNboeZi2AhEyM/view?usp=drive_link
 
 Open two terminals. In the first, run `cd backend` and `.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000`. In the second, from the root, run `npm.cmd run dev -- --port 5173`. Check <http://127.0.0.1:8000/health> for `{"status":"ok"}`, then open <http://127.0.0.1:5173>.
 

@@ -33,10 +33,10 @@ export function parseProfile(raw: string | null): Profile {
     Array.isArray(input)
       ? [
           ...new Set(
-            input.filter(
-              (id): id is string =>
-                typeof id === "string" && courses.some((c) => c.id === id),
-            ),
+            input
+              .filter((id): id is string => typeof id === "string")
+              .map((id) => (id === "CS 300" ? "CS 338" : id))
+              .filter((id) => courses.some((c) => c.id === id)),
           ),
         ]
       : [];
@@ -48,22 +48,8 @@ export function parseProfile(raw: string | null): Profile {
       p.career === "software" || p.career === "data" || p.career === "robotics"
         ? p.career
         : null,
-    creditTarget:
-      typeof p.creditTarget === "number" &&
-      Number.isInteger(p.creditTarget) &&
-      p.creditTarget >= 1 &&
-      p.creditTarget <= 21
-        ? p.creditTarget
-        : 12,
-    workload: p.workload === "lighter" ? "lighter" : "balanced",
-    schedule: ids(p.schedule).filter(
-      (id) =>
-        !completed.includes(id) &&
-        isEligible(
-          courses.find((c) => c.id === id)!,
-          completed,
-        ),
-    ),
+    // Preserve saved semester selections as roadmap interests, including future courses.
+    saved: ids(p.saved ?? p.schedule).filter((id) => !completed.includes(id)),
     setupComplete: p.setupComplete === true,
   };
 }

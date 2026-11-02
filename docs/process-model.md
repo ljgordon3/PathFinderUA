@@ -19,6 +19,12 @@ mapping quality). We use a lightweight Scrum-inspired process:
   requests linked to an issue; at least one teammate reviews nontrivial
   changes before merge.
 
+## Branch and commit conventions
+
+Use short-lived `fix/<description>`, `feat/<description>`, or `docs/<description>` branches. Keep milestone tags as immutable snapshots rather than working branches. Stacked PRs may target their prerequisite branch until it merges; then retarget to main and rerun checks. Do not merge another author's unreviewed work merely to prepare a milestone.
+
+Use concise imperative commit subjects describing one coherent change, such as `Bound course request inputs and add security regression tests`. Include the reason and validation in the PR; record known failures rather than marking incomplete checks passed. Avoid secrets, generated dependency folders, and unrelated edits. Generated evidence archives are an intentional exception for the milestone submission.
+
 ## Why Agile/Scrum rather than a plan-driven (Waterfall) model
 
 | Factor | Why it favors Agile here |

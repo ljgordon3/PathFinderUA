@@ -6,3 +6,6 @@ dist/
 !.env.example
 playwright-report/
 test-results/
+coverage/
+.coverage
+backend/.coverage

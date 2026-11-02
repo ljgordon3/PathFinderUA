@@ -1,0 +1,29 @@
+
+> pathfinder-ua@0.1.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v4.1.12 C:/Users/jylen/Desktop/PathFinderUA
+      Coverage enabled with v8
+
+
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+   Start at  20:13:06
+   Duration  587ms (transform 214ms, setup 0ms, import 319ms, tests 76ms, environment 0ms)
+
+ % Coverage report from v8
+-------------|---------|----------|---------|---------|-------------------
+File         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------|---------|----------|---------|---------|-------------------
+All files    |   95.89 |    92.45 |     100 |   98.36 |
+ data.ts     |     100 |    91.66 |     100 |     100 | 92
+ planning.ts |      88 |    86.95 |     100 |   95.23 | 30
+-------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 95.89% ( 70/73 )
+Branches     : 92.45% ( 49/53 )
+Functions    : 100% ( 34/34 )
+Lines        : 98.36% ( 60/61 )
+================================================================================

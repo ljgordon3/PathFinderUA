@@ -5,8 +5,13 @@ These models are the source of truth for FastAPI's request validation
 and the auto-generated OpenAPI docs (see docs/api-contract.md for the
 human-readable version of the same contract).
 """
-from typing import List, Optional
+from typing import Annotated, List, Optional
 from pydantic import BaseModel, Field
+
+# Cap repeated work and identifier size before prerequisite/scoring loops run.
+# 200 entries leaves room for catalog growth beyond the current 57 records.
+CourseId = Annotated[str, Field(min_length=1, max_length=32)]
+CourseIds = Annotated[List[CourseId], Field(max_length=200)]
 
 
 class Course(BaseModel):
@@ -15,6 +20,7 @@ class Course(BaseModel):
     description: str
     credit_hours: int
     degree_category: str
+    is_required: bool = False
     learning_objectives: List[str]
     skill_ids: List[str]
     catalog_year: str
@@ -38,12 +44,13 @@ class Career(BaseModel):
 
 
 class EligibilityRequest(BaseModel):
-    completed_course_ids: List[str] = Field(default_factory=list)
+    completed_course_ids: CourseIds = Field(default_factory=list)
 
 
 class EligibilityResult(BaseModel):
     course_id: str
     eligible: bool
+    matched_prerequisites: List[str] = Field(default_factory=list)
     missing_prerequisites: List[str] = Field(
         default_factory=list,
         description="The smallest unmet AND-group of prerequisite course IDs, if any.",
@@ -51,7 +58,7 @@ class EligibilityResult(BaseModel):
 
 
 class RecommendationRequest(BaseModel):
-    completed_course_ids: List[str] = Field(default_factory=list)
+    completed_course_ids: CourseIds = Field(default_factory=list)
     career_id: str
     target_credit_hours: int = Field(gt=0, le=21)
     workload_preference: str = Field(
@@ -60,6 +67,7 @@ class RecommendationRequest(BaseModel):
 
 
 class RecommendationExplanation(BaseModel):
+    career_reason: str = ""
     degree_relevance: str
     unlocks_course_ids: List[str]
     learning_objectives: List[str]
@@ -79,12 +87,30 @@ class RecommendationResponse(BaseModel):
     recommendations: List[RecommendationItem]
 
 
+class RoadmapRequest(BaseModel):
+    completed_course_ids: CourseIds = Field(default_factory=list)
+    career_id: str
+
+
+class RoadmapItem(RecommendationItem):
+    missing_prerequisites: List[str] = Field(default_factory=list)
+    matched_prerequisites: List[str] = Field(default_factory=list)
+    priority_reason: str
+
+
+class RoadmapResponse(BaseModel):
+    career_id: str
+    strongly_recommended: List[RoadmapItem]
+    worth_considering: List[RoadmapItem]
+    broaden_skills: List[RoadmapItem]
+
+
 class CompareRequest(BaseModel):
-    course_ids: List[str] = Field(min_length=1, max_length=3)
+    course_ids: List[CourseId] = Field(min_length=1, max_length=3)
 
 
 class ScheduleRequest(BaseModel):
-    course_ids: List[str] = Field(default_factory=list)
+    course_ids: CourseIds = Field(default_factory=list)
     target_credit_hours: int = Field(gt=0, le=21)
     career_id: Optional[str] = None
 

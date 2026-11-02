@@ -1,34 +1,1281 @@
 [
-  {"course_id": "CS100", "career_id": "CAR-SWE", "relevance": 2, "skill_ids": ["SK-PROG-FUND"], "explanation": "Builds the programming fundamentals every later software engineering course depends on.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS101", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-OOP"], "explanation": "Object-oriented practices introduced here are used throughout professional software engineering.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS200", "career_id": "CAR-SWE", "relevance": 5, "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"], "explanation": "Directly covers software design, team organization, and testing methodology central to the software engineering role.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS201", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-DATA-STRUCT", "SK-ALGO"], "explanation": "Data structures and algorithm design are core daily tools for software engineers.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS202", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-WEB"], "explanation": "Web development is one of the most common software engineering specializations.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS300", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-OS"], "explanation": "Operating system concepts help engineers reason about performance and concurrency in production systems.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS301", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-DB"], "explanation": "Most production software engineering work involves designing and querying relational data.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS403", "career_id": "CAR-SWE", "relevance": 4, "skill_ids": ["SK-PL-DESIGN"], "explanation": "Understanding language design and run-time structures deepens an engineer's grasp of the tools they use daily.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS415", "career_id": "CAR-SWE", "relevance": 5, "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK", "SK-TESTING"], "explanation": "Directly builds the agile, CI/CD, and team software delivery practice central to the software engineering role.", "sources": ["O*NET 15-1252.00"]},
-  {"course_id": "CS495", "career_id": "CAR-SWE", "relevance": 3, "skill_ids": ["SK-SYS-DESIGN", "SK-TEAMWORK"], "explanation": "The capstone project mirrors end-to-end software delivery expected of a working software engineer.", "sources": ["O*NET 15-1252.00"]},
-
-  {"course_id": "CS100", "career_id": "CAR-DS-AI", "relevance": 2, "skill_ids": ["SK-PROG-FUND"], "explanation": "Programming fundamentals are a prerequisite skill for any data science or AI work.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS101", "career_id": "CAR-DS-AI", "relevance": 2, "skill_ids": ["SK-OOP"], "explanation": "Object-oriented practice supports building larger data pipelines and tooling.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS201", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-DATA-STRUCT", "SK-ALGO"], "explanation": "Efficient data structures and algorithmic thinking matter when processing large datasets.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS223", "career_id": "CAR-DS-AI", "relevance": 4, "skill_ids": ["SK-PROG-FUND"], "explanation": "Python is the most widely used language for data science and machine learning tooling.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS301", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-DB"], "explanation": "Data scientists regularly retrieve and shape data stored in relational databases.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS461", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-AI-ML"], "explanation": "Passive neurophysiological signal analysis applies machine learning techniques to real sensor data.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS470", "career_id": "CAR-DS-AI", "relevance": 4, "skill_ids": ["SK-ALGO", "SK-THEORY"], "explanation": "Algorithm design and analysis underlie the efficiency of model training and data processing.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS475", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-THEORY"], "explanation": "Theoretical foundations support understanding the limits and guarantees of learning algorithms.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS481", "career_id": "CAR-DS-AI", "relevance": 4, "skill_ids": ["SK-HPC"], "explanation": "Parallel and high-performance computing techniques are used to train models at scale.", "sources": ["O*NET 15-2051.00"]},
-  {"course_id": "CS495", "career_id": "CAR-DS-AI", "relevance": 3, "skill_ids": ["SK-SYS-DESIGN"], "explanation": "The capstone project offers a chance to apply data or AI methods to a complete system.", "sources": ["O*NET 15-2051.00"]},
-
-  {"course_id": "CS100", "career_id": "CAR-ROBOTICS", "relevance": 2, "skill_ids": ["SK-PROG-FUND"], "explanation": "Programming fundamentals are needed before writing any robot control software.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS101", "career_id": "CAR-ROBOTICS", "relevance": 2, "skill_ids": ["SK-OOP"], "explanation": "Object-oriented design supports structuring robotics software components.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS201", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-DATA-STRUCT"], "explanation": "Real-time robotics software relies on efficient data structures.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "ECE380", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-DIGITAL-LOGIC"], "explanation": "Digital logic is the hardware foundation underlying robotic control systems.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "ECE383", "career_id": "CAR-ROBOTICS", "relevance": 4, "skill_ids": ["SK-EMBEDDED"], "explanation": "Robotics systems are commonly built on microcontrollers and embedded hardware interfaces.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS300", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-OS"], "explanation": "Real-time and embedded robotics systems require operating system concepts.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS460", "career_id": "CAR-ROBOTICS", "relevance": 5, "skill_ids": ["SK-ROBOTICS", "SK-PERCEPTION"], "explanation": "Directly covers robot motion, kinematics, and sensor incorporation central to autonomous robotics.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS461", "career_id": "CAR-ROBOTICS", "relevance": 4, "skill_ids": ["SK-HCI"], "explanation": "Brain-computer interfaces are a growing human-robot interaction modality in robotics research.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS470", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-ALGO"], "explanation": "Motion planning and control rely on efficient algorithm design.", "sources": ["O*NET 17-2141.00"]},
-  {"course_id": "CS495", "career_id": "CAR-ROBOTICS", "relevance": 3, "skill_ids": ["SK-SYS-DESIGN"], "explanation": "The capstone project offers a path to build a complete robotics or embedded systems project.", "sources": ["O*NET 17-2141.00"]}
+  {
+    "course_id": "CS100",
+    "career_id": "CAR-SWE",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Builds the programming fundamentals every later software engineering course depends on.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS101",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-OOP"
+    ],
+    "explanation": "Object-oriented practices introduced here are used throughout professional software engineering.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS200",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK",
+      "SK-TESTING"
+    ],
+    "explanation": "Directly covers software design, team organization, and testing methodology central to the software engineering role.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS201",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "explanation": "Data structures and algorithm design are core daily tools for software engineers.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS202",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-WEB"
+    ],
+    "explanation": "Web development is one of the most common software engineering specializations.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS301",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-DB"
+    ],
+    "explanation": "Most production software engineering work involves designing and querying relational data.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS403",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PL-DESIGN"
+    ],
+    "explanation": "Understanding language design and run-time structures deepens an engineer's grasp of the tools they use daily.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS415",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK",
+      "SK-TESTING"
+    ],
+    "explanation": "Directly builds the agile, CI/CD, and team software delivery practice central to the software engineering role.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS495",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "The capstone project mirrors end-to-end software delivery expected of a working software engineer.",
+    "sources": [
+      "O*NET 15-1252.00"
+    ]
+  },
+  {
+    "course_id": "CS100",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Programming fundamentals are a prerequisite skill for any data science or AI work.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS101",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-OOP"
+    ],
+    "explanation": "Object-oriented practice supports building larger data pipelines and tooling.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS201",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "explanation": "Efficient data structures and algorithmic thinking matter when processing large datasets.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS223",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Python is the most widely used language for data science and machine learning tooling.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS301",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-DB"
+    ],
+    "explanation": "Data scientists regularly retrieve and shape data stored in relational databases.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS461",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-AI-ML"
+    ],
+    "explanation": "Passive neurophysiological signal analysis applies machine learning techniques to real sensor data.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS470",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-THEORY"
+    ],
+    "explanation": "Algorithm design and analysis underlie the efficiency of model training and data processing.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS475",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-THEORY"
+    ],
+    "explanation": "Theoretical foundations support understanding the limits and guarantees of learning algorithms.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS481",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-HPC"
+    ],
+    "explanation": "Parallel and high-performance computing techniques are used to train models at scale.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS495",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SYS-DESIGN"
+    ],
+    "explanation": "The capstone project offers a chance to apply data or AI methods to a complete system.",
+    "sources": [
+      "O*NET 15-2051.00"
+    ]
+  },
+  {
+    "course_id": "CS100",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Programming fundamentals are needed before writing any robot control software.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS101",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-OOP"
+    ],
+    "explanation": "Object-oriented design supports structuring robotics software components.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS201",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-DATA-STRUCT"
+    ],
+    "explanation": "Real-time robotics software relies on efficient data structures.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "ECE380",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-DIGITAL-LOGIC"
+    ],
+    "explanation": "Digital logic is the hardware foundation underlying robotic control systems.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "ECE383",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-EMBEDDED"
+    ],
+    "explanation": "Robotics systems are commonly built on microcontrollers and embedded hardware interfaces.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS460",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-ROBOTICS",
+      "SK-PERCEPTION"
+    ],
+    "explanation": "Directly covers robot motion, kinematics, and sensor incorporation central to autonomous robotics.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS461",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-HCI"
+    ],
+    "explanation": "Brain-computer interfaces are a growing human-robot interaction modality in robotics research.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS470",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-ALGO"
+    ],
+    "explanation": "Motion planning and control rely on efficient algorithm design.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS495",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SYS-DESIGN"
+    ],
+    "explanation": "The capstone project offers a path to build a complete robotics or embedded systems project.",
+    "sources": [
+      "O*NET 17-2141.00"
+    ]
+  },
+  {
+    "course_id": "CS104",
+    "career_id": "CAR-SWE",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-PROG-FUND",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Explore computing through Python projects, data, networks, and the social effects of technology. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS104",
+    "career_id": "CAR-DS-AI",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-PROG-FUND",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Explore computing through Python projects, data, networks, and the social effects of technology. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS104",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-PROG-FUND",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Explore computing through Python projects, data, networks, and the social effects of technology. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS110",
+    "career_id": "CAR-SWE",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Honors programming foundation covering program structure, recursive solutions, debugging, and file-based tools. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS110",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Honors programming foundation covering program structure, recursive solutions, debugging, and file-based tools. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS110",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Honors programming foundation covering program structure, recursive solutions, debugging, and file-based tools. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS111",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-OOP",
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Honors study of object-oriented programs, data organization, and algorithm efficiency. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS111",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-OOP",
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Honors study of object-oriented programs, data organization, and algorithm efficiency. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS111",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-OOP",
+      "SK-DATA-STRUCT",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Honors study of object-oriented programs, data organization, and algorithm efficiency. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS140",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Explore security threats and the technical and organizational defenses used to reduce them. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS140",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Explore security threats and the technical and organizational defenses used to reduce them. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS240",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Practice security investigation and defensive techniques through capture-the-flag exercises. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS240",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Practice security investigation and defensive techniques through capture-the-flag exercises. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS247",
+    "career_id": "CAR-SWE",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Examine legal and ethical decisions involving digital systems, privacy, and social responsibility. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS247",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Examine legal and ethical decisions involving digital systems, privacy, and social responsibility. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS247",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Examine legal and ethical decisions involving digital systems, privacy, and social responsibility. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS265",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Build introductory AI and data projects while considering responsible use and practical resource costs. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS265",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Build introductory AI and data projects while considering responsible use and practical resource costs. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS323",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Extend Python programming skills through increasingly complex software and problem-solving tasks. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS323",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Extend Python programming skills through increasingly complex software and problem-solving tasks. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS323",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-PROG-FUND"
+    ],
+    "explanation": "Project mapping: Extend Python programming skills through increasingly complex software and problem-solving tasks. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS330",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-WEB",
+      "SK-SYS-DESIGN"
+    ],
+    "explanation": "Project mapping: Build applications across the web stack using established frameworks and software design practices. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS338",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-OS",
+      "SK-NETWORKS",
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Develop system and network programs while studying OS services, process communication, and basic security. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS338",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-OS",
+      "SK-NETWORKS",
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Develop system and network programs while studying OS services, process communication, and basic security. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS338",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-OS",
+      "SK-NETWORKS",
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Develop system and network programs while studying OS services, process communication, and basic security. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS340",
+    "career_id": "CAR-SWE",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Analyze computing cases involving privacy, expression, ownership, security, and professional responsibility. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS340",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Analyze computing cases involving privacy, expression, ownership, security, and professional responsibility. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS340",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Analyze computing cases involving privacy, expression, ownership, security, and professional responsibility. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS345",
+    "career_id": "CAR-SWE",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "Project mapping: Investigate advanced technology ethics cases and communicate a researched position through a project. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS345",
+    "career_id": "CAR-DS-AI",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "Project mapping: Investigate advanced technology ethics cases and communicate a researched position through a project. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS345",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 1,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "Project mapping: Investigate advanced technology ethics cases and communicate a researched position through a project. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS393",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "Project mapping: Develop software for an enterprise through a project tailored to individual student needs. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS407",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-HCI"
+    ],
+    "explanation": "Project mapping: Design and evaluate user interfaces using human-computer interaction principles. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS407",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-HCI"
+    ],
+    "explanation": "Project mapping: Design and evaluate user interfaces using human-computer interaction principles. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS416",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-TESTING"
+    ],
+    "explanation": "Project mapping: Apply software analysis, validation, and quality practices to evaluate system behavior. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS417",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-SYS-DESIGN",
+      "SK-TEAMWORK"
+    ],
+    "explanation": "Project mapping: Develop and assess software requirements through elicitation, analysis, documentation, and management. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS420",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-SYS-DESIGN"
+    ],
+    "explanation": "Project mapping: Study how software systems change through maintenance, refactoring, modeling, and adaptation. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS423",
+    "career_id": "CAR-DS-AI",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-HPC",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Process large datasets with Python-based distributed and parallel computing tools. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS423",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-HPC",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Process large datasets with Python-based distributed and parallel computing tools. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS428",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-OS"
+    ],
+    "explanation": "Project mapping: Evaluate system defenses, authentication, access control, malicious software, and security weaknesses. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS428",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-OS"
+    ],
+    "explanation": "Project mapping: Evaluate system defenses, authentication, access control, malicious software, and security weaknesses. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS434",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PL-DESIGN",
+      "SK-THEORY"
+    ],
+    "explanation": "Project mapping: Construct language translation software using formal syntax, meaning, and compiler implementation techniques. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS435",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-PERCEPTION"
+    ],
+    "explanation": "Project mapping: Implement interactive 3D graphics through geometry, viewing, lighting, and rendering techniques. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS435",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-PERCEPTION"
+    ],
+    "explanation": "Project mapping: Implement interactive 3D graphics through geometry, viewing, lighting, and rendering techniques. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS438",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Analyze network protocols, routing, congestion, and communication behavior while building network programs. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS438",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Analyze network protocols, routing, congestion, and communication behavior while building network programs. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS442",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-THEORY"
+    ],
+    "explanation": "Project mapping: Study encryption, hashing, authentication, and key management for protecting digital information. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS443",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Investigate digital evidence and apply methods for examining computer-related incidents. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS444",
+    "career_id": "CAR-SWE",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-SYS-DESIGN"
+    ],
+    "explanation": "Project mapping: Design software defenses against vulnerabilities using secure architecture and programming practices. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS445",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-PL-DESIGN"
+    ],
+    "explanation": "Project mapping: Analyze software implementations and behavior through reverse-engineering methods. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS448",
+    "career_id": "CAR-SWE",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Analyze attacks and defenses affecting communication networks and their protocols. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS448",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-SECURITY",
+      "SK-NETWORKS"
+    ],
+    "explanation": "Project mapping: Analyze attacks and defenses affecting communication networks and their protocols. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS451",
+    "career_id": "CAR-DS-AI",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-STATS",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Prepare, explore, and model diverse datasets using statistical and machine-learning approaches. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS451",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 2,
+    "skill_ids": [
+      "SK-STATS",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Prepare, explore, and model diverse datasets using statistical and machine-learning approaches. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS452",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Build search and retrieval systems using indexing, classification, and document analysis. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS452",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-ALGO",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Build search and retrieval systems using indexing, classification, and document analysis. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS455",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-STATS",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Acquire and analyze social-platform data while examining challenges of large, changing datasets. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS456",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Apply AI methods to security datasets and examine attacks against machine-learning systems. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS456",
+    "career_id": "CAR-SWE",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-SECURITY"
+    ],
+    "explanation": "Project mapping: Apply AI methods to security datasets and examine attacks against machine-learning systems. These topics support software development and dependable applications.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS463",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Develop visual interpretation methods using camera geometry, reconstruction, and recognition techniques. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS463",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Develop visual interpretation methods using camera geometry, reconstruction, and recognition techniques. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS464",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Transform and analyze digital images through filtering, segmentation, recognition, and learning-based methods. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS464",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-PERCEPTION",
+      "SK-AI-ML"
+    ],
+    "explanation": "Project mapping: Transform and analyze digital images through filtering, segmentation, recognition, and learning-based methods. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS465",
+    "career_id": "CAR-DS-AI",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Develop AI problem-solving approaches using knowledge models, planning, and machine learning. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS465",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Develop AI problem-solving approaches using knowledge models, planning, and machine learning. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS466",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Connect mathematical foundations with the design and analysis of AI algorithms. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS466",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-STATS"
+    ],
+    "explanation": "Project mapping: Connect mathematical foundations with the design and analysis of AI algorithms. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS480",
+    "career_id": "CAR-DS-AI",
+    "relevance": 3,
+    "skill_ids": [
+      "SK-STATS",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Design simulation models, generate random inputs, and interpret experimental results. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS480",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-STATS",
+      "SK-ALGO"
+    ],
+    "explanation": "Project mapping: Design simulation models, generate random inputs, and interpret experimental results. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS483",
+    "career_id": "CAR-DS-AI",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-THEORY"
+    ],
+    "explanation": "Project mapping: Study learning algorithms and theory across supervised, unsupervised, deep, and reinforcement learning. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS483",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-THEORY"
+    ],
+    "explanation": "Project mapping: Study learning algorithms and theory across supervised, unsupervised, deep, and reinforcement learning. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS484",
+    "career_id": "CAR-DS-AI",
+    "relevance": 4,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ROBOTICS"
+    ],
+    "explanation": "Project mapping: Develop agents that learn decisions through interaction, rewards, and sequential feedback. These topics support data analysis and AI systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  },
+  {
+    "course_id": "CS484",
+    "career_id": "CAR-ROBOTICS",
+    "relevance": 5,
+    "skill_ids": [
+      "SK-AI-ML",
+      "SK-ROBOTICS"
+    ],
+    "explanation": "Project mapping: Develop agents that learn decisions through interaction, rewards, and sequential feedback. These topics support robotics, autonomy, and supporting software systems.",
+    "sources": [
+      "UA CS catalog (reviewed 2026-11-01); project-authored career mapping"
+    ]
+  }
 ]

@@ -1,14 +1,11 @@
 export type CareerId = "software" | "data" | "robotics";
-export type Workload = "balanced" | "lighter";
-export type Page = "overview" | "courses" | "careers" | "compare" | "schedule";
+export type Page = "courses" | "careers" | "compare" | "roadmap";
 
 export interface Profile {
   name: string;
   completed: string[];
   career: CareerId | null;
-  creditTarget: number;
-  workload: Workload;
-  schedule: string[];
+  saved: string[];
   setupComplete: boolean;
 }
 
@@ -37,18 +34,13 @@ export interface Career {
 
 export interface Recommendation {
   course: Course;
-  score: number;
-  reasons: string[];
-  explanation: {
-    whyEligible: string;
-    degreeRelevance: string;
-    unlocks: string[];
-    learningObjectives: string[];
-    careerSkills: string[];
-    sources: string[];
-  };
+  missingPrerequisites: string[];
+  matchedPrerequisites: string[];
+  careerSkills: string[];
 }
 
-export interface PlanningService {
-  recommend(profile: Profile): Promise<Recommendation[]>;
+export interface Roadmap {
+  stronglyRecommended: Recommendation[];
+  worthConsidering: Recommendation[];
+  broadenSkills: Recommendation[];
 }

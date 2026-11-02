@@ -1,5 +1,6 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import { Agent } from "node:http";
 
 export default defineConfig({
   plugins: [react()],
@@ -7,6 +8,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "http://127.0.0.1:8000",
+        // Reloads/cancelled preference requests must not reuse stale upstream sockets.
+        agent: new Agent({ keepAlive: false }),
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
